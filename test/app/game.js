@@ -1,4 +1,4 @@
-var utils = require('./modules/utils');
+// var utils = require('./modules/utils');
 var _ = require('lodash');
 var Phaser = require('phaser');
 
@@ -24,7 +24,7 @@ var scope = {};
 module.exports = function(game,rootScope){
 	var state = {};
 
-	var craft = require('./modules/craft')(game);
+	// var craft = require('./modules/craft')(game);
 
 	state.init = function(){
 	}
@@ -37,26 +37,27 @@ module.exports = function(game,rootScope){
 	}
 
 	state.create = function(){
-		var group = craft.$g();
+		console.log('x')
+		// var group = craft.$g();
 
-		var sprite = craft.$sprite('phaser')
-		.$set({
-			x:100,
-			y:100
-		})
-		.$into(group)
-		.$mid()
-		.$tint('#FF0000');
+		// var sprite = craft.$sprite('phaser')
+		// .$set({
+		// 	x:100,
+		// 	y:100
+		// })
+		// .$into(group)
+		// .$mid()
+		// .$tint('#FF0000');
 
 
-		var ball = craft.$circle({
-			fill:'#FF00FF',
-			size:40
-		}).$set({
-			x:200,
-			y:200,
-		})
-		.$into(group)
+		// var ball = craft.$circle({
+		// 	fill:'#FF00FF',
+		// 	size:40
+		// }).$set({
+		// 	x:200,
+		// 	y:200,
+		// })
+		// .$into(group)
 	}
 
 	return state;
