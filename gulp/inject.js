@@ -7,9 +7,9 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
-	gulp.task('inject', ['scripts'], function () {
+	gulp.task('inject', ['scripts','scripts:test'], function () {
 		var injectScripts = gulp.src([
-			options.tmp + '/serve/{app,components}/**/*.js',
+			options.tmp + '/serve/{app,test}/**/*.js',
 		], { read: false });
 
 		var injectOptions = {

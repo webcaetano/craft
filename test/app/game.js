@@ -1,4 +1,4 @@
-// var utils = require('./modules/utils');
+var utils = require('./modules/utils');
 var _ = require('lodash');
 var Phaser = require('phaser');
 

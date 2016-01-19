@@ -11,7 +11,8 @@
 	},
 	"externals": {
 		"lodash": "_",
-		"phaser": "Phaser"
+		"phaser": "Phaser",
+		"stats": "Stats"
 	},
 	"overrides": {
 		"phaser": {

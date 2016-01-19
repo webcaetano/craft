@@ -58,11 +58,11 @@ module.exports = function(options) {
 	});
 
 	gulp.task('scripts:test', function () {
-		return webpack('./test/index.js',options.tmp + '/serve/test', false);
+		return webpack('test/app/index.js',options.tmp + '/serve/test', false);
 	});
 
 	gulp.task('scripts:test:watch', function (callback) {
-		return webpack('test/index.js',options.tmp + '/serve/test', true, callback, true);
+		return webpack('test/app/index.js',options.tmp + '/serve/test', true, callback, true);
 	});
 };
 
