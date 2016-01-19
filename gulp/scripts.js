@@ -44,7 +44,7 @@ module.exports = function(options) {
 			}
 		};
 
-		return gulp.src(options.src + '/app/index.js')
+		return gulp.src(options.src + '/index.js')
 			.pipe($.webpack(webpackOptions, null, webpackChangeHandler))
 			.pipe(gulp.dest(options.tmp + '/serve/app'));
 	}

@@ -3,18 +3,15 @@
 	"version": "1.0.0",
 	"dependencies": {
 		"lodash": "~3.10.1",
-		"phaser": "~2.4.3",
-		"tinycolor": "~1.2.1"
+		"phaser": "~2.4.3"
 	},
 	"devDependencies": {
 		"stats.js": "*",
 		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
 	},
 	"externals": {
-		"tinycolor": "tinycolor",
 		"lodash": "_",
-		"phaser": "Phaser",
-		"stats": "Stats"
+		"phaser": "Phaser"
 	},
 	"overrides": {
 		"phaser": {

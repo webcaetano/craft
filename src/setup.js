@@ -1,0 +1,27 @@
+module.exports = {
+	sprite:{
+		$set:true,
+		$tint:true,
+		$into:true,
+		$mid:true,
+		$atlasImg:true,
+		$atlasAnims:true,
+		$fixPos:true,
+		$copyPos:true,
+	},
+	graphic:{
+		$set:true,
+		$tint:true,
+		$into:true,
+		$mid:true,
+		$fixPos:true,
+		$copyPos:true,
+	},
+	group:{
+		$set:true,
+		$into:true,
+		$fixPos:true,
+		$add:true,
+		$copyPos:true,
+	}
+}
