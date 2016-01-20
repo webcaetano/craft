@@ -1,5 +1,5 @@
 var utils = require('./modules/utils');
-var _ = require('lodash');
+// var _ = require('lodash');
 var Phaser = require('phaser');
 
 
@@ -37,7 +37,9 @@ module.exports = function(game,rootScope){
 	}
 
 	state.create = function(){
-		console.log('x')
+		var $c = require('$craft')(game);
+
+		var sprite = $c.$sprite('phaser')
 		// var group = craft.$g();
 
 		// var sprite = craft.$sprite('phaser')

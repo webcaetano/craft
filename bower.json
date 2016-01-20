@@ -2,7 +2,6 @@
 	"name": "mypp",
 	"version": "1.0.0",
 	"dependencies": {
-		"lodash": "~3.10.1",
 		"phaser": "~2.4.3"
 	},
 	"devDependencies": {
@@ -10,8 +9,9 @@
 		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
 	},
 	"externals": {
-		"lodash": "_",
 		"phaser": "Phaser",
+		"lodash": "_",
+		"$craft": "$craft",
 		"stats": "Stats"
 	},
 	"overrides": {

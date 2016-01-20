@@ -18,9 +18,18 @@ module.exports = function(options) {
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	});
 
+	gulp.task('build-dependent:js',['scripts:dependent'], function () {
+		return gulp.src(options.tmp + '/serve/app/index.js')
+			.pipe($.rename(function (path) {
+				path.basename += "-dependent"
+			}))
+			.pipe(gulp.dest(options.dist + '/'))
+			.pipe($.size({ title: options.dist + '/', showFiles: true }));
+	});
+
 
 	gulp.task('mincopy:js', function () {
-		return gulp.src(options.tmp + '/serve/app/index.js')
+		return gulp.src(options.dist + '/*.js')
 			.pipe($.uglify())
 			.pipe($.rename(function (path) {
 				path.extname = ".min.js"
@@ -34,6 +43,6 @@ module.exports = function(options) {
 	});
 
 	gulp.task('build',function(done){
-		runSequence('clean','build:js','mincopy:js',done);
+		runSequence('clean','build:js','build-dependent:js','mincopy:js',done);
 	});
 };

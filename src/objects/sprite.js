@@ -1,5 +1,5 @@
-module.exports = function(game){
-	return function $sprite(key,options){
+module.exports = function(game,bindProto){
+	self.$sprite = function $sprite(key,options){
 		var defaults = {
 			x:0,
 			y:0,
