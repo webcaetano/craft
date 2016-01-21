@@ -11,6 +11,7 @@ module.exports = function(game,Phaser){
 			width:100,
 			height:100,
 			size:0,
+			alpha:1,
 			round:0,
 			stroke:{
 				size:0,
@@ -25,7 +26,7 @@ module.exports = function(game,Phaser){
 
 		bindProto(tmpG,'graphic')
 
-		if(options.fill) tmpG.beginFill(utils.colorCase(options.fill));
+		if(options.fill) tmpG.beginFill(utils.colorCase(options.fill,options.alpha));
 		if(options.stroke.size>0) tmpG.lineStyle(options.stroke.size,options.stroke.color,options.stroke.alpha);
 
 		if(options.round===0){
@@ -34,4 +35,5 @@ module.exports = function(game,Phaser){
 			return tmpG.drawRoundRect(0,0,options.width,options.height,options.round)
 		}
 	}
+
 }
