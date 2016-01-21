@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	return function $graphic(options){
@@ -9,7 +10,8 @@ module.exports = function(game,Phaser){
 		};
 		options = utils.extend({},defaults,options);
 		var tmpG = game.add.graphics(options.x,options.y,options.group);
-		utils.bindProto(tmpG,'graphic')
+
+		bindProto(tmpG,'graphic');
 		return tmpG;
 	}
 }

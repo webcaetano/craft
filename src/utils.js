@@ -7,20 +7,6 @@ if(!WEBPACK_DEPENDENT){
 	var _ = require('lodash');
 }
 
-
-var protoOptions = require('./setup')
-var protos = {
-	$set:require('./prototypes/set')
-}
-
-self.bindProto = function bindProto(obj,type='sprite'){
-	_.each(protoOptions[type],function(val,funcName){
-		if(!val || !protos[funcName]) return;
-		obj[funcName] = protos[funcName];
-	})
-}
-
-
 self.colorCase = function(color){
 	return color.indexOf('#') != -1 ? '0x'+color.replace(/#/g,'') : color;
 }

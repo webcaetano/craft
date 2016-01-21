@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	var $circle = require('./circle')(game,Phaser);
@@ -8,7 +9,6 @@ module.exports = function(game,Phaser){
 			fill,
 			size,
 		};
-
 
 		options = utils.extend({},defaults,options);
 		return $circle(options);

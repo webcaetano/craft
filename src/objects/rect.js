@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	return function $rect(options){
@@ -22,7 +23,7 @@ module.exports = function(game,Phaser){
 
 		if(options.size) options.height = options.width = options.size;
 
-		utils.bindProto(tmpG,'graphic')
+		bindProto(tmpG,'graphic')
 
 		if(options.fill) tmpG.beginFill(utils.colorCase(options.fill));
 		if(options.stroke.size>0) tmpG.lineStyle(options.stroke.size,options.stroke.color,options.stroke.alpha);

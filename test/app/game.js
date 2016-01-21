@@ -24,7 +24,7 @@ var scope = {};
 module.exports = function(game,rootScope){
 	var state = {};
 
-	// var craft = require('./modules/craft')(game);
+	var craft = require('$craft')(game);
 
 	state.init = function(){
 	}
@@ -37,51 +37,28 @@ module.exports = function(game,rootScope){
 	}
 
 	state.create = function(){
-		var $c = require('$craft')(game);
+		var group = craft.$g();
 
-		var sprite = $c.$sprite('phaser');
-
-		var circle = $c.$circle({
-			size:40,
-			stroke:{
-				size:2
-			}
-		}).$set({
+		var sprite = craft.$sprite('phaser')
+		.$set({
 			x:100,
 			y:100
 		})
+		.$into(group)
+		.$mid()
+		.$tint('#FF0000');
 
 
-		var d = $c.$d();
-		d.x=200;
-		d.y=200;
+		var ball = craft.$circle({
+			fill:'#DADADA',
+			size:40
+		}).$set({
+			x:200,
+			y:200,
+		})
+		.$into(group)
 
-		var rect = $c.$box()
-		rect.x = 300;
-		rect.y = 30;
-
-		var group = $c.$g()
-		console.log(group)
-		// var group = craft.$g();
-
-		// var sprite = craft.$sprite('phaser')
-		// .$set({
-		// 	x:100,
-		// 	y:100
-		// })
-		// .$into(group)
-		// .$mid()
-		// .$tint('#FF0000');
-
-
-		// var ball = craft.$circle({
-		// 	fill:'#FF00FF',
-		// 	size:40
-		// }).$set({
-		// 	x:200,
-		// 	y:200,
-		// })
-		// .$into(group)
+		var d = craft.$d().$copyPos(ball);
 	}
 
 	return state;

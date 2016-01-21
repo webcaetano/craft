@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	return function $sprite(key,options){
@@ -11,7 +12,7 @@ module.exports = function(game,Phaser){
 		options = utils.extend({},defaults,options);
 		var tmpObj = game.add.sprite(options.x,options.y,key,options.frame,options.group);
 		// prototypes
-		utils.bindProto(tmpObj,'sprite')
+		bindProto(tmpObj,'sprite')
 
 		return tmpObj;
 	}

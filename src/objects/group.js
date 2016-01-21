@@ -1,4 +1,5 @@
 var utils = require('../utils');
+var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	return function $group(options){
@@ -12,7 +13,7 @@ module.exports = function(game,Phaser){
 		options = utils.extend({},options,defaults);
 		var tmpG = game.add.group(options.parent, options.name, options.addToStage, options.enableBody, options.physicsBodyType);
 
-		utils.bindProto(tmpG,'group')
+		bindProto(tmpG,'group')
 
 		return tmpG;
 	}
