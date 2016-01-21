@@ -1,8 +1,7 @@
 {
-	"name": "mypp",
+	"name": "phaser-craft",
 	"version": "1.0.0",
-	"dependencies": {
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"phaser": "~2.4.3",
 		"stats.js": "*",
@@ -15,6 +14,20 @@
 		"$craft": "$craft",
 		"stats": "Stats"
 	},
+	"ignore": [
+		"node_modules",
+		"bower_components",
+		".gitignore",
+		".gitattributes",
+		".bowerrc",
+		"gulp",
+		".travis.yml",
+		"gulpfile.js",
+		"package.json",
+		"src",
+		"test",
+		".tmp"
+	],
 	"overrides": {
 		"phaser": {
 			"main": "build/custom/phaser-arcade-physics.js"

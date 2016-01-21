@@ -87,15 +87,15 @@ module.exports = function(options) {
 		return bump('major');
 	});
 
-	gulp.task('patch', function (done) {
+	gulp.task('patch', ['build'], function (done) {
 		runSequence('bump:patch','git:commit_release','git:tag','git:push',done);
 	});
 
-	gulp.task('minor', function (done) {
+	gulp.task('minor', ['build'], function (done) {
 		runSequence('bump:minor','git:commit_release','git:tag','git:push',done);
 	});
 
-	gulp.task('major', function (done) {
+	gulp.task('major', ['build'], function (done) {
 		runSequence('bump:major','git:commit_release','git:tag','git:push',done);
 	});
 }
