@@ -66,7 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var _ = __webpack_require__(3);
 	}
 
-	// console.log(BOLA)
+	// import {each,isArray} from 'lodash';
 
 	var protos = {
 		$set: __webpack_require__(4)
@@ -84,7 +84,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = function $craft(game) {
 		var self = {};
 
-		self.$sprite = __webpack_require__(5)(game, bindProto, Phaser);
+		console.log('x');
+		console.log(Phaser.Utils.extend(true, { bola: { name: 'moa', age: 33 } }, { bola: { name: 'lol' } }));
 
 		return self;
 	};
@@ -157,29 +158,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}
 		return this;
-	};
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function (game, bindProto) {
-		self.$sprite = function $sprite(key, options) {
-			var defaults = {
-				x: 0,
-				y: 0,
-				frame: undefined,
-				group: undefined
-			};
-			options = _.defaultsDeep({}, options, defaults);
-			var tmpObj = game.add.sprite(options.x, options.y, key, options.frame, options.group);
-			// prototypes
-			bindProto(tmpObj, 'sprite');
-
-			return tmpObj;
-		};
 	};
 
 /***/ }

@@ -10,6 +10,13 @@ var $ = require('gulp-load-plugins')();
 var gulpWebpack = require('webpack-stream');
 
 module.exports = function(options) {
+
+	gulp.task('include', function () {
+		return gulp.src(options.tmp + '/serve/app/index.js',{path:'src/'})
+		.pipe($.include())
+		.pipe(gulp.dest(options.tmp + '/serve/app/'));
+	});
+
 	function wp(dependent, umd, src, dist, watch, callback, reload) {
 		if(!callback) callback = null;
 		if(!reload) reload = null;
@@ -48,12 +55,12 @@ module.exports = function(options) {
 			if(err) {
 				options.errorHandler('Webpack')(err);
 			}
-			// $.util.log(stats.toString({
-			// 	colors: $.util.colors.supportsColor,
-			// 	chunks: false,
-			// 	hash: false,
-			// 	version: false
-			// }));
+			$.util.log(stats.toString({
+				colors: $.util.colors.supportsColor,
+				chunks: false,
+				hash: false,
+				version: false
+			}));
 			// browserSync.reload();
 			if(reload) {
 				browserSync.reload();
@@ -65,6 +72,8 @@ module.exports = function(options) {
 		};
 
 		return gulp.src(src)
+
+		// .pipe($.include())
 		.pipe(gulpWebpack(webpackOptions, null, webpackChangeHandler))
 		.pipe(gulp.dest(dist));
 

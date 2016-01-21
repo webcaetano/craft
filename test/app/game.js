@@ -39,7 +39,29 @@ module.exports = function(game,rootScope){
 	state.create = function(){
 		var $c = require('$craft')(game);
 
-		var sprite = $c.$sprite('phaser')
+		var sprite = $c.$sprite('phaser');
+
+		var circle = $c.$circle({
+			size:40,
+			stroke:{
+				size:2
+			}
+		}).$set({
+			x:100,
+			y:100
+		})
+
+
+		var d = $c.$d();
+		d.x=200;
+		d.y=200;
+
+		var rect = $c.$box()
+		rect.x = 300;
+		rect.y = 30;
+
+		var group = $c.$g()
+		console.log(group)
 		// var group = craft.$g();
 
 		// var sprite = craft.$sprite('phaser')

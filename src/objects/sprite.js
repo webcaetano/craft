@@ -1,15 +1,17 @@
-module.exports = function(game,bindProto){
-	self.$sprite = function $sprite(key,options){
+var utils = require('../utils');
+
+module.exports = function(game,Phaser){
+	return function $sprite(key,options){
 		var defaults = {
 			x:0,
 			y:0,
 			frame:undefined,
 			group:undefined
 		};
-		options = _.defaultsDeep({},options,defaults);
+		options = utils.extend({},defaults,options);
 		var tmpObj = game.add.sprite(options.x,options.y,key,options.frame,options.group);
 		// prototypes
-		bindProto(tmpObj,'sprite')
+		utils.bindProto(tmpObj,'sprite')
 
 		return tmpObj;
 	}

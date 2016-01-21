@@ -2,10 +2,11 @@
 	"name": "mypp",
 	"version": "1.0.0",
 	"dependencies": {
-		"phaser": "~2.4.3"
 	},
 	"devDependencies": {
+		"phaser": "~2.4.3",
 		"stats.js": "*",
+		"lodash": "~3.10.1",
 		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
 	},
 	"externals": {
