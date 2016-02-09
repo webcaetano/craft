@@ -1,7 +1,7 @@
 ![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/index.min.js.svg?style=flat-square)
 
 # Craft
-Phaser Library with utility chainable functions
+Phaser Library with utility chainable functions<br>
 Exported as a UMD module.
 
 ## Installation
@@ -16,6 +16,7 @@ bower install phaser-craft --save
 ### Objects List
 
 - [`craft.$sprite`](#craftspritekeyoptions)
+- [`craft.$group`](#craftgroupkeyoptions)
 - [`craft.$graphic`](#craftgraphicoptions)
 - [`craft.$rect`](#craftrectoptions)
 - [`craft.$cirlce`](#craftcircleoptions)
@@ -38,6 +39,29 @@ craft.$sprite('banana',{
 	y:0,
 	frame:undefined, // phaser sprite frame
 	group:unefined // phaser group to be insert
+})
+```
+
+#### `craft.$group(key,options)`
+
+Create Phaser Group
+
+**Usage**
+
+```javascript
+//simple
+craft.$group();
+
+//alias 
+craft.$g();
+
+//full default values
+craft.$group({
+	parent:undefined,
+	name:undefined,
+	addToStage:undefined,
+	enableBody:undefined,
+	physicsBodyType:undefined
 })
 ```
 
@@ -70,6 +94,11 @@ Create Phaser Retangle Shape Graphic
 craft.$rect({
 	width:100,
 	height:50,
+});
+
+// alias 
+craft.$box({
+	size:100
 });
 
 //full default values
