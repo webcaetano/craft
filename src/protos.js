@@ -8,6 +8,7 @@ var protos = {
 	$copyPos:require('./prototypes/copyPos'),
 	$fixPos:require('./prototypes/fixPos'),
 	$add:require('./prototypes/add'),
+	$align:require('./prototypes/align'),
 }
 
 

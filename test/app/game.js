@@ -1,25 +1,17 @@
 var utils = require('./modules/utils');
-// var _ = require('lodash');
+var params = require('./modules/urlParams');
+var _ = require('lodash');
 var Phaser = require('phaser');
-
 
 var assets = {
 	images:{
-		phaser:'images/phaser-dude.png'
+		phaserDude:'images/phaser-dude.png'
 	},
 	sprites:{},
 	audio:{},
 	atlas:{}
 }
 var scope = {};
-
-// var atlas = {};
-// atlas.loading = require('./data/loading.json');
-// assets.atlas['loading'] = {
-// 	image:'images/loading.png',
-// 	json:utils.frameAtlas(atlas.loading)
-// }
-
 
 module.exports = function(game,rootScope){
 	var state = {};
@@ -31,34 +23,21 @@ module.exports = function(game,rootScope){
 
 	state.preload = function(){
 		game.stage.disableVisibilityChange = false;
-		game.stage.backgroundColor = '#fff';
+		game.stage.backgroundColor = '#262626';
 		utils.loadAssets(game,assets);
 		game.load.start();
 	}
 
 	state.create = function(){
-		var group = craft.$g();
-
-		var sprite = craft.$sprite('phaser')
-		.$set({
-			x:100,
-			y:100
-		})
-		.$into(group)
-		.$mid()
-		.$tint('#FF0000');
-
-
-		var ball = craft.$circle({
-			fill:'#DADADA',
-			size:40
-		}).$set({
-			x:200,
-			y:200,
-		})
-		.$into(group)
-
-		var d = craft.$d().$copyPos(ball);
+		switch(params.example){
+			default :
+			case '1':
+				require('./example1')(game,scope,rootScope);
+			break;
+			case '2':
+				require('./example2')(game,scope,rootScope);
+			break;
+		}
 	}
 
 	return state;

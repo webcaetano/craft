@@ -8,6 +8,7 @@ module.exports = {
 		$atlasAnims:true,
 		$fixPos:true,
 		$copyPos:true,
+		$align:true,
 	},
 	graphic:{
 		$set:true,
@@ -16,6 +17,7 @@ module.exports = {
 		$mid:true,
 		$fixPos:true,
 		$copyPos:true,
+		$align:true,
 	},
 	group:{
 		$set:true,
@@ -23,5 +25,6 @@ module.exports = {
 		$fixPos:true,
 		$add:true,
 		$copyPos:true,
+		$align:true,
 	}
 }
