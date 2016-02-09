@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var self = {};
 
 		self.$sprite = __webpack_require__(3)(game, Phaser);
-		self.$circle = __webpack_require__(14)(game, Phaser);
+		self.$circle = self.$c = __webpack_require__(14)(game, Phaser);
 		self.$graphic = __webpack_require__(15)(game, Phaser);
 		self.$dot = self.$d = __webpack_require__(16)(game, Phaser);
 		self.$rect = self.$box = __webpack_require__(17)(game, Phaser);
@@ -371,7 +371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var $circle = __webpack_require__(14)(game, Phaser);
 
 		return function $dot(size, fill, options) {
-			if (size === undefined) size = 3;
+			if (size === undefined) size = 5;
 			if (fill === undefined) fill = '#ff0000';
 
 			var defaults = {
@@ -403,6 +403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				width: 100,
 				height: 100,
 				size: 0,
+				alpha: 1,
 				round: 0,
 				stroke: {
 					size: 0,
@@ -417,7 +418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			bindProto(tmpG, 'graphic');
 
-			if (options.fill) tmpG.beginFill(utils.colorCase(options.fill));
+			if (options.fill) tmpG.beginFill(utils.colorCase(options.fill, options.alpha));
 			if (options.stroke.size > 0) tmpG.lineStyle(options.stroke.size, options.stroke.color, options.stroke.alpha);
 
 			if (options.round === 0) {

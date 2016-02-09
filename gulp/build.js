@@ -18,6 +18,7 @@ module.exports = function(options) {
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	});
 
+
 	gulp.task('build-dependent:js',['scripts:dependent'], function () {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
@@ -27,6 +28,35 @@ module.exports = function(options) {
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	});
 
+	gulp.task('build:examples', function (done) {
+		runSequence('clean:examples','html:examples','copy:scripts:examples','copy:others:examples',done)
+	});
+
+	gulp.task('copy:scripts:examples', function () {
+		return gulp.src(options.tmp+'/serve/**/*.js')
+		.pipe(gulp.dest('examples/'))
+	});
+
+	gulp.task('copy:others:examples', function () {
+		return gulp.src('test/**/*.{ico,png,jpg}')
+		.pipe(gulp.dest('examples/'))
+	});
+
+	gulp.task('html:examples', ['inject'], function () {
+		var assets;
+		return gulp.src(options.tmp + '/serve/*.html')
+			.pipe(assets = $.useref.assets())
+			.pipe($.rev())
+			.pipe($.if('*.js', $.preprocess({context: {dist: true}})))
+			.pipe($.if('*.js', $.uglify()))
+			.pipe(assets.restore())
+			.pipe($.useref())
+			.pipe($.revReplace())
+			// .pipe($.if('*.html', $.preprocess({context: {dist: true}})))
+			// .pipe($.if('*.html', $.minifyHtml({empty: true,	spare: true, quotes: true, conditionals: true})))
+			.pipe(gulp.dest('examples/'))
+			.pipe($.size({ title: 'examples/', showFiles: true }));
+	});
 
 	gulp.task('mincopy:js', function () {
 		return gulp.src(options.dist + '/*.js')
@@ -40,6 +70,10 @@ module.exports = function(options) {
 
 	gulp.task('clean', function (done) {
 		$.del([options.dist + '/', options.tmp + '/'], done);
+	});
+
+	gulp.task('clean:examples', function (done) {
+		$.del(['examples/', options.tmp + '/'], done);
 	});
 
 	gulp.task('build',function(done){

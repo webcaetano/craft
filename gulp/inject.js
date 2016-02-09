@@ -22,7 +22,7 @@ module.exports = function(options) {
 			directory: 'bower_components'
 		};
 
-		return gulp.src('test/index.html')
+		return gulp.src('test/*.html')
 			// .pipe($.inject(injectStyles, injectOptions))
 			.pipe($.inject(injectScripts, injectOptions))
 			.pipe(wiredep(wiredepOptions))
