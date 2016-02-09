@@ -52,8 +52,8 @@
 	// var browser = browserDetection();
 	var rootScope = {
 		options: {
-			width: 700,
-			height: 500,
+			width: 300,
+			height: 300,
 			where: 'master-canvas'
 		},
 		debug: false // make sure set it to false when release
@@ -125,12 +125,13 @@
 	'use strict';
 
 	var utils = __webpack_require__(6);
-	// var _ = require('lodash');
+	var params = __webpack_require__(7);
+	var _ = __webpack_require__(4);
 	var Phaser = __webpack_require__(1);
 
 	var assets = {
 		images: {
-			phaser: 'images/phaser-dude.png'
+			phaserDude: 'images/phaser-dude.png'
 		},
 		sprites: {},
 		audio: {},
@@ -138,44 +139,30 @@
 	};
 	var scope = {};
 
-	// var atlas = {};
-	// atlas.loading = require('./data/loading.json');
-	// assets.atlas['loading'] = {
-	// 	image:'images/loading.png',
-	// 	json:utils.frameAtlas(atlas.loading)
-	// }
-
 	module.exports = function (game, rootScope) {
 		var state = {};
 
-		var craft = __webpack_require__(7)(game);
+		var craft = __webpack_require__(8)(game);
 
 		state.init = function () {};
 
 		state.preload = function () {
 			game.stage.disableVisibilityChange = false;
-			game.stage.backgroundColor = '#fff';
+			game.stage.backgroundColor = '#262626';
 			utils.loadAssets(game, assets);
 			game.load.start();
 		};
 
 		state.create = function () {
-			var group = craft.$g();
-
-			var sprite = craft.$sprite('phaser').$set({
-				x: 100,
-				y: 100
-			}).$into(group).$mid().$tint('#FF0000');
-
-			var ball = craft.$circle({
-				fill: '#DADADA',
-				size: 40
-			}).$set({
-				x: 200,
-				y: 200
-			}).$into(group);
-
-			var d = craft.$d().$copyPos(ball);
+			switch (params.example) {
+				default:
+				case '1':
+					__webpack_require__(9)(game, scope, rootScope);
+					break;
+				case '2':
+					__webpack_require__(10)(game, scope, rootScope);
+					break;
+			}
 		};
 
 		return state;
@@ -400,7 +387,90 @@
 /* 7 */
 /***/ function(module, exports) {
 
+	"use strict";
+
+	module.exports = (function () {
+		var resp = {};
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i = 0; i < vars.length; i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] === '') continue;
+			if (typeof resp[pair[0]] === "undefined") {
+				resp[pair[0]] = decodeURIComponent(pair[1]);
+			} else if (typeof resp[pair[0]] === "string") {
+				var arr = [resp[pair[0]], decodeURIComponent(pair[1])];
+				resp[pair[0]] = arr;
+			} else {
+				resp[pair[0]].push(decodeURIComponent(pair[1]));
+				console.log('x');
+			}
+		}
+		return resp;
+	})();
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
 	module.exports = $craft;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var params = __webpack_require__(7);
+
+	module.exports = function (game, scope, rootScope) {
+		var craft = __webpack_require__(8)(game);
+
+		var group = craft.$g();
+
+		var sprite = craft.$sprite('phaserDude').$set({
+			x: 100,
+			y: 100
+		}).$mid().$tint('#FF0000').$into(group);
+
+		//You can keep using Phaser
+		sprite.x = 150;
+
+		//You can use the prototypes without a chain
+		sprite.$set({
+			y: 150
+		});
+	};
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var params = __webpack_require__(7);
+
+	module.exports = function (game, scope, rootScope) {
+		var craft = __webpack_require__(8)(game);
+
+		var group = craft.$g();
+
+		var rect = craft.$rect({
+			width: 200,
+			height: 150,
+			fill: '#9517C5'
+		}).$align('center', 'center').$into(group);
+
+		var ball = craft.$circle({
+			fill: '#ffffff',
+			size: 100
+		}).$set({
+			x: 150,
+			y: 150
+		}).$into(group);
+
+		var d = craft.$d().$copyPos(ball);
+	};
 
 /***/ }
 /******/ ]);

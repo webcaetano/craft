@@ -10,6 +10,65 @@ Exported as a UMD module.
 bower install phaser-craft --save
 ```
 
+## Examples 
+
+#### Example1 
+
+[Link](http://webcaetano.github.io/craft/index.html?example=1)
+
+```javascript
+var craft = require('$craft')(game); // you also can call craft via global var
+
+var group = craft.$g(); //create group
+
+var sprite = craft.$sprite('phaserDude') //create sprite with key
+.$set({ // change attributes
+	x:100,
+	y:100
+})
+.$mid() // change anchor to center
+.$tint('#FF0000') // change color
+.$into(group); // insert into group
+
+//You can keep using Phaser
+sprite.x = 150;
+
+//You can use the prototypes without a chain
+sprite.$set({
+	y:150
+});
+```
+
+#### Example2
+
+[Link](http://webcaetano.github.io/craft/index.html?example=2)
+
+```javascript
+var craft = require('$craft')(game); // you also can call craft via global var
+
+var group = craft.$g(); //create group
+
+var rect = craft.$rect({ //create rectangle
+	width:200,
+	height:150,
+	fill:'#9517C5', //setup retancle fill color
+})
+.$align('center','center') // align it to center 
+.$into(group) // insert into group 
+
+
+var ball = craft.$circle({ //create circle
+	fill:'#ffffff',
+	size:100 // radius
+}).$set({ // change attributes
+	x:150,
+	y:150,
+})
+.$into(group) // insert into group 
+
+var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
+```
+
 ## Documentation
 
 

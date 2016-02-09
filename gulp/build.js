@@ -7,6 +7,7 @@ var pngquant = require('imagemin-pngquant');
 var exec = require('sync-exec');
 var surge = require('gulp-surge');
 
+
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
@@ -52,8 +53,8 @@ module.exports = function(options) {
 			.pipe(assets.restore())
 			.pipe($.useref())
 			.pipe($.revReplace())
-			// .pipe($.if('*.html', $.preprocess({context: {dist: true}})))
-			// .pipe($.if('*.html', $.minifyHtml({empty: true,	spare: true, quotes: true, conditionals: true})))
+			.pipe($.if('*.html', $.preprocess({context: {dist: true}})))
+			.pipe($.if('*.html', $.minifyHtml({empty: true,	spare: true, quotes: true, conditionals: true})))
 			.pipe(gulp.dest('examples/'))
 			.pipe($.size({ title: 'examples/', showFiles: true }));
 	});
@@ -79,4 +80,16 @@ module.exports = function(options) {
 	gulp.task('build',function(done){
 		runSequence('clean','build:js','build-dependent:js','mincopy:js',done);
 	});
+
+	gulp.task('deploy:examples',['build:examples'],function(done){
+		var c = [
+			'cd examples',
+			'git init',
+			'git add .',
+			'git commit -m "Deploy to Github Pages"',
+			'git push --force git@github.com:webcaetano/craft.git master:gh-pages' // remove pagezz to pages
+		].join(" && ")
+		console.log(exec(c));
+		done();
+	})
 };
