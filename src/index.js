@@ -6,7 +6,8 @@ module.exports = function $craft(game){
 	var self = {};
 
 	self.$sprite = require('./objects/sprite')(game,Phaser);
-	self.$circle = require('./objects/circle')(game,Phaser);
+	self.$circle =
+	self.$c = require('./objects/circle')(game,Phaser);
 	self.$graphic = require('./objects/graphic')(game,Phaser);
 	self.$dot =
 	self.$d = require('./objects/dot')(game,Phaser);

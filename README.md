@@ -16,7 +16,10 @@ bower install phaser-craft --save
 ### Objects List
 
 - [`craft.$sprite`](#craftspritekeyoptions)
+- [`craft.$graphic`](#craftgraphicoptions)
 - [`craft.$rect`](#craftrectoptions)
+- [`craft.$cirlce`](#craftcircleoptions)
+- [`craft.$dot`](#craftdotsizecoloroptions)
 
 
 #### `craft.$sprite(key,options)`
@@ -38,10 +41,27 @@ craft.$sprite('banana',{
 })
 ```
 
+#### `craft.$graphic(options)`
+
+Create Phaser Graphic Object 
+
+**Usage**
+
+```javascript
+//simple
+craft.$graphic();
+
+//full default values
+craft.$graphic({
+	x:0,
+	y:0,
+	group:undefined,
+})
+```
 
 #### `craft.$rect(options)`
 
-Create Phaser Retangle Graphic 
+Create Phaser Retangle Shape Graphic 
 
 **Usage**
 
@@ -70,9 +90,10 @@ craft.$rect({
 	}
 })
 ```
-#### `craft.$rect(options)`
 
-Create Phaser Circle Graphic 
+#### `craft.$circle(options)`
+
+Create Phaser Circle Shape Graphic 
 
 **Usage**
 
@@ -81,6 +102,9 @@ Create Phaser Circle Graphic
 craft.$circle({
 	size:10,
 });
+
+//alias 
+craft.$c({size:10});
 
 //full default values
 craft.$circle({
@@ -99,13 +123,16 @@ craft.$circle({
 
 #### `craft.$dot(size,color,options)`
 
-Create Phaser Small-Circle Graphic (useful for add location indications and debugging)
+Create Phaser Small-Circle Shape Graphic (useful for add location indications and debugging)
 
 **Usage**
 
 ```javascript
 //simple
 craft.$dot();
+
+//alias 
+craft.$d();
 
 //full default values
 craft.$dot(5,'#ff0000',{
