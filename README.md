@@ -85,14 +85,14 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 
 ### Prototypes
 
-- [`craft.$add`]()
-- [`craft.$align`]()
-- [`craft.$copyPos`]()
-- [`craft.$fixPos`]()
-- [`craft.$into`]()
-- [`craft.$mid`]()
-- [`craft.$set`]()
-- [`craft.$tint`]()
+- [`craft.$add`](#addobject-string--array-of-objcts)
+- [`craft.$align`](#alignwidthstringheightstring)
+- [`craft.$copyPos`](#copypostarget)
+- [`craft.$fixPos`](#fixpos)
+- [`craft.$into`](#intogroup)
+- [`craft.$mid`](#mid)
+- [`craft.$set`](#set)
+- [`craft.$tint`](#tint)
 
 #### `craft.$sprite(key,options)`
 
@@ -259,7 +259,7 @@ Insert objects in a group. Similar to .add vanilla, but accept array of objects
 
 **Usage**
 
-```
+```javascript
 var group = craft.$g();
 
 group.$add(sprite); 
@@ -273,7 +273,7 @@ group.$add([sprite1,sprite2]);
 
 Align object in stage
 
-```
+```javascript
 sprite.$align('center',null) // values for width can be (null, left, center, right)
 sprite.$align(null,'center') // values for height can be (null, top, center, bot)
 
@@ -286,7 +286,7 @@ Copy Position from one object to another
 
 **Usage**
 
-```
+```javascript
 sprite2.$copyPos(sprite2); // sprite1 copy position of sprite2
 ```
 
@@ -297,7 +297,7 @@ Usefull when you don't want an sprite get blurried because a float position.
 
 **Usage**
 
-```
+```javascript
 sprite.x = 10.1;
 sprite.y = 10.1;
 sprite.$fixPos(sprite); // return x = 10 , y = 10;
@@ -309,7 +309,7 @@ Insert a object into a target group
 
 **Usage**
 
-```
+```javascript
 var group = craft.$g();
 sprite.$into(group);
 ```
@@ -320,7 +320,7 @@ Change anchor point (x,y) to middle
 
 **Usage**
 
-```
+```javascript
 sprite.$mid(); //same as sprite.anchor.setTo(0.5,0.5)
 ```
 
@@ -330,7 +330,7 @@ Change object attributes based on object
 
 **Usage**
 
-```
+```javascript
 sprite.$set({
 	x:10,
 	y:10,
@@ -351,6 +351,6 @@ Same as change `.tint` , but accept # and ''
 
 **Usage**
 
-```
+```javascript
 sprite.$tint('#FF0000');
 ```
