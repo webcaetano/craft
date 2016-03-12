@@ -354,3 +354,6 @@ Same as change `.tint` , but accept # and ''
 ```javascript
 sprite.$tint('#FF0000');
 ```
+
+#### See Also
+- [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
