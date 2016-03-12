@@ -1,4 +1,7 @@
 ![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/index.min.js.svg?style=flat-square)
+![Bower version](https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square)
+
+
 
 # Craft
 Phaser Library with utility chainable functions<br>
@@ -354,3 +357,6 @@ Same as change `.tint` , but accept # and ''
 ```javascript
 sprite.$tint('#FF0000');
 ```
+
+#### See Also
+- [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
