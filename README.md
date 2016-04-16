@@ -1,11 +1,23 @@
 ![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/index.min.js.svg?style=flat-square)
 ![Bower version](https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square)
 
+<p align="center">
+	<img alt="phaser craft logo" src="http://i.imgur.com/rHbhpfX.png?1">
+</p>
+
+<h1 align="center"> Craft </h1>
+
+<p align="center">
+	<strong>
+		<sub>
+		Phaser Library with utility chainable functions<br>
+		Exported as a UMD module. (accept global, es6, webpack, browserify)
+		</sub>
+	</strong>
+</p>
 
 
-# Craft
-Phaser Library with utility chainable functions<br>
-Exported as a UMD module. (accept global, es6, webpack, browserify)
+
 
 ## Installation
 

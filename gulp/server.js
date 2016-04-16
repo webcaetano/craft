@@ -28,8 +28,6 @@ module.exports = function(options) {
 			server: server,
 			browser: browser,
 			notify: false,
-			//proxy: 'localhost:8000',
-			// port:4000,
 			open: false
 		});
 	}
