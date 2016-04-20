@@ -1,4 +1,4 @@
-![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/index.min.js.svg?style=flat-square)
+![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square)
 ![Bower version](https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square)
 
 <p align="center">
