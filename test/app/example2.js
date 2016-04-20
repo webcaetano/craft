@@ -9,6 +9,12 @@ module.exports = function(game,scope,rootScope){
 		width:200,
 		height:150,
 		fill:'#9517C5',
+		stroke:{
+			color:'#FFFFFF',
+			size:2,
+			alpha:0.85
+		},
+		alpha:0.5
 	})
 	.$align('center','center')
 	.$into(group)
@@ -16,10 +22,12 @@ module.exports = function(game,scope,rootScope){
 
 	var ball = craft.$circle({
 		fill:'#ffffff',
-		size:100
-	}).$set({
+		alpha:0.5,
+		size:100,
 		x:150,
 		y:150,
+	}).$set({
+
 	})
 	.$into(group)
 

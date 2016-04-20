@@ -15,6 +15,9 @@ var $ = require('gulp-load-plugins')({
 module.exports = function(options) {
 	gulp.task('build:js',['scripts'], function () {
 		return gulp.src(options.tmp + '/serve/app/index.js')
+			.pipe($.rename(function (path) {
+				path.basename = "craft"
+			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	});
@@ -23,7 +26,7 @@ module.exports = function(options) {
 	gulp.task('build-dependent:js',['scripts:dependent'], function () {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
-				path.basename += "-dependent"
+				path.basename = "craft-dependent"
 			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
