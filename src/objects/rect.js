@@ -32,7 +32,7 @@ module.exports = function(game,Phaser){
 		if(options.round===0){
 			return tmpG.drawRect(0,0,options.width,options.height)
 		} else {
-			return tmpG.drawRoundRect(0,0,options.width,options.height,options.round)
+			return tmpG.drawRoundedRect(0,0,options.width,options.height,options.round)
 		}
 	}
 
