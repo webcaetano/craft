@@ -59,7 +59,7 @@ module.exports = function(options) {
 				colors: $.util.colors.supportsColor,
 				chunks: false,
 				hash: false,
-				version: false
+				version: true
 			}));
 			// browserSync.reload();
 			if(reload) {
@@ -72,9 +72,10 @@ module.exports = function(options) {
 		};
 
 		return gulp.src(src)
-
-		// .pipe($.include())
 		.pipe(gulpWebpack(webpackOptions, null, webpackChangeHandler))
+		.on('error', function handleError() {
+			this.emit('end'); // Recover from errors
+		})
 		.pipe(gulp.dest(dist));
 
 

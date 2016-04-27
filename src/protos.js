@@ -2,6 +2,7 @@ var utils = require('./utils');
 var protoOptions = require('./setup');
 var protos = {
 	$set:require('./prototypes/set'),
+	$scale:require('./prototypes/scale'),
 	$tint:require('./prototypes/tint'),
 	$into:require('./prototypes/into'),
 	$mid:require('./prototypes/mid'),

@@ -29,6 +29,7 @@ module.exports = function(game,scope,rootScope){
 	}).$set({
 
 	})
+	.$scale(1.2)
 	.$into(group)
 
 	var d = craft.$d().$copyPos(ball);

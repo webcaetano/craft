@@ -64,11 +64,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		var self = {};
 
 		self.$sprite = __webpack_require__(3)(game, Phaser);
-		self.$circle = self.$c = __webpack_require__(42)(game, Phaser);
-		self.$graphic = __webpack_require__(43)(game, Phaser);
-		self.$dot = self.$d = __webpack_require__(44)(game, Phaser);
-		self.$rect = self.$box = __webpack_require__(45)(game, Phaser);
-		self.$group = self.$g = __webpack_require__(46)(game, Phaser);
+		self.$circle = self.$c = __webpack_require__(43)(game, Phaser);
+		self.$graphic = __webpack_require__(44)(game, Phaser);
+		self.$dot = self.$d = __webpack_require__(45)(game, Phaser);
+		self.$rect = self.$box = __webpack_require__(46)(game, Phaser);
+		self.$group = self.$g = __webpack_require__(47)(game, Phaser);
 
 		return self;
 	};
@@ -85,6 +85,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			$tint: true,
 			$into: true,
 			$mid: true,
+			$scale: true,
 			$atlasImg: true,
 			$atlasAnims: true,
 			$fixPos: true,
@@ -95,6 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			$set: true,
 			$tint: true,
 			$into: true,
+			$scale: true,
 			$mid: true,
 			$fixPos: true,
 			$copyPos: true,
@@ -104,6 +106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			$set: true,
 			$into: true,
 			$fixPos: true,
+			$scale: true,
 			$add: true,
 			$copyPos: true,
 			$align: true
@@ -1069,13 +1072,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var protoOptions = __webpack_require__(1);
 	var protos = {
 		$set: __webpack_require__(34),
-		$tint: __webpack_require__(35),
-		$into: __webpack_require__(36),
-		$mid: __webpack_require__(37),
-		$copyPos: __webpack_require__(38),
-		$fixPos: __webpack_require__(39),
-		$add: __webpack_require__(40),
-		$align: __webpack_require__(41)
+		$scale: __webpack_require__(35),
+		$tint: __webpack_require__(36),
+		$into: __webpack_require__(37),
+		$mid: __webpack_require__(38),
+		$copyPos: __webpack_require__(39),
+		$fixPos: __webpack_require__(40),
+		$add: __webpack_require__(41),
+		$align: __webpack_require__(42)
 	};
 
 	module.exports = function bindProto(obj) {
@@ -1113,6 +1117,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 35 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function $scale() {
+		var x = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+		var y = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
+		if (!this.scale) return this;
+		var scale = this.scale.set ? this.scale.set : this.scale.setTo;
+
+		if (x !== null && y !== null) {
+			this.scale.setTo(x, y);
+		} else if (x !== null) {
+			this.scale.setTo(x);
+		}
+
+		return this;
+	};
+
+/***/ },
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1127,7 +1153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1138,7 +1164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1149,7 +1175,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1161,7 +1187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1173,7 +1199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1190,7 +1216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1223,7 +1249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1257,7 +1283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1281,7 +1307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1290,7 +1316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bindProto = __webpack_require__(33);
 
 	module.exports = function (game, Phaser) {
-		var $circle = __webpack_require__(42)(game, Phaser);
+		var $circle = __webpack_require__(43)(game, Phaser);
 
 		return function $dot(size, fill, options) {
 			if (size === undefined) size = 5;
@@ -1307,7 +1333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1352,7 +1378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

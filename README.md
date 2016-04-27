@@ -99,6 +99,7 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 ### Prototypes
 
 - [`craft.$add`](#addobject-string--array-of-objcts)
+- [`craft.$scale`](#scalexnumberynumber)
 - [`craft.$align`](#alignwidthstringheightstring)
 - [`craft.$copyPos`](#copypostarget)
 - [`craft.$fixPos`](#fixpos)
@@ -279,6 +280,29 @@ group.$add(sprite);
 // or 
 group.$add([sprite1,sprite2]); 
 ```
+
+#### .$scale(x[number],y[number])
+
+**Usage**
+
+The scale factor of the object.
+
+```javascript
+sprite.$scale(1.5);
+
+// or
+
+sprite.$scale(2,1.5);
+```
+
+#### .$copyPos(target)
+
+Copy Position from one object to another
+
+**Usage**
+
+```javascript
+sprite2.$copyPos(sprite2); // sprite1 copy position of sprite2
 
 #### .$align(width[string],height[string])
 
