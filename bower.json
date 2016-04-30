@@ -8,7 +8,7 @@
 		"lodash": "~3.10.1",
 		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
 	},
-	"main": "build/index.js",
+	"main": "build/craft.js",
 	"externals": {
 		"phaser": "Phaser",
 		"lodash": "_",
