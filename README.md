@@ -125,7 +125,7 @@ craft.$sprite('banana',{
 	x:0,
 	y:0,
 	frame:undefined, // phaser sprite frame
-	group:unefined // phaser group to be insert
+	group:undefined // phaser group to be insert
 })
 ```
 
