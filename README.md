@@ -295,16 +295,6 @@ sprite.$scale(1.5);
 sprite.$scale(2,1.5);
 ```
 
-#### .$copyPos(target)
-
-Copy Position from one object to another
-
-**Usage**
-
-```javascript
-sprite2.$copyPos(sprite2); // sprite1 copy position of sprite2
-```
-
 #### .$align(width[string],height[string])
 
 **Usage**
