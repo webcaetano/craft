@@ -303,6 +303,7 @@ Copy Position from one object to another
 
 ```javascript
 sprite2.$copyPos(sprite2); // sprite1 copy position of sprite2
+```
 
 #### .$align(width[string],height[string])
 
