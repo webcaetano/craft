@@ -3,6 +3,7 @@ var bindProto = require('../protos');
 
 module.exports = function(game,Phaser){
 	return function $sprite(key,options){
+		if(typeof options == 'string') options = {frame:options};
 		var defaults = {
 			x:0,
 			y:0,

@@ -127,6 +127,9 @@ craft.$sprite('banana',{
 	frame:undefined, // phaser sprite frame
 	group:undefined // phaser group to be insert
 })
+
+// second parameter cab be used as string to call a frame
+craft.$sprite('atlas','banana');
 ```
 
 #### `craft.$group(key,options)`
