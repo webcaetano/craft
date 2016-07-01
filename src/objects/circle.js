@@ -9,6 +9,7 @@ module.exports = function(game,Phaser){
 			group:undefined,
 			fill:'#ff0000',
 			size:10,
+			alpha:1,
 			stroke:{
 				size:0,
 				color:'#000',
@@ -20,8 +21,8 @@ module.exports = function(game,Phaser){
 
 		bindProto(tmpG,'graphic')
 
-		if(options.fill) tmpG.beginFill(utils.colorCase(options.fill));
-		if(options.stroke.size>0) tmpG.lineStyle(options.stroke.size,options.stroke.color,options.stroke.alpha);
+		if(options.fill) tmpG.beginFill(utils.colorCase(options.fill),options.alpha);
+		if(options.stroke.size>0) tmpG.lineStyle(options.stroke.size,utils.colorCase(options.stroke.color),options.stroke.alpha);
 		return tmpG.drawCircle(0,0,options.size)
 	}
 }
