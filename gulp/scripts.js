@@ -5,7 +5,6 @@ var browserSync = require('browser-sync');
 var gutil = require('gulp-util');
 var fs = require('fs');
 var $ = require('gulp-load-plugins')();
-var webpack = require('webpack-stream');
 
 module.exports = function(options) {
 	function wp(dependent, umd, src, dist, watch=null, callback=null, reload=null) {

@@ -31,7 +31,7 @@ module.exports = function(options) {
 	});
 
 	gulp.task('git:push',function(done){
-		return git.push('origin', 'master', {
+		return git.push('origin', 'HEAD', {
 			args: '--tags'
 		},function(err){
 			if(err) console.error(err);
@@ -39,9 +39,9 @@ module.exports = function(options) {
 		});
 	});
 
-	gulp.task('git:add', function () {
+	gulp.task('git:add', function add() {
 		return gulp.src(packageSrc)
-			.pipe(git.add({args: " -A"}));
+			.pipe(git.add({args: ". -A"}));
 	});
 
 	gulp.task('git:commit_release', gulp.series('git:add', function commit_release () {
