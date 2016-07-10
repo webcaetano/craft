@@ -7,7 +7,7 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
-	gulp.task('inject', ['scripts','scripts:test'], function () {
+	gulp.task('inject', gulp.series(gulp.parallel('scripts','scripts:test'), function inject() {
 		var injectScripts = gulp.src([
 			options.tmp + '/serve/{app,test}/**/*.js',
 		], { read: false });
@@ -27,5 +27,5 @@ module.exports = function(options) {
 			.pipe($.inject(injectScripts, injectOptions))
 			.pipe(wiredep(wiredepOptions))
 			.pipe(gulp.dest(options.tmp + '/serve'));
-	});
+	}));
 };

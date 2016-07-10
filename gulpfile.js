@@ -3,13 +3,11 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var _ = require('lodash');
-var wrench = require('wrench');
 
 var options = {
 	src: 'src',
-	dist: 'build',
+	dist: 'dist',
 	tmp: '.tmp',
-	e2e: 'e2e',
 	errorHandler: function(title) {
 		return function(err) {
 			gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
@@ -18,13 +16,15 @@ var options = {
 	}
 };
 
-wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-	return (/\.(js|coffee)$/i).test(file);
-}).map(function(file) {
-	if(file.match(/templates\\/g)) return;
+_.each([
+	'scripts.js',
+	'inject.js',
+	'build.js',
+	'github.js',
+	'watch.js',
+	'server.js',
+],function(file){
 	require('./gulp/' + file)(options);
-});
+})
 
-gulp.task('default', ['clean'], function () {
-	gulp.start('serve');
-});
+gulp.task('default', gulp.series('clean','serve'));

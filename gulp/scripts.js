@@ -2,37 +2,30 @@
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var gutil = require('gulp-util');
 var fs = require('fs');
-var webpack = require('webpack');
-var runSequence = require('run-sequence');
 var $ = require('gulp-load-plugins')();
-
-var gulpWebpack = require('webpack-stream');
+var webpack = require('webpack-stream');
 
 module.exports = function(options) {
-
-	gulp.task('include', function () {
-		return gulp.src(options.tmp + '/serve/app/index.js',{path:'src/'})
-		.pipe($.include())
-		.pipe(gulp.dest(options.tmp + '/serve/app/'));
-	});
-
-	function wp(dependent, umd, src, dist, watch, callback, reload) {
-		if(!callback) callback = null;
-		if(!reload) reload = null;
-
+	function wp(dependent, umd, src, dist, watch=null, callback=null, reload=null) {
 		var webpackOptions = {
 			watch: watch,
+			cache: watch,
 			module: {
-				// preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
 				loaders: [
-					{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+					{ test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
 					{ test: /\.json$/, exclude: /node_modules/, loader: 'json'}
 				]
 			},
-			plugins: [
-				new webpack.DefinePlugin({
-					WEBPACK_DEPENDENT:dependent
+			plugins:[
+				function(){
+					this.plugin("done", function(stats){
+						if (stats.compilation.errors && stats.compilation.errors.length)gutil.beep();
+					});
+				},
+				new $.webpack.webpack.DefinePlugin({
+					__DEPENDENT__:dependent
 				})
 			],
 			externals: JSON.parse(fs.readFileSync('./bower.json','utf8')).externals,
@@ -47,24 +40,19 @@ module.exports = function(options) {
 			}
 		}
 
-		if(watch) {
-			webpackOptions.devtool = 'inline-source-map';
-		}
+		if(watch) webpackOptions.devtool = 'inline-source-map';
 
 		var webpackChangeHandler = function(err, stats) {
 			if(err) {
-				options.errorHandler('Webpack')(err);
+				options.errorHandler('WEBPACK')(err);
 			}
 			$.util.log(stats.toString({
 				colors: $.util.colors.supportsColor,
 				chunks: false,
 				hash: false,
-				version: true
+				version: false
 			}));
-			// browserSync.reload();
-			if(reload) {
-				browserSync.reload();
-			}
+			if(reload) browserSync.reload();
 			if(watch) {
 				watch = false;
 				callback();
@@ -72,13 +60,8 @@ module.exports = function(options) {
 		};
 
 		return gulp.src(src)
-		.pipe(gulpWebpack(webpackOptions, null, webpackChangeHandler))
-		.on('error', function handleError() {
-			this.emit('end'); // Recover from errors
-		})
-		.pipe(gulp.dest(dist));
-
-
+			.pipe($.webpack(webpackOptions, null, webpackChangeHandler))
+			.pipe(gulp.dest(dist))
 	}
 
 	gulp.task('scripts', function () {
@@ -101,5 +84,4 @@ module.exports = function(options) {
 		return wp(false, false, 'test/app/index.js',options.tmp + '/serve/test', true, callback, true);
 	});
 };
-
 

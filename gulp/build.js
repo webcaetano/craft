@@ -1,9 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
 var exec = require('sync-exec');
 var surge = require('gulp-surge');
 
@@ -13,28 +10,24 @@ var $ = require('gulp-load-plugins')({
 });
 
 module.exports = function(options) {
-	gulp.task('build:js',['scripts'], function () {
+	gulp.task('build:js', gulp.series('scripts', function buildJS () {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
 				path.basename = "craft"
 			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
-	});
+	}));
 
 
-	gulp.task('build-dependent:js',['scripts:dependent'], function () {
+	gulp.task('build-dependent:js', gulp.series('scripts:dependent', function buildDependent() {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
 				path.basename = "craft-dependent"
 			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
-	});
-
-	gulp.task('build:examples', function (done) {
-		runSequence('clean:examples','html:examples','copy:scripts:examples','copy:others:examples',done)
-	});
+	}));
 
 	gulp.task('copy:scripts:examples', function () {
 		return gulp.src(options.tmp+'/serve/**/*.js')
@@ -46,7 +39,7 @@ module.exports = function(options) {
 		.pipe(gulp.dest('examples/'))
 	});
 
-	gulp.task('html:examples', ['inject'], function () {
+	gulp.task('html:examples', gulp.series('inject', function () {
 		var assets;
 		return gulp.src(options.tmp + '/serve/*.html')
 			.pipe(assets = $.useref.assets())
@@ -60,7 +53,7 @@ module.exports = function(options) {
 			.pipe($.if('*.html', $.minifyHtml({empty: true,	spare: true, quotes: true, conditionals: true})))
 			.pipe(gulp.dest('examples/'))
 			.pipe($.size({ title: 'examples/', showFiles: true }));
-	});
+	}));
 
 	gulp.task('mincopy:js', function () {
 		return gulp.src(options.dist + '/*.js')
@@ -72,19 +65,19 @@ module.exports = function(options) {
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	});
 
-	gulp.task('clean', function (done) {
-		$.del([options.dist + '/', options.tmp + '/'], done);
+	gulp.task('clean', function () {
+		return $.del([options.dist + '/', options.tmp + '/']);
 	});
 
-	gulp.task('clean:examples', function (done) {
-		$.del(['examples/', options.tmp + '/'], done);
+	gulp.task('clean:examples', function () {
+		return $.del(['examples/', options.tmp + '/']);
 	});
 
-	gulp.task('build',function(done){
-		runSequence('clean','build:js','build-dependent:js','mincopy:js',done);
-	});
+	gulp.task('build',gulp.series('clean','build:js','build-dependent:js','mincopy:js'));
+	gulp.task('build:examples', gulp.series('clean:examples','html:examples','copy:scripts:examples','copy:others:examples'));
 
-	gulp.task('deploy:examples',['build:examples'],function(done){
+
+	gulp.task('deploy:examples', gulp.series('build:examples',function(done){
 		var c = [
 			'cd examples',
 			'git init',
@@ -94,5 +87,102 @@ module.exports = function(options) {
 		].join(" && ")
 		console.log(exec(c));
 		done();
-	})
+	}));
+
+	// gulp.task('surge', function () {
+	// 	return surge({
+	// 		project: './dist',         // Path to your static build directory
+	// 		domain: 'phaser-boilerplate.surge.sh'  // Your domain or Surge subdomain
+	// 	})
+	// });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 'use strict';
+
+// var gulp = require('gulp');
+// var imagemin = require('gulp-imagemin');
+// var exec = require('sync-exec');
+// var surge = require('gulp-surge');
+
+// var $ = require('gulp-load-plugins')({
+// 	pattern: ['gulp-*', 'del']
+// });
+
+// module.exports = function(options) {
+// 	gulp.task('html', gulp.series('inject', function html() {
+// 		var assets;
+// 		return gulp.src(options.tmp + '/serve/*.html')
+// 			.pipe($.rev())
+// 			.pipe($.if('*.js', $.preprocess({context: {dist: true}})))
+// 			.pipe($.if('*.js', $.uglify()))
+// 			.pipe($.useref())
+// 			.pipe($.revReplace())
+// 			.pipe($.if('*.html', $.preprocess({context: {dist: true}})))
+// 			.pipe($.if('*.html', $.minifyHtml({empty: true,	spare: true, quotes: true, conditionals: true})))
+// 			.pipe(gulp.dest(options.dist + '/'))
+// 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
+// 	}));
+
+
+// 	gulp.task('other', function () {
+// 		return gulp.src([
+// 			options.src + '/favicon.ico',
+// 			options.src + '/404.html',
+// 			options.src + '/audio/**/*'
+// 		],{ base: './src' })
+// 		.pipe(gulp.dest(options.dist + '/'));
+// 	});
+
+// 	gulp.task('rest', function (done) {
+// 		return $.del([
+// 			options.dist + '/app',
+// 		]);
+// 	});
+
+	// gulp.task('clean', function () {
+	// 	return $.del([options.dist + '/', options.tmp + '/']);
+	// });
+
+
+// 	gulp.task('prepare',gulp.series('clean','images:dist','other'));
+
+// 	gulp.task('build',gulp.series('clean','prepare','html','rest'));
+
+// 	gulp.task('deploy',function(done){
+// 		var c = [
+// 			'cd dist',
+// 			'git init',
+// 			'git add .',
+// 			'git commit -m "Deploy to Github Pages"',
+// 			'git push --force git@github.com:webcaetano/phaser-boilerplate.git master:gh-pages' // change adress to you repo
+// 		].join(" && ")
+// 		done();
+// 	})
+
+// 	// gulp.task('deploy:build',gulp.series('build','d'));
+
+	// gulp.task('surge', function () {
+	// 	return surge({
+	// 		project: './dist',         // Path to your static build directory
+	// 		domain: 'phaser-boilerplate.surge.sh'  // Your domain or Surge subdomain
+	// 	})
+	// });
+
+// 	gulp.task('surge:build',gulp.series('build','surge'));
+// };

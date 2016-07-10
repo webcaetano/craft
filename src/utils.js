@@ -1,7 +1,7 @@
 var self = {};
 
 if(!Phaser) var Phaser = require('phaser');
-if(!WEBPACK_DEPENDENT){
+if(!__DEPENDENT__){
 	var _ = require('./customLodash');
 } else {
 	var _ = require('lodash');
