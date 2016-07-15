@@ -1,5 +1,6 @@
-![filesize](https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square)
-![Bower version](https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square)
+![File Size][filesize-url]
+![Bower version][bower-url]
+
 
 <p align="center">
 	<img alt="phaser craft logo" src="http://i.imgur.com/rHbhpfX.png?1">
@@ -388,3 +389,6 @@ sprite.$tint('#FF0000');
 
 #### See Also
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
+
+[filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square
+[bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
