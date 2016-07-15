@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 var options = {
 	src: 'src',
-	dist: 'dist',
+	dist: 'build',
 	tmp: '.tmp',
 	errorHandler: function(title) {
 		return function(err) {
