@@ -390,5 +390,5 @@ sprite.$tint('#FF0000');
 #### See Also
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
 
-[filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square
+[filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
