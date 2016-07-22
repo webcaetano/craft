@@ -9,7 +9,12 @@ var assets = {
 	},
 	sprites:{},
 	audio:{},
-	atlas:{}
+	atlas:{
+		main:{
+			image:'texture/atlas.png',
+			jsonUrl:'texture/atlas.json'
+		}
+	}
 }
 var scope = {};
 
@@ -29,8 +34,6 @@ module.exports = function(game,rootScope){
 	}
 
 	state.create = function(){
-
-		console.log('xxx')
 		switch(params.example){
 			default :
 			case '1':
@@ -39,9 +42,9 @@ module.exports = function(game,rootScope){
 			case '2':
 				require('./example2')(game,scope,rootScope);
 			break;
-			// case '3':
-			// 	require('./example3')(game,scope,rootScope);
-			// break;
+			case '3':
+				require('./example3')(game,scope,rootScope);
+			break;
 			case 'test':
 				require('./test')(game,scope,rootScope);
 			break;

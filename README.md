@@ -96,6 +96,7 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 - [`craft.$rect`](#craftrectoptions)
 - [`craft.$cirlce`](#craftcircleoptions)
 - [`craft.$dot`](#craftdotsizecoloroptions)
+- [`craft.$tileSprite`](#crafttilespritekeyoptions)
 
 ### Prototypes
 
@@ -129,7 +130,7 @@ craft.$sprite('banana',{
 	group:undefined // phaser group to be insert
 })
 
-// second parameter cab be used as string to call a frame
+// second parameter can be used as string to call a frame
 craft.$sprite('atlas','banana');
 ```
 
@@ -269,7 +270,29 @@ craft.$dot(5,'#ff0000',{
 })
 ```
 
-### Prototypes
+
+```javascript
+//simple
+craft.$sprite('banana',null,300,300)
+
+//full default values
+craft.$sprite('banana',{
+		x:0,
+		y:0,
+		frame:undefined, // phaser sprite frame
+		group:undefined // phaser group to be insert
+	},
+	300, // width
+	300 // height
+)
+
+// second parameter can be used as string to call a frame
+craft.$sprite('atlas','banana',300,300);
+```
+
+----------------------------------------------
+
+## Prototypes
 
 #### .$add(object [string | array of objcts])
 
