@@ -1,4 +1,3 @@
-var utils = require('./modules/utils');
 var params = require('./modules/urlParams');
 var _ = require('lodash');
 var Phaser = require('phaser');
@@ -16,7 +15,7 @@ var scope = {};
 module.exports = function(game,rootScope){
 	var state = {};
 
-	var craft = require('$craft')(game);
+	var craft = require('craft')(game);
 
 	state.init = function(){
 	}
@@ -29,6 +28,8 @@ module.exports = function(game,rootScope){
 	}
 
 	state.create = function(){
+
+		console.log('xxx')
 		switch(params.example){
 			default :
 			case '1':
@@ -37,6 +38,9 @@ module.exports = function(game,rootScope){
 			case '2':
 				require('./example2')(game,scope,rootScope);
 			break;
+			// case '3':
+			// 	require('./example3')(game,scope,rootScope);
+			// break;
 			case 'test':
 				require('./test')(game,scope,rootScope);
 			break;
