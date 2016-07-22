@@ -9,6 +9,8 @@ module.exports = function $craft(game){
 
 	self.$tileSprite = require('./objects/tileSprite')(game,Phaser);
 
+	self.$text = require('./objects/text')(game,Phaser);
+
 	self.$circle =
 	self.$c = require('./objects/circle')(game,Phaser);
 

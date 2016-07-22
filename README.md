@@ -96,11 +96,12 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 - [`craft.$rect`](#craftrectoptions)
 - [`craft.$cirlce`](#craftcircleoptions)
 - [`craft.$dot`](#craftdotsizecoloroptions)
-- [`craft.$tileSprite`](#crafttilespritekeyoptions)
+- [`craft.$text`](#crafttexttextoptions)
+- [`craft.$tileSprite`](#crafttilespritrekeyoptions)
 
 ### Prototypes
 
-- [`craft.$add`](#addobject-string--array-of-objcts)
+- [`craft.$add`](#addobject-string--array-of-objects)
 - [`craft.$scale`](#scalexnumberynumber)
 - [`craft.$align`](#alignwidthstringheightstring)
 - [`craft.$copyPos`](#copypostarget)
@@ -110,9 +111,9 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 - [`craft.$set`](#set)
 - [`craft.$tint`](#tint)
 
-#### `craft.$sprite(key,options)`
-
 ### Objects
+
+#### `craft.$sprite(key,options)`
 
 Create Phaser Sprite
 
@@ -270,6 +271,37 @@ craft.$dot(5,'#ff0000',{
 })
 ```
 
+#### `craft.$text(text,options)`
+
+Create Phaser Text
+
+**Usage**
+
+```javascript
+//simple
+craft.$text('teemo');
+
+//full default values
+craft.$text('teemo',{
+	x:0,
+	y:0,
+	bold:false,
+	size:15,
+	font:"'Helvetica Neue', Helvetica, Arial, sans-serif",
+	stroke:{
+		size:0,
+		color:'#000000'
+	},
+	align:'center',
+	color:'#000000'
+})
+```
+
+#### `craft.$tileSpritre(key,options)`
+
+Create Phaser Tile Sprite
+
+**Usage**
 
 ```javascript
 //simple
@@ -294,7 +326,7 @@ craft.$sprite('atlas','banana',300,300);
 
 ## Prototypes
 
-#### .$add(object [string | array of objcts])
+#### .$add(object [string | array of objects])
 
 Insert objects in a group. Similar to .add vanilla, but accept array of objects
 

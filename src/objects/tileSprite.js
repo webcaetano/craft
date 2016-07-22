@@ -24,16 +24,6 @@ module.exports = function(game,Phaser){
 		// prototypes
 		bindProto(tmpObj,'sprite')
 
-		// var p2 = group.border.add(game.add.tileSprite(
-		// 	p1.x+p1.width,
-		// 	66,
-		// 	35,
-		// 	6,
-		// 	'main',
-		// 	'ui/border02.png'
-		// 	)
-		// );
-
 		return tmpObj;
 	}
 }
