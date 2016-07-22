@@ -6,32 +6,30 @@
 		"phaser": "~2.4.3",
 		"stats.js": "*",
 		"lodash": "~3.10.1",
-		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
+		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c",
+		"phaser-utils": "^1.1.2"
 	},
 	"main": "build/craft.js",
 	"externals": {
 		"phaser": "Phaser",
 		"lodash": "_",
-		"$craft": "$craft",
+		"craft": "craft",
+		"utils": "$utils",
 		"stats": "Stats"
 	},
 	"ignore": [
+		"**/.*",
 		"node_modules",
-		"bower_components",
-		".gitignore",
-		".gitattributes",
-		".bowerrc",
-		"gulp",
-		".travis.yml",
-		"gulpfile.js",
-		"package.json",
+		"examples",
 		"src",
+		"gulp",
+		"bower_components",
 		"test",
-		".tmp"
+		"tests"
 	],
 	"overrides": {
 		"phaser": {
-			"main": "build/custom/phaser-arcade-physics.js"
+			"main": "build/custom/phaser-no-physics.js"
 		}
 	}
 }

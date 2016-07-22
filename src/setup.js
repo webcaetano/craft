@@ -21,6 +21,15 @@ module.exports = {
 		$copyPos:true,
 		$align:true,
 	},
+	text:{
+		$set:true,
+		$tint:true,
+		$into:true,
+		$scale:true,
+		$fixPos:true,
+		$copyPos:true,
+		$align:true,
+	},
 	group:{
 		$set:true,
 		$into:true,

@@ -12,6 +12,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.4.4/custom/phaser-no-physics.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r14/Stats.min.js"></script>
+
+	<!-- bower:js -->
+	<!-- run `gulp inject` to automatically populate bower script dependencies -->
+	<!-- endbower -->
 </head>
 <body style="background:#f2f2f2;">
 	<!-- @if !dist -->
@@ -21,8 +25,11 @@
 		<div id="master-canvas"></div>
 	</div>
 
+	<!-- inject:craft:js -->
+	<!-- js files will be automatically insert here -->
+	<!-- endinject -->
 
-	<!-- inject:js -->
+	<!-- inject:test:js -->
 	<!-- js files will be automatically insert here -->
 	<!-- endinject -->
 </body>

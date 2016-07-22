@@ -13,7 +13,7 @@ module.exports = function(options) {
 	gulp.task('build:js', gulp.series('scripts', function buildJS () {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
-				path.basename = "craft"
+				path.basename = "craft-independent"
 			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
@@ -23,7 +23,7 @@ module.exports = function(options) {
 	gulp.task('build-dependent:js', gulp.series('scripts:dependent', function buildDependent() {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
-				path.basename = "craft-dependent"
+				path.basename = "craft"
 			}))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));

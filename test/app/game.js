@@ -1,7 +1,7 @@
-var utils = require('./modules/utils');
 var params = require('./modules/urlParams');
 var _ = require('lodash');
 var Phaser = require('phaser');
+var utils = require('utils');
 
 var assets = {
 	images:{
@@ -9,14 +9,19 @@ var assets = {
 	},
 	sprites:{},
 	audio:{},
-	atlas:{}
+	atlas:{
+		main:{
+			image:'texture/atlas.png',
+			jsonUrl:'texture/atlas.json'
+		}
+	}
 }
 var scope = {};
 
 module.exports = function(game,rootScope){
 	var state = {};
 
-	var craft = require('$craft')(game);
+	var craft = require('craft')(game);
 
 	state.init = function(){
 	}
@@ -36,6 +41,12 @@ module.exports = function(game,rootScope){
 			break;
 			case '2':
 				require('./example2')(game,scope,rootScope);
+			break;
+			case '3':
+				require('./example3')(game,scope,rootScope);
+			break;
+			case '4':
+				require('./example4')(game,scope,rootScope);
 			break;
 			case 'test':
 				require('./test')(game,scope,rootScope);
