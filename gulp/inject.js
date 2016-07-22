@@ -8,10 +8,11 @@ var wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
 	gulp.task('inject', gulp.series('scripts','scripts:test', function inject() {
-		// var wiredepOptions = {
-		// 	// ignorePath: /^(\.\.\/)*\.\./,
-		// 	directory: 'bower_components'
-		// };
+		var wiredepOptions = {
+			// ignorePath: /^(\.\.\/)*\.\./,
+			directory: 'bower_components',
+			devDependencies: true
+		};
 
 		return gulp.src('test/*.html')
 			.pipe($.inject(
@@ -41,7 +42,7 @@ module.exports = function(options) {
 					addRootSlash: false
 				}
 			))
-			// .pipe(wiredep(wiredepOptions))
+			.pipe(wiredep(wiredepOptions))
 			.pipe(gulp.dest(options.tmp + '/serve'));
 	}));
 };

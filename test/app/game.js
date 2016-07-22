@@ -1,6 +1,7 @@
 var params = require('./modules/urlParams');
 var _ = require('lodash');
 var Phaser = require('phaser');
+var utils = require('utils');
 
 var assets = {
 	images:{

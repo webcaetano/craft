@@ -1,7 +1,5 @@
-// var utils = require('./modules/utils');
-// var _ = require('lodash');
 var Phaser = require('phaser');
-// var browser = browserDetection();
+
 var rootScope = {
 	options:{
 		width:300,
