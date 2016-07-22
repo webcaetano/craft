@@ -33,7 +33,7 @@ module.exports = function(options) {
 
 		if(umd){
 			webpackOptions.output = {
-				library:'craft',
+				library:'$craft',
 				filename: 'index.js',
 				libraryTarget:'umd'
 			}
