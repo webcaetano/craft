@@ -26,7 +26,7 @@ module.exports = function(game,Phaser){
 			{
 				font: [
 					(options.bold ? 'bold' : ''),
-					"30px",
+					options.size+"px",
 					options.font,
 				].join(" "),
 				align:'center',
