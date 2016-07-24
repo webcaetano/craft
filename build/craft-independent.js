@@ -3961,7 +3961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			options = utils.extend({}, defaults, options);
 
 			var tmpObj = game.add.text(0, 0, text, {
-				font: [options.bold ? 'bold' : '', "30px", options.font].join(" "),
+				font: [options.bold ? 'bold' : '', options.size + "px", options.font].join(" "),
 				align: 'center',
 				fill: options.color,
 				stroke: options.stroke.color,

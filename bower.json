@@ -1,6 +1,6 @@
 {
 	"name": "phaser-craft",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"dependencies": {},
 	"devDependencies": {
 		"phaser": "~2.4.3",
