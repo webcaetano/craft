@@ -7,7 +7,7 @@
 		exports["$craft"] = factory(require("Phaser"), require("_"));
 	else
 		root["$craft"] = factory(root["Phaser"], root["_"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_7__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -57,28 +57,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var protoOptions = __webpack_require__(1);
-	var Phaser = __webpack_require__(2);
+	var scope = __webpack_require__(2);
+	var Phaser = __webpack_require__(3);
+	var version = __webpack_require__(4);
+
+	console.log('%c Craft v' + version + ' ', 'background: #002874; color: #ffffff');
 
 	module.exports = function $craft(game) {
 		var self = {};
 
-		self.$sprite = self.$s = __webpack_require__(3)(game);
+		scope.game = game;
 
-		self.$tileSprite = __webpack_require__(17)(game);
+		self.$sprite = self.$s = __webpack_require__(5);
 
-		self.$text = self.$t = __webpack_require__(18)(game);
+		self.$tileSprite = __webpack_require__(19);
 
-		self.$circle = self.$c = __webpack_require__(19)(game);
+		self.$text = self.$t = __webpack_require__(20);
 
-		self.$graphic = __webpack_require__(20)(game);
+		self.$circle = self.$c = __webpack_require__(21);
 
-		self.$dot = self.$d = __webpack_require__(21)(game);
+		self.$graphic = __webpack_require__(22);
 
-		self.$rect = self.$box = __webpack_require__(22)(game);
+		self.$dot = self.$d = __webpack_require__(23);
 
-		self.$group = self.$g = __webpack_require__(23)(game);
+		self.$rect = self.$box = __webpack_require__(24);
 
-		self.$shape = __webpack_require__(24)(game);
+		self.$group = self.$g = __webpack_require__(25);
+
+		self.$shape = __webpack_require__(26);
+
+		self.$stroke = __webpack_require__(27);
 
 		return self;
 	};
@@ -136,52 +144,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+	"use strict";
+
+	module.exports = {};
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
-
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
-
-	module.exports = function (game) {
-		return function $sprite(key, options) {
-			if (typeof options == 'string') options = { frame: options };
-			var defaults = {
-				x: 0,
-				y: 0,
-				frame: undefined,
-				group: undefined
-			};
-			options = utils.extend({}, defaults, options);
-			var tmpObj = game.add.sprite(options.x, options.y, key, options.frame, options.group);
-			// prototypes
-			bindProto(tmpObj, 'sprite');
-
-			return tmpObj;
-		};
-	};
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	var self = {};
-	var Phaser = __webpack_require__(2);
-
-	self.colorCase = function (color) {
-		return color.indexOf('#') != -1 ? '0x' + color.replace(/#/g, '') : color;
-	};
-
-	self.extend = Phaser.Utils.extend.bind(null, true); // always deep;
-
-	module.exports = self;
+	module.exports = "1.4.1";
 
 /***/ },
 /* 5 */
@@ -189,19 +168,92 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var _ = __webpack_require__(6);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
+
+	var _require = __webpack_require__(2);
+
+	var game = _require.game;
+
+	module.exports = function $sprite(key, options) {
+		if (typeof options == 'string') options = { frame: options };
+		var defaults = {
+			x: 0,
+			y: 0,
+			frame: undefined,
+			group: undefined
+		};
+		options = utils.extend({}, defaults, options);
+		var tmpObj = game.add.sprite(options.x, options.y, key, options.frame, options.group);
+		// prototypes
+		bindProto(tmpObj, 'sprite');
+
+		return tmpObj;
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var self = {};
+	var Phaser = __webpack_require__(3);
+
+	var _require = __webpack_require__(2);
+
+	var game = _require.game;
+
+	self.colorCase = function (color) {
+		return color.indexOf('#') != -1 ? '0x' + color.replace(/#/g, '') : color;
+	};
+
+	self.extend = Phaser.Utils.extend.bind(null, true); // always deep;
+
+	self.colorShapeBmd = function (key, colorHex) {
+		var frame = arguments.length <= 2 || arguments[2] === undefined ? undefined : arguments[2];
+
+		var source = game.make.sprite(0, 0, key, frame);
+		var anchor = { x: source.anchor.x, y: source.anchor.y };
+		var scale = { x: source.scale.x, y: source.scale.y };
+
+		var color = Phaser.Color.hexToColor(colorHex);
+
+		var texture = game.make.bitmapData(source.width, source.height);
+		texture.fill(color.r, color.g, color.b);
+
+		var bmd = texture;
+		bmd.blendDestinationAtop();
+		bmd.draw(source, 0, 0, source.texture.crop.width, source.texture.crop.height);
+		bmd.pendingDestroy = true;
+
+		source.pendingDestroy = true;
+
+		return bmd;
+	};
+
+	module.exports = self;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var utils = __webpack_require__(6);
+	var _ = __webpack_require__(8);
 	var protoOptions = __webpack_require__(1);
 	var protos = {
-		$set: __webpack_require__(8),
-		$scale: __webpack_require__(9),
-		$tint: __webpack_require__(10),
-		$into: __webpack_require__(11),
-		$mid: __webpack_require__(12),
-		$copyPos: __webpack_require__(13),
-		$fixPos: __webpack_require__(14),
-		$add: __webpack_require__(15),
-		$align: __webpack_require__(16)
+		$set: __webpack_require__(10),
+		$scale: __webpack_require__(11),
+		$tint: __webpack_require__(12),
+		$into: __webpack_require__(13),
+		$mid: __webpack_require__(14),
+		$copyPos: __webpack_require__(15),
+		$fixPos: __webpack_require__(16),
+		$add: __webpack_require__(17),
+		$align: __webpack_require__(18)
 	};
 
 	module.exports = function bindProto(obj) {
@@ -214,7 +266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -222,19 +274,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (false) {
 		var _ = require('./customLodash');
 	} else {
-		var _ = __webpack_require__(7);
+		var _ = __webpack_require__(9);
 	}
 
 	module.exports = _;
 
 /***/ },
-/* 7 */
+/* 9 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -258,7 +310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -280,12 +332,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
+	var utils = __webpack_require__(6);
 
 	module.exports = function $tint() {
 		var color = arguments.length <= 0 || arguments[0] === undefined ? 'ffffff' : arguments[0];
@@ -295,7 +347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -306,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -317,7 +369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -329,7 +381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -341,12 +393,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(8);
 
 	module.exports = function $add(objs) {
 		var self = this;
@@ -358,12 +410,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
+	var utils = __webpack_require__(6);
 
 	module.exports = function () {
 		var a = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
@@ -391,112 +443,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
-
-	module.exports = function (game) {
-		return function $tileSprite(key, options, width, height) {
-			if (typeof options == 'string') options = { frame: options };
-			var defaults = {
-				x: 0,
-				y: 0,
-				frame: undefined,
-				group: undefined
-			};
-			options = utils.extend({}, defaults, options);
-
-			var tmpObj = game.add.tileSprite(options.x, options.y, width, height, key, options.frame);
-			// prototypes
-
-			// options.group
-			bindProto(tmpObj, 'sprite');
-
-			return tmpObj;
-		};
-	};
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
-
-	module.exports = function (game) {
-		return function $text(text, options) {
-			if (typeof options == 'string') options = { frame: options };
-			var defaults = {
-				x: 0,
-				y: 0,
-				bold: false,
-				size: 15,
-				font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-				stroke: {
-					size: 0,
-					color: '#000000'
-				},
-				align: 'center',
-				color: '#000000'
-			};
-			options = utils.extend({}, defaults, options);
-
-			var tmpObj = game.add.text(0, 0, text, {
-				font: [options.bold ? 'bold' : '', options.size + "px", options.font].join(" "),
-				align: 'center',
-				fill: options.color,
-				stroke: options.stroke.color,
-				strokeThickness: options.stroke.size
-			});
-			// prototypes
-			bindProto(tmpObj, 'text');
-
-			return tmpObj;
-		};
-	};
-
-/***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		return function $circle(options) {
-			var defaults = {
-				x: 0,
-				y: 0,
-				group: undefined,
-				fill: '#ff0000',
-				size: 10,
-				alpha: 1,
-				stroke: {
-					size: 0,
-					color: '#000',
-					alpha: 1
-				}
-			};
-			options = utils.extend({}, defaults, options);
-			var tmpG = game.add.graphics(options.x, options.y, options.group);
+	var _require = __webpack_require__(2);
 
-			bindProto(tmpG, 'graphic');
+	var game = _require.game;
 
-			if (options.fill) tmpG.beginFill(utils.colorCase(options.fill), options.alpha);
-			if (options.stroke.size > 0) tmpG.lineStyle(options.stroke.size, utils.colorCase(options.stroke.color), options.stroke.alpha);
-			return tmpG.drawCircle(0, 0, options.size);
+	module.exports = function $tileSprite(key, options, width, height) {
+		if (typeof options == 'string') options = { frame: options };
+		var defaults = {
+			x: 0,
+			y: 0,
+			frame: undefined,
+			group: undefined
 		};
+		options = utils.extend({}, defaults, options);
+
+		var tmpObj = game.add.tileSprite(options.x, options.y, width, height, key, options.frame);
+		// prototypes
+
+		// options.group
+		bindProto(tmpObj, 'sprite');
+
+		return tmpObj;
 	};
 
 /***/ },
@@ -505,23 +481,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		return function $graphic(options) {
-			var defaults = {
-				x: 0,
-				y: 0,
-				group: undefined
-			};
-			options = utils.extend({}, defaults, options);
-			var tmpG = game.add.graphics(options.x, options.y, options.group);
+	var _require = __webpack_require__(2);
 
-			bindProto(tmpG, 'graphic');
-			return tmpG;
+	var game = _require.game;
+
+	module.exports = function $text(text, options) {
+		if (typeof options == 'string') options = { frame: options };
+		var defaults = {
+			x: 0,
+			y: 0,
+			bold: false,
+			size: 15,
+			font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+			stroke: {
+				size: 0,
+				color: '#000000'
+			},
+			align: 'center',
+			color: '#000000'
 		};
+		options = utils.extend({}, defaults, options);
+
+		var tmpObj = game.add.text(0, 0, text, {
+			font: [options.bold ? 'bold' : '', options.size + "px", options.font].join(" "),
+			align: 'center',
+			fill: options.color,
+			stroke: options.stroke.color,
+			strokeThickness: options.stroke.size
+		});
+		// prototypes
+		bindProto(tmpObj, 'text');
+
+		return tmpObj;
 	};
 
 /***/ },
@@ -530,25 +525,36 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		var $circle = __webpack_require__(19)(game);
+	var _require = __webpack_require__(2);
 
-		return function $dot(size, fill, options) {
-			if (size === undefined) size = 5;
-			if (fill === undefined) fill = '#ff0000';
+	var game = _require.game;
 
-			var defaults = {
-				fill: fill,
-				size: size
-			};
-
-			options = utils.extend({}, defaults, options);
-			return $circle(options);
+	module.exports = function $circle(options) {
+		var defaults = {
+			x: 0,
+			y: 0,
+			group: undefined,
+			fill: '#ff0000',
+			size: 10,
+			alpha: 1,
+			stroke: {
+				size: 0,
+				color: '#000',
+				alpha: 1
+			}
 		};
+		options = utils.extend({}, defaults, options);
+		var tmpG = game.add.graphics(options.x, options.y, options.group);
+
+		bindProto(tmpG, 'graphic');
+
+		if (options.fill) tmpG.beginFill(utils.colorCase(options.fill), options.alpha);
+		if (options.stroke.size > 0) tmpG.lineStyle(options.stroke.size, utils.colorCase(options.stroke.color), options.stroke.alpha);
+		return tmpG.drawCircle(0, 0, options.size);
 	};
 
 /***/ },
@@ -557,44 +563,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		return function $rect(options) {
-			var defaults = {
-				x: 0,
-				y: 0,
-				group: undefined,
-				fill: '#ff0000',
-				width: 100,
-				height: 100,
-				size: 0,
-				alpha: 1,
-				round: 0,
-				stroke: {
-					size: 0,
-					color: '#000000',
-					alpha: 1
-				}
-			};
-			options = utils.extend({}, defaults, options);
-			var tmpG = game.add.graphics(options.x, options.y, options.group);
+	var _require = __webpack_require__(2);
 
-			if (options.size) options.height = options.width = options.size;
+	var game = _require.game;
 
-			bindProto(tmpG, 'graphic');
-
-			if (options.fill) tmpG.beginFill(utils.colorCase(options.fill), options.alpha);
-			if (options.stroke.size > 0) tmpG.lineStyle(options.stroke.size, utils.colorCase(options.stroke.color), options.stroke.alpha);
-
-			if (options.round === 0) {
-				return tmpG.drawRect(0, 0, options.width, options.height);
-			} else {
-				return tmpG.drawRoundedRect(0, 0, options.width, options.height, options.round);
-			}
+	module.exports = function $graphic(options) {
+		var defaults = {
+			x: 0,
+			y: 0,
+			group: undefined
 		};
+		options = utils.extend({}, defaults, options);
+		var tmpG = game.add.graphics(options.x, options.y, options.group);
+
+		bindProto(tmpG, 'graphic');
+		return tmpG;
 	};
 
 /***/ },
@@ -603,26 +590,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		return function $group(options) {
-			var defaults = {
-				parent: undefined,
-				name: undefined,
-				addToStage: undefined,
-				enableBody: undefined,
-				physicsBodyType: undefined
-			};
-			options = utils.extend({}, options, defaults);
-			var tmpG = game.add.group(options.parent, options.name, options.addToStage, options.enableBody, options.physicsBodyType);
+	var _require = __webpack_require__(2);
 
-			bindProto(tmpG, 'group');
+	var game = _require.game;
 
-			return tmpG;
+	var $circle = __webpack_require__(21);
+
+	module.exports = function $dot(size, fill, options) {
+		if (size === undefined) size = 5;
+		if (fill === undefined) fill = '#ff0000';
+
+		var defaults = {
+			fill: fill,
+			size: size
 		};
+
+		options = utils.extend({}, defaults, options);
+		return $circle(options);
 	};
 
 /***/ },
@@ -631,64 +619,182 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var _ = __webpack_require__(6);
-	var bindProto = __webpack_require__(5);
-	var Phaser = __webpack_require__(2);
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
 
-	module.exports = function (game) {
-		var $sprite = __webpack_require__(3)(game);
+	var _require = __webpack_require__(2);
 
-		var colorShapeBmd = function colorShapeBmd(key, colorHex) {
-			var source = game.make.sprite(0, 0, key);
-			var anchor = { x: source.anchor.x, y: source.anchor.y };
-			var scale = { x: source.scale.x, y: source.scale.y };
+	var game = _require.game;
 
-			var color = Phaser.Color.hexToColor(colorHex);
-
-			source.anchor.set(0, 0);
-			source.scale.set(1, 1);
-
-			var texture = game.make.bitmapData(source.width, source.height);
-			texture.fill(color.r, color.g, color.b);
-
-			var bmd = texture;
-			bmd.blendDestinationAtop();
-			bmd.draw(source, 0, 0, source.texture.crop.width, source.texture.crop.height);
-			bmd.pendingDestroy = true;
-
-			source.anchor.set(anchor.x, anchor.y);
-			source.scale.set(scale.x, scale.y);
-			source.pendingDestroy = true;
-
-			return bmd;
-		};
-
-		return function $shape(source, colorHex, options) {
-			if (colorHex === undefined) colorHex = '#FF0000';
-
-			if (typeof options == 'string') options = { frame: options };
-			var defaults = {
-				x: 0,
-				y: 0,
-				frame: undefined,
-				group: undefined,
-				cache: true
-			};
-			options = utils.extend({}, defaults, options);
-
-			var key = '$fill_' + source.key + '_' + source.frameName;
-
-			if (options.cache && !game.cache.checkImageKey(key)) {
-				var bmd = colorShapeBmd(source, colorHex);
-				bmd.generateTexture(key);
-				bmd.pendingDestroy = true;
-			} else if (!options.cache) {
-				key = colorShapeBmd(source, colorHex);
+	module.exports = function $rect(options) {
+		var defaults = {
+			x: 0,
+			y: 0,
+			group: undefined,
+			fill: '#ff0000',
+			width: 100,
+			height: 100,
+			size: 0,
+			alpha: 1,
+			round: 0,
+			stroke: {
+				size: 0,
+				color: '#000000',
+				alpha: 1
 			}
-
-			return $sprite(key, _.omit(options, ['cache']));
 		};
+		options = utils.extend({}, defaults, options);
+		var tmpG = game.add.graphics(options.x, options.y, options.group);
+
+		if (options.size) options.height = options.width = options.size;
+
+		bindProto(tmpG, 'graphic');
+
+		if (options.fill) tmpG.beginFill(utils.colorCase(options.fill), options.alpha);
+		if (options.stroke.size > 0) tmpG.lineStyle(options.stroke.size, utils.colorCase(options.stroke.color), options.stroke.alpha);
+
+		if (options.round === 0) {
+			return tmpG.drawRect(0, 0, options.width, options.height);
+		} else {
+			return tmpG.drawRoundedRect(0, 0, options.width, options.height, options.round);
+		}
+	};
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var utils = __webpack_require__(6);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
+
+	var _require = __webpack_require__(2);
+
+	var game = _require.game;
+
+	module.exports = function $group(options) {
+		var defaults = {
+			parent: undefined,
+			name: undefined,
+			addToStage: undefined,
+			enableBody: undefined,
+			physicsBodyType: undefined
+		};
+		options = utils.extend({}, options, defaults);
+		var tmpG = game.add.group(options.parent, options.name, options.addToStage, options.enableBody, options.physicsBodyType);
+
+		bindProto(tmpG, 'group');
+
+		return tmpG;
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var utils = __webpack_require__(6);
+	var _ = __webpack_require__(8);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
+
+	var _require = __webpack_require__(2);
+
+	var game = _require.game;
+
+	var $sprite = __webpack_require__(5);
+
+	module.exports = function $shape(source, options) {
+		if (typeof options == 'string') options = { frame: options };
+		var defaults = {
+			x: 0,
+			y: 0,
+			frame: undefined,
+			group: undefined,
+			cache: true,
+			color: '#FF0000'
+		};
+		options = utils.extend({}, defaults, options);
+
+		var key = _.compact(['$fill', source, options.frame]).join('_');
+
+		if (options.cache && !game.cache.checkImageKey(key)) {
+			var bmd = utils.colorShapeBmd(source, options.color, options.frame);
+			bmd.generateTexture(key);
+			bmd.pendingDestroy = true;
+		} else if (!options.cache) {
+			key = colorShapeBmd(sourcee, options.color, options.frame);
+		}
+
+		return $sprite(key, _.omit(options, ['cache', 'frame']));
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var utils = __webpack_require__(6);
+	var lodash = __webpack_require__(8);
+	var bindProto = __webpack_require__(7);
+	var Phaser = __webpack_require__(3);
+
+	var _require = __webpack_require__(2);
+
+	var game = _require.game;
+
+	var $sprite = __webpack_require__(5);
+
+	var strokeBmd = function strokeBmd(key, options) {
+		var source = game.make.sprite(0, 0, key, options.frame);
+		var size = options.size;
+		var pixel = options.pixel;
+
+		var bmd = game.make.bitmapData(source.width + size * 2, source.height + size * 2);
+		var shape = utils.colorShapeBmd(key, options.color, options.frame);
+
+		_.times(size * 2 * (1 / pixel) + 1, function (i) {
+			_.times(size * 2 * (1 / pixel) + 1, function (k) {
+				bmd.draw(shape, i * pixel, k * pixel);
+			});
+		});
+
+		if (options.inside) bmd.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
+		source.pendingDestroy = true;
+
+		return bmd;
+	};
+
+	module.exports = function $stroke(source, options) {
+		var defaults = {
+			x: 0,
+			y: 0,
+			frame: undefined,
+			group: undefined,
+			cache: true,
+			size: 1,
+			pixel: 1,
+			inside: true,
+			color: '#FF0000'
+		};
+		options = utils.extend({}, defaults, options);
+
+		var key = _.compact(['$stoke', source, options.frame]).join('_');
+
+		if (options.cache && !game.cache.checkImageKey(key)) {
+			var bmd = strokeBmd(source, options);
+			bmd.generateTexture(key);
+			bmd.pendingDestroy = true;
+		} else if (!options.cache) {
+			key = strokeBmd(options);
+		}
+
+		return $sprite(key, _.omit(options, ['cache', 'color', 'pixel', 'inside', 'frame', 'size']));
 	};
 
 /***/ }
