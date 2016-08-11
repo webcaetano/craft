@@ -14,7 +14,8 @@ module.exports = function(options) {
 			module: {
 				loaders: [
 					{ test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-					{ test: /\.json$/, exclude: /node_modules/, loader: 'json'}
+					{ test: /\.json$/, exclude: /node_modules/, loader: 'json'},
+					{ test: /\.json\.js/, exclude: /node_modules/, loader: 'tojson'}
 				]
 			},
 			plugins:[
@@ -30,6 +31,9 @@ module.exports = function(options) {
 			externals: JSON.parse(fs.readFileSync('./bower.json','utf8')).externals,
 			output: { filename: 'index.js' }
 		};
+
+		console.log(JSON.parse(fs.readFileSync('./package.json','utf8')).version)
+		console.log(typeof JSON.parse(fs.readFileSync('./package.json','utf8')).version)
 
 		if(umd){
 			webpackOptions.output = {

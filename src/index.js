@@ -1,6 +1,9 @@
 var protoOptions = require('./setup');
 var scope = require('./scope');
 var Phaser = require('phaser');
+var version = require('./version.json');
+
+console.log('%c Craft v'+version+' ', 'background: #002874; color: #ffffff');
 
 module.exports = function $craft(game){
 	var self = {};
