@@ -1,4 +1,5 @@
 var utils = require('./utils');
+var _ = require('./lodash');
 var protoOptions = require('./setup');
 var protos = {
 	$set:require('./prototypes/set'),
@@ -14,7 +15,7 @@ var protos = {
 
 
 module.exports = function bindProto(obj,type='sprite'){
-	utils.each(protoOptions[type],function(val,funcName){
+	_.each(protoOptions[type],function(val,funcName){
 		if(!val || !protos[funcName]) return;
 		obj[funcName] = protos[funcName];
 	})

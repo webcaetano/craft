@@ -66,15 +66,19 @@ module.exports = function(options) {
 	});
 
 	gulp.task('clean', function () {
-		return $.del([options.dist + '/', options.tmp + '/']);
+		return $.del([options.tmp + '/']);
+	});
+
+	gulp.task('clean:dist', function () {
+		return $.del([options.dist + '/']);
 	});
 
 	gulp.task('clean:examples', function () {
 		return $.del(['examples/', options.tmp + '/']);
 	});
 
-	gulp.task('build',gulp.series('clean','build:js','build-dependent:js','mincopy:js'));
-	gulp.task('build:examples', gulp.series('clean:examples','html:examples','copy:scripts:examples','copy:others:examples'));
+	gulp.task('build',gulp.series('clean','clean:dist','build:js','build-dependent:js','mincopy:js'));
+	gulp.task('build:examples', gulp.series('clean','clean:examples','html:examples','copy:scripts:examples','copy:others:examples'));
 
 
 	gulp.task('deploy:examples', gulp.series('build:examples',function(done){
