@@ -61,7 +61,7 @@ module.exports = function(options) {
 
 	gulp.task('bump', gulp.series(bump(argv.major ? 'major' : (argv.minor ? 'minor' : 'patch'))));
 
-	gulp.task('patch', gulp.series('build', bump('patch'), 'git:commit_release','git:tag','git:push'));
-	gulp.task('minor', gulp.series('build', bump('minor'), 'git:commit_release','git:tag','git:push'));
-	gulp.task('major', gulp.series('build', bump('major'), 'git:commit_release','git:tag','git:push'));
+	gulp.task('patch', gulp.series(bump('patch'), 'build', 'git:commit_release','git:tag','git:push'));
+	gulp.task('minor', gulp.series(bump('minor'), 'build', 'git:commit_release','git:tag','git:push'));
+	gulp.task('major', gulp.series(bump('major'), 'build', 'git:commit_release','git:tag','git:push'));
 }
