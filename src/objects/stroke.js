@@ -5,19 +5,27 @@ var Phaser = require('phaser');
 var {game} = require('../scope');
 var $sprite = require('./sprite');
 
-scope.misc.stroke = function(source, colorHex, size, pixel){
-	if(size===undefined) size = 1;
-	if(pixel===undefined) pixel = 1;
-	var anchor = _.clone(source.anchor);
-	var scale = _.clone(source.scale);
+var stroke =
 
+module.exports = function $stroke(key, options){
+	var defaults = {
+		x:0,
+		y:0,
+		frame:undefined,
+		group:undefined,
+		cache:true,
+		size:1,
+		pixel:1,
+		inside:true,
+		color:'#FF0000'
+	};
+	options = utils.extend({},defaults,options);
 
-	source.anchor.set(0, 0);
-	source.scale.set(1, 1);
+	var source = game.make.sprite(0,0,key);
+	var {size,pixel} = options;
 
 	var texture = game.make.bitmapData(source.width+(size*2), source.height+(size*2));
-	var shape = scope.misc.colorShape(source,colorHex);
-	console.time('createStroke')
+	var shape = utils.colorShapeBmd(key,options.color);
 
 	_.times((size*2*(1/pixel))+1,function(i){
 		_.times((size*2*(1/pixel))+1,function(k){
@@ -29,44 +37,15 @@ scope.misc.stroke = function(source, colorHex, size, pixel){
 		});
 	});
 
+	if(options.inside) texture.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
 
-	texture.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
+	source.pendingDestroy = true;
 
-	source.anchor.set(anchor.x, anchor.y);
-	source.scale.set(scale.x, scale.y);
-
-	var resp = craft.$sprite(texture);
-	// stroke.cacheAsBitmap = true;
-	console.timeEnd('createStroke')
-	return resp;
-}
-
-module.exports = function $shape(source, colorHex='#FF0000', options){
-		if(typeof options == 'string') options = {frame:options};
-		var defaults = {
-			x:0,
-			y:0,
-			frame:undefined,
-			group:undefined,
-			cache:true,
-		};
-		options = utils.extend({},defaults,options);
-
-		var key = '$fill_'+source.key+'_'+source.frameName;
-
-		if(options.cache && !game.cache.checkImageKey(key)){
-			var bmd = colorShapeBmd(source, colorHex);
-			bmd.generateTexture(key);
-			bmd.pendingDestroy = true;
-		} else if(!options.cache){
-			key = colorShapeBmd(source, colorHex);
-		}
-
-
-		return $sprite(key,_.omit(options,[
-			'cache'
-		]));
-
-		return tmpObj;
-	}
+	return $sprite(texture,_.omit(options,[
+		'cache',
+		'color',
+		'pixel',
+		'inside',
+		'size',
+	]));
 }

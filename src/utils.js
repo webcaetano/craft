@@ -15,9 +15,6 @@ self.colorShapeBmd = function(key, colorHex) {
 
 	var color = Phaser.Color.hexToColor(colorHex);
 
-	source.anchor.set(0, 0);
-	source.scale.set(1, 1);
-
 	var texture = game.make.bitmapData(source.width, source.height);
 	texture.fill(color.r, color.g, color.b);
 
@@ -26,8 +23,6 @@ self.colorShapeBmd = function(key, colorHex) {
 	bmd.draw(source, 0, 0, source.texture.crop.width, source.texture.crop.height);
 	bmd.pendingDestroy = true;
 
-	source.anchor.set(anchor.x, anchor.y);
-	source.scale.set(scale.x, scale.y);
 	source.pendingDestroy = true;
 
 	return bmd;

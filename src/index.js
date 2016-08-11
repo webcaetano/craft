@@ -34,5 +34,7 @@ module.exports = function $craft(game){
 
 	self.$shape = require('./objects/shape');
 
+	self.$stroke = require('./objects/stroke');
+
 	return self;
 }
