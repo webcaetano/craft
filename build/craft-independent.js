@@ -160,7 +160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	module.exports = "1.4.1";
+	module.exports = "1.5.1";
 
 /***/ },
 /* 5 */
