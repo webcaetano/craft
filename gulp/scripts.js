@@ -32,9 +32,6 @@ module.exports = function(options) {
 			output: { filename: 'index.js' }
 		};
 
-		console.log(JSON.parse(fs.readFileSync('./package.json','utf8')).version)
-		console.log(typeof JSON.parse(fs.readFileSync('./package.json','utf8')).version)
-
 		if(umd){
 			webpackOptions.output = {
 				library:'$craft',
