@@ -1,32 +1,35 @@
 var protoOptions = require('./setup');
+var scope = require('./scope');
 var Phaser = require('phaser');
 
 module.exports = function $craft(game){
 	var self = {};
 
-	self.$sprite =
-	self.$s =require('./objects/sprite')(game);
+	scope.game = game;
 
-	self.$tileSprite = require('./objects/tileSprite')(game);
+	self.$sprite =
+	self.$s =require('./objects/sprite');
+
+	self.$tileSprite = require('./objects/tileSprite');
 
 	self.$text =
-	self.$t = require('./objects/text')(game);
+	self.$t = require('./objects/text');
 
 	self.$circle =
-	self.$c = require('./objects/circle')(game);
+	self.$c = require('./objects/circle');
 
-	self.$graphic = require('./objects/graphic')(game);
+	self.$graphic = require('./objects/graphic');
 
 	self.$dot =
-	self.$d = require('./objects/dot')(game);
+	self.$d = require('./objects/dot');
 
 	self.$rect =
-	self.$box = require('./objects/rect')(game);
+	self.$box = require('./objects/rect');
 
 	self.$group =
-	self.$g = require('./objects/group')(game);
+	self.$g = require('./objects/group');
 
-	self.$shape = require('./objects/shape')(game);
+	self.$shape = require('./objects/shape');
 
 	return self;
 }

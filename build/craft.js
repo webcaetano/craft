@@ -7,7 +7,7 @@
 		exports["$craft"] = factory(require("Phaser"), require("_"));
 	else
 		root["$craft"] = factory(root["Phaser"], root["_"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_7__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -57,29 +57,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var protoOptions = __webpack_require__(1);
-
-	if (!Phaser) var Phaser = __webpack_require__(2);
+	var Phaser = __webpack_require__(2);
 
 	module.exports = function $craft(game) {
 		var self = {};
 
-		self.$sprite = __webpack_require__(3)(game, Phaser);
+		self.$sprite = self.$s = __webpack_require__(3)(game);
 
-		self.$tileSprite = __webpack_require__(16)(game, Phaser);
+		self.$tileSprite = __webpack_require__(17)(game);
 
-		self.$text = __webpack_require__(17)(game, Phaser);
+		self.$text = self.$t = __webpack_require__(18)(game);
 
-		self.$circle = self.$c = __webpack_require__(18)(game, Phaser);
+		self.$circle = self.$c = __webpack_require__(19)(game);
 
-		self.$graphic = __webpack_require__(19)(game, Phaser);
+		self.$graphic = __webpack_require__(20)(game);
 
-		self.$dot = self.$d = __webpack_require__(20)(game, Phaser);
+		self.$dot = self.$d = __webpack_require__(21)(game);
 
-		self.$rect = self.$box = __webpack_require__(21)(game, Phaser);
+		self.$rect = self.$box = __webpack_require__(22)(game);
 
-		self.$group = self.$g = __webpack_require__(22)(game, Phaser);
+		self.$group = self.$g = __webpack_require__(23)(game);
 
-		self.$shape = __webpack_require__(23)(game, Phaser);
+		self.$shape = __webpack_require__(24)(game);
 
 		return self;
 	};
@@ -146,9 +145,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $sprite(key, options) {
 			if (typeof options == 'string') options = { frame: options };
 			var defaults = {
@@ -173,13 +173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var self = {};
-
-	if (!Phaser) var Phaser = __webpack_require__(2);
-	if (false) {
-		var _ = require('./customLodash');
-	} else {
-		var _ = __webpack_require__(5);
-	}
+	var Phaser = __webpack_require__(2);
 
 	self.colorCase = function (color) {
 		return color.indexOf('#') != -1 ? '0x' + color.replace(/#/g, '') : color;
@@ -187,16 +181,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	self.extend = Phaser.Utils.extend.bind(null, true); // always deep;
 
-	self.each = _.each;
-	self.isArray = _.isArray;
-
 	module.exports = self;
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+	'use strict';
+
+	var utils = __webpack_require__(4);
+	var _ = __webpack_require__(6);
+	var protoOptions = __webpack_require__(1);
+	var protos = {
+		$set: __webpack_require__(8),
+		$scale: __webpack_require__(9),
+		$tint: __webpack_require__(10),
+		$into: __webpack_require__(11),
+		$mid: __webpack_require__(12),
+		$copyPos: __webpack_require__(13),
+		$fixPos: __webpack_require__(14),
+		$add: __webpack_require__(15),
+		$align: __webpack_require__(16)
+	};
+
+	module.exports = function bindProto(obj) {
+		var type = arguments.length <= 1 || arguments[1] === undefined ? 'sprite' : arguments[1];
+
+		_.each(protoOptions[type], function (val, funcName) {
+			if (!val || !protos[funcName]) return;
+			obj[funcName] = protos[funcName];
+		});
+	};
 
 /***/ },
 /* 6 */
@@ -204,31 +219,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
-	var protoOptions = __webpack_require__(1);
-	var protos = {
-		$set: __webpack_require__(7),
-		$scale: __webpack_require__(8),
-		$tint: __webpack_require__(9),
-		$into: __webpack_require__(10),
-		$mid: __webpack_require__(11),
-		$copyPos: __webpack_require__(12),
-		$fixPos: __webpack_require__(13),
-		$add: __webpack_require__(14),
-		$align: __webpack_require__(15)
-	};
+	if (false) {
+		var _ = require('./customLodash');
+	} else {
+		var _ = __webpack_require__(7);
+	}
 
-	module.exports = function bindProto(obj) {
-		var type = arguments.length <= 1 || arguments[1] === undefined ? 'sprite' : arguments[1];
-
-		utils.each(protoOptions[type], function (val, funcName) {
-			if (!val || !protos[funcName]) return;
-			obj[funcName] = protos[funcName];
-		});
-	};
+	module.exports = _;
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -252,7 +258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -274,7 +280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -289,7 +295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -300,7 +306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -311,7 +317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -323,7 +329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -335,24 +341,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(4);
+	var _ = __webpack_require__(6);
 
 	module.exports = function $add(objs) {
 		var self = this;
-		if (!utils.isArray(objs)) objs = [objs];
-		utils.each(objs, function (obj) {
+		if (!_.isArray(objs)) objs = [objs];
+		_.each(objs, function (obj) {
 			self.add(obj);
 		});
 		return this;
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -385,15 +391,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $tileSprite(key, options, width, height) {
 			if (typeof options == 'string') options = { frame: options };
 			var defaults = {
@@ -415,15 +422,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $text(text, options) {
 			if (typeof options == 'string') options = { frame: options };
 			var defaults = {
@@ -456,15 +464,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $circle(options) {
 			var defaults = {
 				x: 0,
@@ -491,15 +500,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $graphic(options) {
 			var defaults = {
 				x: 0,
@@ -515,16 +525,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
-		var $circle = __webpack_require__(18)(game, Phaser);
+	module.exports = function (game) {
+		var $circle = __webpack_require__(19)(game);
 
 		return function $dot(size, fill, options) {
 			if (size === undefined) size = 5;
@@ -541,15 +552,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $rect(options) {
 			var defaults = {
 				x: 0,
@@ -586,15 +598,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
+	module.exports = function (game) {
 		return function $group(options) {
 			var defaults = {
 				parent: undefined,
@@ -613,23 +626,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(4);
-	var bindProto = __webpack_require__(6);
+	var _ = __webpack_require__(6);
+	var bindProto = __webpack_require__(5);
+	var Phaser = __webpack_require__(2);
 
-	module.exports = function (game, Phaser) {
-		var $sprite = __webpack_require__(3)(game, Phaser);
+	module.exports = function (game) {
+		var $sprite = __webpack_require__(3)(game);
 
 		var colorShapeBmd = function colorShapeBmd(key, colorHex) {
-			console.time('createShape');
-
 			var source = game.make.sprite(0, 0, key);
-			var anchor = _.clone(source.anchor);
-			var scale = _.clone(source.scale);
+			var anchor = { x: source.anchor.x, y: source.anchor.y };
+			var scale = { x: source.scale.x, y: source.scale.y };
 
 			var color = Phaser.Color.hexToColor(colorHex);
 
@@ -647,8 +660,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			source.anchor.set(anchor.x, anchor.y);
 			source.scale.set(scale.x, scale.y);
 			source.pendingDestroy = true;
-
-			console.timeEnd('createShape');
 
 			return bmd;
 		};
@@ -677,8 +688,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			return $sprite(key, _.omit(options, ['cache']));
-
-			return tmpObj;
 		};
 	};
 
