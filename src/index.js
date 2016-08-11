@@ -4,11 +4,13 @@ var Phaser = require('phaser');
 module.exports = function $craft(game){
 	var self = {};
 
-	self.$sprite = require('./objects/sprite')(game);
+	self.$sprite =
+	self.$s =require('./objects/sprite')(game);
 
 	self.$tileSprite = require('./objects/tileSprite')(game);
 
-	self.$text = require('./objects/text')(game);
+	self.$text =
+	self.$t = require('./objects/text')(game);
 
 	self.$circle =
 	self.$c = require('./objects/circle')(game);
