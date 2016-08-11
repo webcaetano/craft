@@ -25,5 +25,7 @@ module.exports = function $craft(game){
 	self.$group =
 	self.$g = require('./objects/group')(game,Phaser);
 
+	self.$shape = require('./objects/shape')(game,Phaser);
+
 	return self;
 }

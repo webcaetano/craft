@@ -48,6 +48,9 @@ module.exports = function(game,rootScope){
 			case '4':
 				require('./example4')(game,scope,rootScope);
 			break;
+			case '5':
+				require('./example5')(game,scope,rootScope);
+			break;
 			case 'test':
 				require('./test')(game,scope,rootScope);
 			break;
