@@ -10,8 +10,6 @@ self.extend = Phaser.Utils.extend.bind(null,true) // always deep;
 
 self.colorShapeBmd = function(key, colorHex, frame=undefined) {
 	var source = game.make.sprite(0,0,key,frame);
-	var anchor = {x:source.anchor.x,y:source.anchor.y};
-	var scale = {x:source.scale.x,y:source.scale.y};
 
 	var color = Phaser.Color.hexToColor(colorHex);
 
@@ -21,7 +19,6 @@ self.colorShapeBmd = function(key, colorHex, frame=undefined) {
 	var bmd = texture;
 	bmd.blendDestinationAtop();
 	bmd.draw(source, 0, 0, source.texture.crop.width, source.texture.crop.height);
-	bmd.pendingDestroy = true;
 
 	source.pendingDestroy = true;
 
