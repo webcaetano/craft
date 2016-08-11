@@ -3,29 +3,30 @@ module.exports = function(game,scope,rootScope){
 
 	var group = craft.$g()
 
-	var sprite = craft.$shape('phaserDude','#FFFFFF')
-	.$mid()
-	.$into(group);
-
-	var sprite = craft.$sprite('phaserDude')
-	.$mid()
-	.$set({
-		x:100
+	var sprite = craft.$shape('main',{
+		color:'#FFFFFF',
+		frame:'wizz/wizz0032.png',
+		x:-70,
 	})
 	.$into(group);
 
-	var stroke = craft.$stroke('phaserDude',{
+	var sprite = craft.$sprite('main','wizz/wizz0032.png')
+	.$set({
+		x:20
+	})
+	.$into(group);
+
+	var stroke = craft.$stroke('main',{
 		inside:true,
 		size:2,
-		color:'#FF00FF'
+		color:'#FF00FF',
+		frame:'wizz/wizz0032.png',
 	})
 	.$set({
-		x:-100
+		x:-180
 	})
-	.$mid()
-	// .$tint('#FF00FF')
 	.$into(group);
 
 	group.x = game.width/2;
-	group.y = game.height/2;
+	group.y = (game.height/2)-50;
 }

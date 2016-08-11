@@ -5,9 +5,30 @@ var Phaser = require('phaser');
 var {game} = require('../scope');
 var $sprite = require('./sprite');
 
-var stroke =
+var strokeBmd = function(key, options){
+	var source = game.make.sprite(0,0,key,options.frame);
+	var {size,pixel} = options;
 
-module.exports = function $stroke(key, options){
+	var bmd = game.make.bitmapData(source.width+(size*2), source.height+(size*2));
+	var shape = utils.colorShapeBmd(key,options.color,options.frame);
+
+	_.times((size*2*(1/pixel))+1,function(i){
+		_.times((size*2*(1/pixel))+1,function(k){
+			bmd.draw(
+				shape,
+				(i*pixel),
+				(k*pixel)
+			)
+		});
+	});
+
+	if(options.inside) bmd.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
+	source.pendingDestroy = true;
+
+	return bmd;
+}
+
+module.exports = function $stroke(source, options){
 	var defaults = {
 		x:0,
 		y:0,
@@ -21,31 +42,23 @@ module.exports = function $stroke(key, options){
 	};
 	options = utils.extend({},defaults,options);
 
-	var source = game.make.sprite(0,0,key);
-	var {size,pixel} = options;
 
-	var texture = game.make.bitmapData(source.width+(size*2), source.height+(size*2));
-	var shape = utils.colorShapeBmd(key,options.color);
+	var key = _.compact(['$stoke',source,options.frame]).join('_');
 
-	_.times((size*2*(1/pixel))+1,function(i){
-		_.times((size*2*(1/pixel))+1,function(k){
-			texture.draw(
-				shape,
-				(i*pixel),
-				(k*pixel)
-			)
-		});
-	});
+	if(options.cache && !game.cache.checkImageKey(key)){
+		var bmd = strokeBmd(source, options);
+		bmd.generateTexture(key);
+		bmd.pendingDestroy = true;
+	} else if(!options.cache){
+		key = strokeBmd(options);
+	}
 
-	if(options.inside) texture.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
-
-	source.pendingDestroy = true;
-
-	return $sprite(texture,_.omit(options,[
+	return $sprite(key,_.omit(options,[
 		'cache',
 		'color',
 		'pixel',
 		'inside',
+		'frame',
 		'size',
 	]));
 }

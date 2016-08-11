@@ -8,8 +8,8 @@ self.colorCase = function(color){
 
 self.extend = Phaser.Utils.extend.bind(null,true) // always deep;
 
-self.colorShapeBmd = function(key, colorHex) {
-	var source = game.make.sprite(0,0,key);
+self.colorShapeBmd = function(key, colorHex, frame=undefined) {
+	var source = game.make.sprite(0,0,key,frame);
 	var anchor = {x:source.anchor.x,y:source.anchor.y};
 	var scale = {x:source.scale.x,y:source.scale.y};
 

@@ -4,4 +4,5 @@ self.each = require('lodash/foreach');
 self.isArray = require('lodash/isArray');
 self.omit = require('lodash/omit');
 self.times = require('lodash/times');
+self.compact = require('lodash/compact');
 module.exports = self;
