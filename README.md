@@ -443,7 +443,17 @@ sprite.$tint('#FF0000');
 ```
 
 #### See Also
+- [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
+- [**phaser-electron**](https://github.com/webcaetano/phaser-electron)
 
 [filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
+
+
+### Coming Soon
+
+- [ ] Website
+- [ ] Move Docs to site 
+- [ ] Website examples
+- [ ] Docs for stroke and shape
