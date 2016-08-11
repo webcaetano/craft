@@ -1,7 +1,8 @@
 var utils = require('../utils');
 var bindProto = require('../protos');
+var Phaser = require('phaser');
 
-module.exports = function(game,Phaser){
+module.exports = function(game){
 	return function $text(text,options){
 		if(typeof options == 'string') options = {frame:options};
 		var defaults = {

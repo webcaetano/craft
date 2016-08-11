@@ -1,9 +1,10 @@
 var utils = require('../utils');
 var bindProto = require('../protos');
+var Phaser = require('phaser');
 
 
-module.exports = function(game,Phaser){
-	var $sprite = require('./sprite')(game,Phaser);
+module.exports = function(game){
+	var $sprite = require('./sprite')(game);
 
 	var colorShapeBmd = function(key, colorHex) {
 		console.time('createShape')

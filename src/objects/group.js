@@ -1,7 +1,8 @@
 var utils = require('../utils');
 var bindProto = require('../protos');
+var Phaser = require('phaser');
 
-module.exports = function(game,Phaser){
+module.exports = function(game){
 	return function $group(options){
 		var defaults = {
 			parent:undefined,
