@@ -3,7 +3,7 @@
 
 
 <p align="center">
-	<img alt="phaser craft logo" src="http://i.imgur.com/rHbhpfX.png?1">
+	<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
 </p>
 
 <h1 align="center"> Craft </h1>
@@ -28,7 +28,8 @@ bower install phaser-craft --save
 
 #### Example1 
 
-[Link](http://webcaetano.github.io/craft/index.html?example=1)
+[Link](http://webcaetano.github.io/craft/index.html?exa
+mple=1)
 
 ```javascript
 var craft = require('$craft')(game); // you also can call craft via global var
