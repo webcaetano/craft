@@ -33,9 +33,8 @@ module.exports = function(game,scope,rootScope){
 
 	/// ==== WTIH FRAME NAME
 
-	var sprite = craft.$shape('main',{
+	var sprite = craft.$shape('main','wizz/wizz0032.png',{
 		color:'#FFFFFF',
-		frame:'wizz/wizz0032.png',
 		x:-70,
 	})
 	.$into(group);
@@ -46,11 +45,10 @@ module.exports = function(game,scope,rootScope){
 	})
 	.$into(group);
 
-	var stroke = craft.$stroke('main',{
+	var stroke = craft.$stroke('main','wizz/wizz0032.png',{
 		inside:true,
 		size:2,
 		color:'#FF00FF',
-		frame:'wizz/wizz0032.png',
 	})
 	.$set({
 		x:-180

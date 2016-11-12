@@ -28,11 +28,17 @@ var strokeBmd = function(key, options){
 	return bmd;
 }
 
-module.exports = function $stroke(source, options){
+module.exports = function $shape(source, frame=undefined, options){
+	if(typeof frame==='object') {
+		var tmpVar = options;
+		options = frame ? frame : {};
+		frame = tmpVar;
+	}
+
 	var defaults = {
+		frame,
 		x:0,
 		y:0,
-		frame:undefined,
 		group:undefined,
 		cache:true,
 		size:1,

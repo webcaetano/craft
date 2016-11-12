@@ -5,12 +5,17 @@ var Phaser = require('phaser');
 var {game} = require('../scope');
 var $sprite = require('./sprite');
 
-module.exports = function $shape(source, options){
-	if(typeof options == 'string') options = {frame:options};
+module.exports = function $shape(source, frame=undefined, options){
+	if(typeof frame==='object') {
+		var tmpVar = options;
+		options = frame ? frame : {};
+		frame = tmpVar;
+	}
+
 	var defaults = {
+		frame,
 		x:0,
 		y:0,
-		frame:undefined,
 		group:undefined,
 		cache:true,
 		color:'#FF0000'
