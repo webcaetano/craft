@@ -10,7 +10,7 @@ var $ = require('gulp-load-plugins')({
 });
 
 module.exports = function(options) {
-	function markdown(dest,files,folder,env){
+	function markdown(files,dest,folder,env){
 		return function markdown(){
 			return gulp.src(files)
 			.pipe($.markdown({
@@ -32,7 +32,7 @@ module.exports = function(options) {
 			// .pipe($.if(function(){
 			// 	return env=='dist'
 			// }, $.replace('src="images/', 'src="../src/images/')))
-			.pipe(gulp.dest(options.tmp+'/site'));
+			.pipe(gulp.dest(dest));
 		}
 	}
 
@@ -43,19 +43,47 @@ module.exports = function(options) {
 		],{force:true});
 	});
 
-	gulp.task('docs:methods', gulp.series('clean:docs', markdown(options.tmp+'/site',[
-		'docs/methods/*.md',
-	],"/docs/methods/")));
+	gulp.task('markdown:methods', gulp.series(markdown([
+			'docs/methods/*.md',
+		],
+		options.tmp+'/site',
+		"/docs/methods/"
+	)));
 
-	gulp.task('docs:prototypes', gulp.series('clean:docs', markdown(options.tmp+'/site',[
-		'docs/prototypes/*.md',
-	],"/docs/prototypes/")));
+	gulp.task('markdown:prototypes', gulp.series(markdown([
+			'docs/prototypes/*.md',
+		],
+		options.tmp+'/site',
+		"/docs/prototypes/"
+	)));
+
+	gulp.task('markdown:mainPage', gulp.series(markdown([
+			'site/partials/main.md',
+		],
+		options.tmp+'/site',
+		"/partials/"
+	)));
+
+	gulp.task('markdown:mainPage', function(){
+		return gulp.src(['site/partials/main.md'])
+		.pipe($.markdown({
+			highlight: function(code) {
+				return require('highlight.js').highlightAuto(code).value;
+			},
+			header: true
+		}))
+		.pipe(gulp.dest(options.tmp+'/site/partials'));
+	});
 
 	// gulp.task('docs:dist', gulp.series('clean:site', docs('dist')));
 
-	gulp.task('docs', gulp.series(
+	gulp.task('markdown', gulp.series(
 		'clean:docs',
-		gulp.parallel('docs:methods','docs:prototypes')
+		gulp.parallel(
+			'markdown:methods',
+			'markdown:mainPage',
+			'markdown:prototypes'
+		)
 	));
 
 };

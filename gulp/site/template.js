@@ -62,7 +62,7 @@ module.exports = function(options) {
 	)))
 
 	gulp.task('template:mainPage',gulp.series(templating(
-		'site/partials/main.tpl',
+		options.tmp + '/site/partials/main.html',
 		options.tmp + '/site/',
 		true
 	)))
@@ -70,7 +70,7 @@ module.exports = function(options) {
 	gulp.task('template',gulp.series(
 		'clean:siteTmp',
 		'inject:site',
-		'docs',
+		'markdown',
 		'template:mainPage',
 		'template:methods',
 		'template:prototypes'

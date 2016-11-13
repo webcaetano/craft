@@ -23,7 +23,7 @@ _.each([
 	'github.js',
 	'watch.js',
 
-	'site/docs.js',
+	'site/markdown.js',
 	'site/styles.js',
 	'site/scripts.js',
 	'site/inject.js',

@@ -9,10 +9,9 @@ var $ = require('gulp-load-plugins')({
 
 module.exports = function(options) {
 	var dist = 'siteDist';
-	gulp.task('html:site', gulp.series('inject:site','docs', function () {
+	gulp.task('html:site', gulp.series('template', function () {
 		return gulp.src(options.tmp + '/site/index.html')
 			.pipe($.useref())
-			.pipe($.if('*.html', $.replace('bower_components', '../bower_components')))
 			.pipe($.if('*.html', $.replace('bower_components', '../bower_components')))
 			.pipe($.if('*.js', $.preprocess({context: {dist: true}})))
 			.pipe($.if('*.js', $.uglify()))
