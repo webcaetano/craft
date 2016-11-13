@@ -29,12 +29,14 @@ module.exports = function(options) {
 		var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
 
 		return function tpl(){
-			var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
-				day:13
-			});
-
 			return gulp.src(files)
 			.pipe(through.obj(function (file, enc, callback) {
+				var pathData = path.parse(file);
+
+				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
+					name:pathData.name
+				});
+
 				var content = _.template(String(file.contents))({
 				});
 
