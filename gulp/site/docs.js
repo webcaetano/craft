@@ -20,11 +20,12 @@ module.exports = function(options) {
 				header: true
 			}))
 			.pipe($.cheerio(function ($$, file) {
-				var firstTitle = $$('h1').eq(0).text();
-				if(!firstTitle) firstTitle=path.basename(file.path,path.extname(file.path));
+				// var firstTitle = $$('h1').eq(0).text();
+				// if(!firstTitle) firstTitle=path.basename(file.path,path.extname(file.path));
+				var firstTitle=path.basename(file.path,path.extname(file.path));
 				file.path = path.join(path.dirname(file.path),
 					folder,
-					firstTitle.replace(/\s+/g,'-').replace(/[\$|\.]/g,'').toLowerCase(),
+					firstTitle.replace(/[\$|\.]/g,''),
 					'/index'+path.extname(file.path)
 				);
 			}))

@@ -54,15 +54,16 @@ module.exports = function(options) {
 			// .pipe(wiredep({
 			// 	include:['bower_components/lodash/lodash.js']
 			// }))
-			.pipe($.template({
-				date:{
-					day:(new Date()).getYear(),
-					year:(new Date()).getFullYear(),
-					month:(new Date()).getMonth(),
-				}
-			}))
+			// .pipe($.template({
+			// 	date:{
+			// 		day:(new Date()).getYear(),
+			// 		year:(new Date()).getFullYear(),
+			// 		month:(new Date()).getMonth(),
+			// 	}
+			// }))
 			.pipe($.rename(function (path) {
-				path.extname = ".html"
+				// path.extname = ".html"
+				path.basename = "injected"
 			}))
 			.pipe(gulp.dest(options.tmp + '/site'));
 	}

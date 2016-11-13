@@ -27,6 +27,7 @@ _.each([
 	'site/styles.js',
 	'site/scripts.js',
 	'site/inject.js',
+	'site/template.js',
 	'site/build.js',
 	'site/watch.js',
 

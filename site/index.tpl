@@ -21,8 +21,9 @@
 	<!-- endbuild -->
 </head>
 <body>
+	<%= menu %>
 	<div class="container posts">
-
+		<%= content %>
 	</div>
 
 	<script>
