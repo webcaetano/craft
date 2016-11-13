@@ -16,6 +16,8 @@ Create Phaser Circle Shape Graphic
     - `color` <String> Stroke color in '#FFFFFF' or '0xFFFFFF' format
     - `alpha` <Alpha> Stroke alpha
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript

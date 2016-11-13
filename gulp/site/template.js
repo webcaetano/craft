@@ -36,15 +36,20 @@ module.exports = function(options) {
 				var lastFolder = _.last(folders);
 
 				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
-					name:lastFolder
+					methods,
+					prototypes,
+					name:lastFolder,
 				});
 
-				var content = _.template(String(file.contents))({
+				var content = _.template(String(file.contents)
+				.replace(/<!-- protosTpl -->/g,"<%=protosTpl%>"))({
+					protosTpl:''
 				});
 
 				var newContent = _.template(template)({
 					content,
 					menu,
+					protoSetup,
 				});
 				file.contents = new Buffer(newContent);
 
