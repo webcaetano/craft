@@ -4,12 +4,12 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 
 module.exports = function(options) {
-	gulp.task('fullReload:site',gulp.series('inject', function watch(done){
+	gulp.task('fullReload:site',gulp.series('template', function watch(done){
 		browserSync.reload();
 		done();
 	}));
 
-	gulp.task('watch:site', gulp.series('inject:site',gulp.parallel('scripts:site:watch'), function watch(done) {
+	gulp.task('watch:site', gulp.series('template',gulp.parallel('scripts:site:watch'), function watch(done) {
 
 		gulp.watch([
 			'site/index.tpl',

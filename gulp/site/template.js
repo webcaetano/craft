@@ -13,7 +13,7 @@ var $ = require('gulp-load-plugins')({
 
 module.exports = function(options) {
 	var siteDist = 'siteDist';
-	function templating(dest){
+	function templating(files,folder,main=false){
 		var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
 
 		return function tpl(){
@@ -21,24 +21,60 @@ module.exports = function(options) {
 				day:13
 			});
 
-			return gulp.src(options.tmp + '/site/docs/methods/**/*.html')
+			return gulp.src(files)
 			.pipe(through.obj(function (file, enc, callback) {
-				var content = String(file.contents);
+				var content = _.template(String(file.contents))({
+				});
 
 				var newContent = _.template(template)({
 					content,
 					menu,
 				});
-				console.log(newContent)
 				file.contents = new Buffer(newContent);
+
 				callback(null,file);
 			}))
-			.pipe(gulp.dest(options.tmp + '/site/docs/methods/'));
+			.pipe($.rename(function (path) {
+				path.extname = ".html"
+				if(main) path.basename = "index"
+			}))
+			.pipe(gulp.dest(folder));
 		}
 	}
 
 
-	gulp.task('template',gulp.series('docs',templating()))
+	gulp.task('clean:siteTmp', function (done) {
+		return $.del([
+			// dist+'/',
+			options.tmp + '/site/'
+		],{force:true});
+	});
+
+
+	gulp.task('template:methods',gulp.series(templating(
+		options.tmp + '/site/docs/methods/**/*.html',
+		options.tmp + '/site/docs/methods/'
+	)))
+
+	gulp.task('template:prototypes',gulp.series(templating(
+		options.tmp + '/site/docs/prototypes/**/*.html',
+		options.tmp + '/site/docs/prototypes/'
+	)))
+
+	gulp.task('template:mainPage',gulp.series(templating(
+		'site/partials/main.tpl',
+		options.tmp + '/site/',
+		true
+	)))
+
+	gulp.task('template',gulp.series(
+		'clean:siteTmp',
+		'inject:site',
+		'docs',
+		'template:mainPage',
+		'template:methods',
+		'template:prototypes'
+	))
 	// gulp.task('docs:methods', gulp.series('clean:docs', markdown(options.tmp+'/site',[
 	// 	'docs/methods/*.md',
 	// ],"/docs/methods/")));

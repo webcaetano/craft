@@ -27,16 +27,15 @@ module.exports = function(options) {
 	// 	])
 	// 	.pipe(gulp.dest(options.dist + '/'));
 	// });
-
-	gulp.task('clean:site', function (done) {
+	gulp.task('clean:siteDist', function (done) {
 		return $.del([
 			dist+'/',
-			options.tmp + '/site/'
+			// options.tmp + '/site/'
 		],{force:true});
 	});
 
 	gulp.task('build:site', gulp.series(
-		'clean:site',
+		'clean:siteDist',
 		gulp.parallel(
 			'html:site'
 			// 'other'
