@@ -31,10 +31,12 @@ module.exports = function(options) {
 		return function tpl(){
 			return gulp.src(files)
 			.pipe(through.obj(function (file, enc, callback) {
-				var pathData = path.parse(file);
+				var pathData = path.parse(file.path);
+				var folders = pathData.dir.split('/');
+				var lastFolder = _.last(folders);
 
 				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
-					name:pathData.name
+					name:lastFolder
 				});
 
 				var content = _.template(String(file.contents))({
