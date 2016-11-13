@@ -10,7 +10,7 @@
 
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 
-	<!-- build:css({.tmp/site,site}) styles/vendor.css -->
+	<!-- build:css(./) styles/vendor.css -->
 	<link rel="stylesheet" type="text/css" href="/bower_components/highlight/src/styles/monokai.css">
 	<!-- endbuild -->
 
@@ -36,12 +36,12 @@
 
 	</script>
 
-	<!-- build:js(site) scripts/vendor.js -->
+	<!-- build:js(./) scripts/vendor.js -->
 	<script src="bower_components/highlight/src/highlight.js"></script>
 	<!-- endbuild -->
 
 
-	<!-- build:js(site) scripts/scripts.js -->
+	<!-- build:js({.tmp/site,site}) scripts/scripts.js -->
 	<!-- inject:scripts:js -->
 	<!-- js files will be automatically insert here -->
 	<!-- endinject -->

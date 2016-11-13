@@ -36,24 +36,24 @@ module.exports = function(options) {
 	}
 
 
-	gulp.task('clean:site', function (done) {
+	gulp.task('clean:docs', function (done) {
 		return $.del([
-			options.tmp + '/site'
+			options.tmp + '/site/docs'
 		],{force:true});
 	});
 
-	gulp.task('docs:methods', gulp.series('clean:site', markdown(options.tmp+'/site',[
+	gulp.task('docs:methods', gulp.series('clean:docs', markdown(options.tmp+'/site',[
 		'docs/methods/*.md',
 	],"/docs/methods/")));
 
-	gulp.task('docs:prototypes', gulp.series('clean:site', markdown(options.tmp+'/site',[
+	gulp.task('docs:prototypes', gulp.series('clean:docs', markdown(options.tmp+'/site',[
 		'docs/prototypes/*.md',
 	],"/docs/prototypes/")));
 
 	// gulp.task('docs:dist', gulp.series('clean:site', docs('dist')));
 
 	gulp.task('docs', gulp.series(
-		'clean:site',
+		'clean:docs',
 		gulp.parallel('docs:methods','docs:prototypes')
 	));
 
