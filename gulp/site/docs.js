@@ -9,8 +9,6 @@ var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'del']
 });
 
-var homePage = 'about';
-
 module.exports = function(options) {
 	function markdown(dest,files,folder,env){
 		return function markdown(){
@@ -44,19 +42,19 @@ module.exports = function(options) {
 		],{force:true});
 	});
 
-	gulp.task('markdown:methods', gulp.series('clean:site', markdown(options.tmp+'/site',[
+	gulp.task('docs:methods', gulp.series('clean:site', markdown(options.tmp+'/site',[
 		'docs/methods/*.md',
 	],"/docs/methods/")));
 
-	gulp.task('markdown:prototypes', gulp.series('clean:site', markdown(options.tmp+'/site',[
+	gulp.task('docs:prototypes', gulp.series('clean:site', markdown(options.tmp+'/site',[
 		'docs/prototypes/*.md',
 	],"/docs/prototypes/")));
 
-	// gulp.task('markdown:dist', gulp.series('clean:site', markdown('dist')));
+	// gulp.task('docs:dist', gulp.series('clean:site', docs('dist')));
 
-	gulp.task('markdown', gulp.series(
+	gulp.task('docs', gulp.series(
 		'clean:site',
-		gulp.parallel('markdown:methods','markdown:prototypes')
+		gulp.parallel('docs:methods','docs:prototypes')
 	));
 
 };
