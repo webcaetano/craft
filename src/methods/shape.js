@@ -29,7 +29,7 @@ module.exports = function $shape(source, frame=undefined, options){
 		bmd.generateTexture(key);
 		bmd.pendingDestroy = true;
 	} else if(!options.cache){
-		key = colorShapeBmd(sourcee, options.color, options.frame);
+		key = colorShapeBmd(source, options.color, options.frame);
 	}
 
 
