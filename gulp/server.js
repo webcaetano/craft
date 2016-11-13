@@ -37,7 +37,7 @@ module.exports = function(options) {
 		'test'
 	],null)));
 
-	gulp.task('serve:site', gulp.series(browserSyncInit.bind(null,[
+	gulp.task('serve:site', gulp.series('watch:site', browserSyncInit.bind(null,[
 		options.tmp + '/site',
 	],null)));
 

@@ -56,7 +56,7 @@ module.exports = function(options) {
 		return webpack(false);
 	});
 
-	// gulp.task('scripts:watch', function (callback) {
-	// 	return webpack(true, callback, true);
-	// });
+	gulp.task('scripts:site:watch', function (callback) {
+		return webpack(true, callback, true);
+	});
 };
