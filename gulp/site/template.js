@@ -27,6 +27,9 @@ module.exports = function(options) {
 
 	function templating(files,folder,main=false){
 		var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
+		var footer = _.template(String(fs.readFileSync('site/partials/footer.tpl')))({
+		});
+
 
 		return function tpl(){
 			return gulp.src(files)
@@ -50,6 +53,7 @@ module.exports = function(options) {
 				var newContent = _.template(template)({
 					content,
 					menu,
+					footer,
 					protoSetup,
 				});
 				file.contents = new Buffer(newContent);
