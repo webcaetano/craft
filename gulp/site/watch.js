@@ -14,14 +14,16 @@ module.exports = function(options) {
 		gulp.watch([
 			'site/index.tpl',
 			'site/partials/**/*.tpl',
+
+			'docs/**/*.md',
 		], gulp.series('fullReload:site'));
 
-		gulp.watch([
-			'docs/**/*.md',
-		], gulp.series('docs', function watch(done){
-			browserSync.reload();
-			done();
-		}));
+		// gulp.watch([
+		// 	'docs/**/*.md',
+		// ], gulp.series('docs', function watch(done){
+		// 	browserSync.reload();
+		// 	done();
+		// }));
 
 		gulp.watch([
 			'site/styles/**/*.less',

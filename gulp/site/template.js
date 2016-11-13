@@ -4,8 +4,8 @@ var gulp = require('gulp');
 var through = require('through2');
 var path = require('path');
 var _ = require('lodash');
+var glob = require('glob');
 var fs = require('fs');
-
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'del']
@@ -13,6 +13,18 @@ var $ = require('gulp-load-plugins')({
 
 module.exports = function(options) {
 	var siteDist = 'siteDist';
+
+	var protoSetup = require('./../../src/setup');
+
+	var methods = _.map(glob.sync('src/methods/*.js'),function(file){
+		var p = path.parse(file)
+		return p.name;
+	});
+	var prototypes = _.map(glob.sync('src/prototypes/*.js'),function(file){
+		var p = path.parse(file)
+		return p.name;
+	});
+
 	function templating(files,folder,main=false){
 		var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
 
@@ -74,20 +86,5 @@ module.exports = function(options) {
 		'template:mainPage',
 		'template:methods',
 		'template:prototypes'
-	))
-	// gulp.task('docs:methods', gulp.series('clean:docs', markdown(options.tmp+'/site',[
-	// 	'docs/methods/*.md',
-	// ],"/docs/methods/")));
-
-	// gulp.task('docs:prototypes', gulp.series('clean:docs', markdown(options.tmp+'/site',[
-	// 	'docs/prototypes/*.md',
-	// ],"/docs/prototypes/")));
-
-	// // gulp.task('docs:dist', gulp.series('clean:site', docs('dist')));
-
-	// gulp.task('docs', gulp.series(
-	// 	'clean:docs',
-	// 	gulp.parallel('docs:methods','docs:prototypes')
-	// ));
-
+	));
 };
