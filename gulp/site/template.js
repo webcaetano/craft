@@ -38,6 +38,7 @@ module.exports = function(options) {
 				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
 					methods,
 					prototypes,
+					home:main,
 					name:lastFolder,
 				});
 

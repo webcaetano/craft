@@ -1,4 +1,13 @@
 <div class="menu">
+	<%
+		if(home){
+			print(`<div class="menu-tab menu-main selected">Home</div>
+			`);
+		} else {
+			print(`<a href="/"><div class="menu-tab menu-main">Home</div></a>
+			`);
+		}
+	%>
 	<div class="menu-header">Methods</div>
 	<%
 	_.each(methods,function(val,i){
