@@ -7,7 +7,7 @@ var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
 	var siteFolder = 'site';
-	gulp.task('styles', function () {
+	gulp.task('styles:site', function () {
 		var lessOptions = {
 			options: [
 				'bower_components',

@@ -26,8 +26,8 @@ _.each([
 
 	'site/docs.js',
 	'site/styles.js',
-	// 'site/scripts.js',
-	// 'site/inject.js',
+	'site/scripts.js',
+	'site/inject.js',
 	// 'site/build.js',
 ],function(file){
 	require('./gulp/' + file)(options);

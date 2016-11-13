@@ -8,26 +8,21 @@
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-	<!-- bower:css -->
-	<!-- run `gulp inject` to automatically populate bower styles dependencies -->
-	<!-- endbower -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+
+	<!-- build:css({.tmp/site,site}) styles/vendor.css -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/highlight/src/styles/monokai.css">
 	<!-- endbuild -->
 
-	<!-- build:css({.tmp/serve,src}) styles/styles.css -->
+	<!-- build:css({.tmp/site,site}) styles/styles.css -->
 	<!-- inject:styles:css -->
 	<!-- css files will be automatically insert here -->
 	<!-- endinject -->
 	<!-- endbuild -->
 </head>
 <body>
-	<!--[if lt IE 10]>
-		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
-	{{> cover}}
 	<div class="container posts">
-		[[POSTS]]
+
 	</div>
 
 	<script>
@@ -41,20 +36,17 @@
 
 	</script>
 
-
-	<!-- build:js(src) scripts/vendor.js -->
-	<!-- bower:js -->
-	<!-- run `gulp inject` to automatically populate bower script dependencies -->
-	<!-- endbower -->
+	<!-- build:js(site) scripts/vendor.js -->
+	<script src="bower_components/highlight/src/highlight.js"></script>
 	<!-- endbuild -->
 
 
-	<!-- build:js(src) scripts/scripts.js -->
+	<!-- build:js(site) scripts/scripts.js -->
 	<!-- inject:scripts:js -->
 	<!-- js files will be automatically insert here -->
 	<!-- endinject -->
 	<!-- endbuild -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 </body>
 </html>
