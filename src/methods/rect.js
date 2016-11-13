@@ -4,6 +4,8 @@ var Phaser = require('phaser');
 var {game} = require('../scope');
 
 module.exports = function $rect(options){
+	if(typeof options=='number') options = {size:options};
+
 	var defaults = {
 		x:0,
 		y:0,
