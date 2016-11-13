@@ -12,6 +12,10 @@
   "devDependencies": {
     "babel-loader": "^5.3.2",
     "browser-sync": "^2.12.8",
+    "gulp-markdown": "^1.2.0",
+    "gulp-template": "^4.0.0",
+    "highlight.js": "^9.0.0",
+    "gulp-cheerio": "^0.6.2",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bump": "^2.1.0",

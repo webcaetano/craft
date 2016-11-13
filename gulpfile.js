@@ -21,6 +21,7 @@ _.each([
 	'inject.js',
 	'build.js',
 	'github.js',
+	'site.js',
 	'watch.js',
 	'server.js',
 ],function(file){
