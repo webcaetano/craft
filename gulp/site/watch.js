@@ -13,7 +13,7 @@ module.exports = function(options) {
 
 		gulp.watch([
 			'site/index.tpl',
-			'site/partials/**/*.tpl',
+			'site/partials/**/*.{md,tpl}',
 
 			'docs/**/*.md',
 		], gulp.series('fullReload:site'));

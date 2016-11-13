@@ -56,6 +56,7 @@ module.exports = function(options) {
 
 				callback(null,file);
 			}))
+			.pipe($.if(main, $.replace('<base href="../../../">', '')))
 			.pipe($.rename(function (path) {
 				path.extname = ".html"
 				if(main) path.basename = "index"

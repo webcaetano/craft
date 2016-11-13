@@ -15,7 +15,7 @@
 			print(`<div class="menu-tab selected">${val}</div>
 			`);
 		} else {
-			print(`<a href=""><div class="menu-tab">${val}</div></a>
+			print(`<a href="/docs/methods/${val}"><div class="menu-tab">${val}</div></a>
 			`);
 		}
 	})
@@ -28,7 +28,7 @@
 			print(`<div class="menu-tab selected">${val}</div>
 			`);
 		} else {
-			print(`<a href=""><div class="menu-tab">${val}</div></a>
+			print(`<a href="/docs/prototypes/${val}"><div class="menu-tab">${val}</div></a>
 			`);
 		}
 	})
