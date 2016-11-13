@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<base href="../../">
+	<!-- <base href="../../"> -->
 	<meta charset="utf-8">
 	<title>WebCaetano</title>
 	<meta name="description" content="">
