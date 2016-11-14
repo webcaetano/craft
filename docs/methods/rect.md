@@ -17,7 +17,7 @@ Create Phaser rectangle shape graphic
   - `stroke` <Object>
     - `size` <Number> Stoke size. Leave 0 to disable stroke. Default `0`
     - `color` <String> Stroke color in '#FFFFFF' or '0xFFFFFF' format
-    - `alpha` <Alpha> Stroke alpha
+    - `alpha` <Number> Stroke alpha
 
 #### Example:
 

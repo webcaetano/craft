@@ -1,6 +1,6 @@
 .posts{
 	background-color: #fff;
-	h1, h2, h3, h4, h5 {
+	h1, h2, h3 {
 		.font-mont;
 		position: relative;
 		font-size: 3em;
@@ -44,7 +44,7 @@
 			height: 1px;
 			bottom: 0;
 			left: 0;
-			background-color: lighten(@color3, 50%);
+			background-color: lighten(@color3, 10%);
 		}
 	}
 
@@ -68,6 +68,13 @@
 		.round(3px);
 	}
 
+	pre {
+		background-color:transparent;
+		padding: initial;
+		border: initial;
+		border-radius: initial;
+	}
+
 	.font-open;
 	font-size: 1em;
 	color: #5D5D5D;
@@ -83,6 +90,10 @@
 		&.fa-github {
 			font-size: 1.4em;
 		}
+	}
+
+	.paramter-type {
+		color:#B30015;
 	}
 
 	.post-header {

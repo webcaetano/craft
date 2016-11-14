@@ -2,7 +2,7 @@
 
 Align object in stage
 
-#### .$align(width[string],height[string])
+#### .$align(width,height)
 
 - `width` <String> Width can be (null, left, center, right)
 - `height` <String> Height can be (null, top, center, bot)

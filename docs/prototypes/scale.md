@@ -3,7 +3,7 @@
 The scale factor of the object.
 If used only one parameter it will change both (x,y)
 
-#### .$scale(x[number],y[number])
+#### .$scale(x,y)
 
 - `x` <Number> Scale x
 - `y` <Number> Scale y
