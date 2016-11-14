@@ -3,36 +3,28 @@ var bindProto = require('../protos');
 var Phaser = require('phaser');
 var {game} = require('../scope');
 
-module.exports = function $rect(options){
+module.exports = function $circle(options){
+	if(typeof options=='number') options = {size:options};
+
 	var defaults = {
 		x:0,
 		y:0,
 		group:undefined,
 		fill:'#ff0000',
-		width:100,
-		height:100,
-		size:0,
+		size:10,
 		alpha:1,
-		round:0,
 		stroke:{
 			size:0,
-			color:'#000000',
+			color:'#000',
 			alpha:1,
 		},
 	};
 	options = utils.extend({},defaults,options);
 	var tmpG = game.add.graphics(options.x,options.y,options.group);
 
-	if(options.size) options.height = options.width = options.size;
-
 	bindProto(tmpG,'graphic')
 
 	if(options.fill) tmpG.beginFill(utils.colorCase(options.fill),options.alpha);
 	if(options.stroke.size>0) tmpG.lineStyle(options.stroke.size,utils.colorCase(options.stroke.color),options.stroke.alpha);
-
-	if(options.round===0){
-		return tmpG.drawRect(0,0,options.width,options.height)
-	} else {
-		return tmpG.drawRoundedRect(0,0,options.width,options.height,options.round)
-	}
+	return tmpG.drawCircle(0,0,options.size)
 }

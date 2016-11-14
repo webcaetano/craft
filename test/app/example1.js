@@ -21,5 +21,7 @@ module.exports = function(game,scope,rootScope){
 		y:150
 	});
 
+	// group.$set('x',200)
+
 	group.$scale(1.5);
 }

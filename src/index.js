@@ -11,30 +11,30 @@ module.exports = function $craft(game){
 	scope.game = game;
 
 	self.$sprite =
-	self.$s =require('./objects/sprite');
+	self.$s =require('./methods/sprite');
 
-	self.$tileSprite = require('./objects/tileSprite');
+	self.$tileSprite = require('./methods/tileSprite');
 
 	self.$text =
-	self.$t = require('./objects/text');
+	self.$t = require('./methods/text');
 
 	self.$circle =
-	self.$c = require('./objects/circle');
+	self.$c = require('./methods/circle');
 
-	self.$graphic = require('./objects/graphic');
+	self.$graphic = require('./methods/graphic');
 
 	self.$dot =
-	self.$d = require('./objects/dot');
+	self.$d = require('./methods/dot');
 
 	self.$rect =
-	self.$box = require('./objects/rect');
+	self.$box = require('./methods/rect');
 
 	self.$group =
-	self.$g = require('./objects/group');
+	self.$g = require('./methods/group');
 
-	self.$shape = require('./objects/shape');
+	self.$shape = require('./methods/shape');
 
-	self.$stroke = require('./objects/stroke');
+	self.$stroke = require('./methods/stroke');
 
 	return self;
 }

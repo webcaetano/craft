@@ -28,7 +28,7 @@ var strokeBmd = function(key, options){
 	return bmd;
 }
 
-module.exports = function $shape(source, frame=undefined, options){
+module.exports = function $stoke(source, frame=undefined, options){
 	if(typeof frame==='object') {
 		var tmpVar = options;
 		options = frame ? frame : {};

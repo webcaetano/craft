@@ -215,8 +215,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		var frame = arguments.length <= 2 || arguments[2] === undefined ? undefined : arguments[2];
 
 		var source = game.make.sprite(0, 0, key, frame);
-		var anchor = { x: source.anchor.x, y: source.anchor.y };
-		var scale = { x: source.scale.x, y: source.scale.y };
 
 		var color = Phaser.Color.hexToColor(colorHex);
 
@@ -226,7 +224,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		var bmd = texture;
 		bmd.blendDestinationAtop();
 		bmd.draw(source, 0, 0, source.texture.crop.width, source.texture.crop.height);
-		bmd.pendingDestroy = true;
 
 		source.pendingDestroy = true;
 
@@ -5136,6 +5133,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var game = _require.game;
 
 	module.exports = function $circle(options) {
+		if (typeof options == 'number') options = { size: options };
+
 		var defaults = {
 			x: 0,
 			y: 0,
@@ -5230,6 +5229,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var game = _require.game;
 
 	module.exports = function $rect(options) {
+		if (typeof options == 'number') options = { size: options };
+
 		var defaults = {
 			x: 0,
 			y: 0,
@@ -5310,12 +5311,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var $sprite = __webpack_require__(5);
 
-	module.exports = function $shape(source, options) {
-		if (typeof options == 'string') options = { frame: options };
+	module.exports = function $shape(source, frame, options) {
+		if (frame === undefined) frame = undefined;
+
+		if (typeof frame === 'object') {
+			var tmpVar = options;
+			options = frame ? frame : {};
+			frame = tmpVar;
+		}
+
 		var defaults = {
+			frame: frame,
 			x: 0,
 			y: 0,
-			frame: undefined,
 			group: undefined,
 			cache: true,
 			color: '#FF0000'
@@ -5329,7 +5337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			bmd.generateTexture(key);
 			bmd.pendingDestroy = true;
 		} else if (!options.cache) {
-			key = colorShapeBmd(sourcee, options.color, options.frame);
+			key = colorShapeBmd(source, options.color, options.frame);
 		}
 
 		return $sprite(key, _.omit(options, ['cache', 'frame']));
@@ -5372,11 +5380,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		return bmd;
 	};
 
-	module.exports = function $stroke(source, options) {
+	module.exports = function $shape(source, frame, options) {
+		if (frame === undefined) frame = undefined;
+
+		if (typeof frame === 'object') {
+			var tmpVar = options;
+			options = frame ? frame : {};
+			frame = tmpVar;
+		}
+
 		var defaults = {
+			frame: frame,
 			x: 0,
 			y: 0,
-			frame: undefined,
 			group: undefined,
 			cache: true,
 			size: 1,

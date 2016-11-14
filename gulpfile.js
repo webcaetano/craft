@@ -22,6 +22,15 @@ _.each([
 	'build.js',
 	'github.js',
 	'watch.js',
+
+	'site/markdown.js',
+	'site/styles.js',
+	'site/scripts.js',
+	'site/inject.js',
+	'site/template.js',
+	'site/build.js',
+	'site/watch.js',
+
 	'server.js',
 ],function(file){
 	require('./gulp/' + file)(options);

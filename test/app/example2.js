@@ -17,6 +17,11 @@ module.exports = function(game,scope,rootScope){
 	.$align('center','center')
 	.$into(group)
 
+	// var rect = craft.$rect(50)
+	// .$into(group)
+
+	// var rect = craft.$circle(50)
+	// .$into(group)
 
 	var ball = craft.$circle({
 		fill:'#ffffff',
