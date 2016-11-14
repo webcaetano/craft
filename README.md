@@ -86,6 +86,9 @@ var ball = craft.$circle({ //create circle
 var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 ```
 
+## Documentation 
+
+[http://webcaetano.github.io/craft](http://webcaetano.github.io/craft)
 
 #### See Also
 - [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
