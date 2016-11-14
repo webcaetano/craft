@@ -1,13 +1,11 @@
 <div class="menu">
-	<%
-		if(home){
-			print(`<div class="menu-tab menu-main selected">Home</div>
-			`);
-		} else {
-			print(`<a href="/"><div class="menu-tab menu-main">Home</div></a>
-			`);
-		}
-	%>
+	<div class="menu-logo" align="center">
+		<a href="/"><div class="logo-container">
+			<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
+		</div>
+		<dir class="menu-logo-name">Craft</dir></a>
+	</div>
+
 	<div class="menu-header">Methods</div>
 	<%
 	_.each(methods,function(val,i){
@@ -25,10 +23,12 @@
 	<%
 	_.each(prototypes,function(val,i){
 		if(name==val){
-			print(`<div class="menu-tab selected">${val}</div>
+			print(`<div class="menu-tab selected">.$${val}</div>
 			`);
 		} else {
-			print(`<a href="/docs/prototypes/${val}"><div class="menu-tab">${val}</div></a>
+			print(`<a href="/docs/prototypes/${val}">
+			<div class="menu-tab">.$${val}</div>
+			</a>
 			`);
 		}
 	})

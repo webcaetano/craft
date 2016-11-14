@@ -7,4 +7,48 @@
 	bottom: 0;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	.menu-tab {
+		height: 35px;
+		line-height: 35px;
+		color:#FFF;
+		&.selected{
+			background-color: #B50000;
+			color: #fff;
+		}
+	}
+
+	.menu-header {
+		font-weight: bold;
+		color:#fff;
+		height: 40px;
+		font-size: 1.25em;
+		line-height: 40px;
+		background-color:#535353;
+		margin-bottom: 10px;
+	}
+
+	.menu-logo {
+		margin-top: 15px;
+		img {
+			width: 80px;
+			height: auto;
+		}
+
+		.logo-container {
+			display: inline-block;
+			width: 100%;
+		}
+		.menu-logo-name {
+			color: #fff;
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			font-size: 1em;
+			padding-left: 0;
+		}
+	}
+
+	.menu-tab, .menu-header {
+		padding-left: 15px;
+	}
 }
