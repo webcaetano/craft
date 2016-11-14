@@ -12,17 +12,30 @@ var $ = require('gulp-load-plugins')({
 module.exports = function(options) {
 	function markdown(files,dest,folder,env){
 		return function markdown(){
-			return gulp.src(files)
+			var stream = gulp.src(files)
 			.pipe($.markdown({
 				highlight: function(code) {
 					return require('highlight.js').highlightAuto(code).value;
 				},
 				header: true
-			}))
-			.pipe($.cheerio(function ($$, file) {
+			}));
+
+			_.each([
+				'String',
+				'Number',
+				'Boolean',
+				'Object',
+				'Array',
+				'Phaser.Group',
+			],function(val,i){
+				stream.pipe($.replace(new RegExp("<"+val+">",'g'), "<span class='paramter-type'>&lt;"+val+"&gt;</span>"))
+			})
+
+			stream.pipe($.cheerio(function ($$, file) {
 				// var firstTitle = $$('h1').eq(0).text();
 				// if(!firstTitle) firstTitle=path.basename(file.path,path.extname(file.path));
 				var firstTitle=path.basename(file.path,path.extname(file.path));
+
 				file.path = path.join(path.dirname(file.path),
 					folder,
 					firstTitle.replace(/[\$|\.]/g,''),
@@ -33,6 +46,8 @@ module.exports = function(options) {
 			// 	return env=='dist'
 			// }, $.replace('src="images/', 'src="../src/images/')))
 			.pipe(gulp.dest(dest));
+
+			return stream;
 		}
 	}
 
