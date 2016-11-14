@@ -11,6 +11,8 @@ Create Phaser Sprite
   - `frame` <Number> Phaser sprite frame
   - `group` <Number> Phaser group
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript

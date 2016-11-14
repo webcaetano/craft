@@ -19,6 +19,8 @@ Create Phaser rectangle shape graphic
     - `color` <String> Stroke color in '#FFFFFF' or '0xFFFFFF' format
     - `alpha` <Number> Stroke alpha
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript

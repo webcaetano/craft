@@ -14,6 +14,7 @@ Create Phaser Tile Sprite
 - `width` Width
 - `height` Height
 
+<!-- protosTpl -->
 
 #### Example:
 

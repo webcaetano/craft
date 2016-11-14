@@ -15,6 +15,19 @@ var $ = require('gulp-load-plugins')({
 module.exports = function(options) {
 	var siteDist = 'siteDist';
 
+	var methodsProtos = {
+		circle:'graphic',
+		dot:'graphic',
+		graphic:'graphic',
+		rect:'graphic',
+		group:'group',
+		sprite:'sprite',
+		stroke:'sprite',
+		shape:'sprite',
+		tileSprite:'sprite',
+		text:'text',
+	}
+
 	var protoSetup = require('./../../src/setup');
 
 	var methods = _.map(glob.sync('src/methods/*.js'),function(file){
@@ -39,16 +52,30 @@ module.exports = function(options) {
 				var folders = pathData.dir.split('/');
 				var lastFolder = _.last(folders);
 
+				if(_.nth(folders,-2)=='methods'){
+					var protosList = _.map(_.keys(protoSetup[methodsProtos[lastFolder]]),function(val,i){
+						return val.replace(/\$/g,'');
+					});
+
+					var protosTpl = _.template(String(fs.readFileSync('site/partials/protoList.tpl')))({
+						protosList,
+					});
+				} else {
+					var protosTpl = ''
+				}
+
+
 				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
 					methods,
 					prototypes,
+					version:pkg.version,
 					home:main,
 					name:lastFolder,
 				});
 
 				var content = _.template(String(file.contents)
 				.replace(/<!-- protosTpl -->/g,"<%=protosTpl%>"))({
-					protosTpl:''
+					protosTpl:protosTpl
 				});
 
 				var newContent = _.template(template)({
@@ -56,8 +83,8 @@ module.exports = function(options) {
 					menu,
 					footer,
 					version:pkg.version,
-					protoSetup,
 				});
+					protoSetup,
 				file.contents = new Buffer(newContent);
 
 				callback(null,file);

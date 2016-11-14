@@ -3,7 +3,7 @@
 		<a href="/"><div class="logo-container">
 			<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
 		</div>
-		<dir class="menu-logo-name">Craft</dir></a>
+		<dir class="menu-logo-name">Craft <%=version%></dir></a>
 	</div>
 
 	<div class="menu-header">Methods</div>

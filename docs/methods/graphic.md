@@ -9,6 +9,8 @@ Create Phaser Graphic Object
   - `y` <Number> Position y
   - `group` Phaser group
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript

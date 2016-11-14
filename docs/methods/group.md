@@ -6,6 +6,8 @@ Create Phaser Group
 
 - `options` <Object>
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript

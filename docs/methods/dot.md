@@ -8,6 +8,8 @@ Create a dot (useful for add location indications and debugging)
 - `color` <String> Fill color in '#FFFFFF' or '0xFFFFFF' format.
 - `options` <Object>
 
+<!-- protosTpl -->
+
 #### Example:
 
 ```javascript
