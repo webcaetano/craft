@@ -8,7 +8,8 @@
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<!-- build:css(./) styles/vendor.css -->
 	<link rel="stylesheet" type="text/css" href="/bower_components/highlight/src/styles/monokai.css">
@@ -21,11 +22,16 @@
 	<!-- endbuild -->
 </head>
 <body>
-	<%= menu %>
-	<div class="container posts">
-		<%= content %>
+	<div class="all">
+		<%= menu %>
+		<div class="mid">
+			<div class="container posts">
+				<%= content %>
+
+			</div>
+			<%= footer %>
+		</div>
 	</div>
-	<%= footer %>
 
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

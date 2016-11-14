@@ -6,6 +6,7 @@ var path = require('path');
 var _ = require('lodash');
 var glob = require('glob');
 var fs = require('fs');
+var pkg = JSON.parse(fs.readFileSync(path.join(__dirname,'../../package.json')));
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'del']
@@ -26,12 +27,12 @@ module.exports = function(options) {
 	});
 
 	function templating(files,folder,main=false){
-		var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
-		var footer = _.template(String(fs.readFileSync('site/partials/footer.tpl')))({
-		});
-
-
 		return function tpl(){
+			var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
+			var footer = _.template(String(fs.readFileSync('site/partials/footer.tpl')))({
+				version:pkg.version,
+			});
+
 			return gulp.src(files)
 			.pipe(through.obj(function (file, enc, callback) {
 				var pathData = path.parse(file.path);
@@ -54,6 +55,7 @@ module.exports = function(options) {
 					content,
 					menu,
 					footer,
+					version:pkg.version,
 					protoSetup,
 				});
 				file.contents = new Buffer(newContent);
