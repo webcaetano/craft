@@ -39,11 +39,12 @@ module.exports = function(options) {
 		return p.name;
 	});
 
-	function templating(files,folder,templateDir,main=false){
+	function templating(files,folder,templateDir,init='',main=false){
 		return function tpl(){
 			var template = String(fs.readFileSync(templateDir));
 			var footer = _.template(String(fs.readFileSync('site/partials/footer.tpl')))({
 				version:pkg.version,
+				init,
 			});
 
 			return gulp.src(files)
@@ -59,6 +60,7 @@ module.exports = function(options) {
 
 					var protosTpl = _.template(String(fs.readFileSync('site/partials/protoList.tpl')))({
 						protosList,
+						init,
 					});
 				} else {
 					var protosTpl = ''
@@ -67,6 +69,7 @@ module.exports = function(options) {
 
 				var menu = _.template(String(fs.readFileSync('site/partials/menu.tpl')))({
 					methods,
+					init,
 					prototypes,
 					version:pkg.version,
 					home:main,
@@ -81,6 +84,7 @@ module.exports = function(options) {
 				var newContent = _.template(template)({
 					content,
 					menu,
+					init,
 					footer,
 					version:pkg.version,
 				});
@@ -110,10 +114,12 @@ module.exports = function(options) {
 		{
 			dest:'siteDist',
 			name:':dist',
+			init:'',
 			template:'siteDist/injected.tpl'
 		},
 		{
 			dest:options.tmp + '/site',
+			init:'',
 			name:'',
 			template:options.tmp + '/site/injected.tpl'
 		},
@@ -121,19 +127,22 @@ module.exports = function(options) {
 		gulp.task('template:methods'+val.name,gulp.series(templating(
 			options.tmp + '/site/docs/methods/**/*.html',
 			val.dest+'/docs/methods/',
-			val.template
+			val.template,
+			val.init
 		)))
 
 		gulp.task('template:prototypes'+val.name,gulp.series(templating(
 			options.tmp + '/site/docs/prototypes/**/*.html',
 			val.dest+'/docs/prototypes/',
-			val.template
+			val.template,
+			val.init
 		)))
 
 		gulp.task('template:mainPage'+val.name,gulp.series(templating(
 			options.tmp + '/site/partials/main.html',
 			val.dest+'/',
 			val.template,
+			val.init,
 			true
 		)))
 

@@ -4,7 +4,7 @@
 		<%
 		var resp = "";
 		_.each(protosList,function(val,i){
-			resp+=`<a href="/docs/prototypes/${val}"><div class="proto-tag">.$${val}</div></a>
+			resp+=`<a href="${init}docs/prototypes/${val}"><div class="proto-tag">.$${val}</div></a>
 			`;
 		})
 		print(resp);
