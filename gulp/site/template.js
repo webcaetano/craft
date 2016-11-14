@@ -39,9 +39,9 @@ module.exports = function(options) {
 		return p.name;
 	});
 
-	function templating(files,folder,main=false){
+	function templating(files,folder,templateDir,main=false){
 		return function tpl(){
-			var template = String(fs.readFileSync(options.tmp + '/site/injected.tpl'));
+			var template = String(fs.readFileSync(templateDir));
 			var footer = _.template(String(fs.readFileSync('site/partials/footer.tpl')))({
 				version:pkg.version,
 			});
@@ -106,29 +106,44 @@ module.exports = function(options) {
 		],{force:true});
 	});
 
+	_.each([
+		{
+			dest:'siteDist',
+			name:':dist',
+			template:'siteDist/injected.tpl'
+		},
+		{
+			dest:options.tmp + '/site',
+			name:'',
+			template:options.tmp + '/site/injected.tpl'
+		},
+	],function(val,i){
+		gulp.task('template:methods'+val.name,gulp.series(templating(
+			options.tmp + '/site/docs/methods/**/*.html',
+			val.dest+'/docs/methods/',
+			val.template
+		)))
 
-	gulp.task('template:methods',gulp.series(templating(
-		options.tmp + '/site/docs/methods/**/*.html',
-		options.tmp + '/site/docs/methods/'
-	)))
+		gulp.task('template:prototypes'+val.name,gulp.series(templating(
+			options.tmp + '/site/docs/prototypes/**/*.html',
+			val.dest+'/docs/prototypes/',
+			val.template
+		)))
 
-	gulp.task('template:prototypes',gulp.series(templating(
-		options.tmp + '/site/docs/prototypes/**/*.html',
-		options.tmp + '/site/docs/prototypes/'
-	)))
+		gulp.task('template:mainPage'+val.name,gulp.series(templating(
+			options.tmp + '/site/partials/main.html',
+			val.dest+'/',
+			val.template,
+			true
+		)))
 
-	gulp.task('template:mainPage',gulp.series(templating(
-		options.tmp + '/site/partials/main.html',
-		options.tmp + '/site/',
-		true
-	)))
+		gulp.task('template'+val.name,gulp.series(
+			'clean:siteTmp',
+			'markdown',
+			'template:mainPage'+val.name,
+			'template:methods'+val.name,
+			'template:prototypes'+val.name
+		));
+	})
 
-	gulp.task('template',gulp.series(
-		'clean:siteTmp',
-		'inject:site',
-		'markdown',
-		'template:mainPage',
-		'template:methods',
-		'template:prototypes'
-	));
 };

@@ -9,27 +9,36 @@ var $ = require('gulp-load-plugins')({
 
 module.exports = function(options) {
 	var dist = 'siteDist';
-	gulp.task('html:site', gulp.series('template', function () {
-		return gulp.src(options.tmp + '/site/index.html')
+	gulp.task('html:site', gulp.series('inject:site',function () {
+		return gulp.src(options.tmp + '/site/injected.tpl')
 			.pipe($.useref())
 			.pipe($.if('*.html', $.replace('bower_components', '../bower_components')))
 			.pipe($.if('*.js', $.preprocess({context: {dist: true}})))
 			.pipe($.if('*.js', $.uglify()))
 			.pipe($.if('*.css', $.cssmin()))
+			.pipe($.if('*.js',gulp.dest(dist+'/')))
 			.pipe(gulp.dest(dist+'/'))
 			.pipe($.size({ title: dist+'/', showFiles: true }));
-	}));
+	},'template:dist'));
 
-	// gulp.task('other', function () {
-	// 	return gulp.src([
-	// 		// options.src + '/favicon.ico',
-	// 	])
-	// 	.pipe(gulp.dest(options.dist + '/'));
-	// });
+	gulp.task('copy:docs', function () {
+		return gulp.src([
+			// options.src + '/favicon.ico',
+			options.tmp + '/site/docs/**/*.html',
+		])
+		.pipe(gulp.dest('siteDist/docs'));
+	});
+
 	gulp.task('clean:siteDist', function (done) {
 		return $.del([
 			dist+'/',
 			// options.tmp + '/site/'
+		],{force:true});
+	});
+
+	gulp.task('clean:tpl:dist', function (done) {
+		return $.del([
+			dist+'/**/*.tpl',
 		],{force:true});
 	});
 
@@ -38,10 +47,12 @@ module.exports = function(options) {
 		gulp.parallel(
 			'html:site'
 			// 'other'
-		)
+		),
+		'clean:tpl:dist'
+		// 'copy:docs'
 	));
 
-	gulp.task('deploy:site',function(done){
+	gulp.task('deploy:site',gulp.series('build:site',function(done){
 		var c = [
 			'cd '+dist,
 			'git init',
@@ -51,7 +62,7 @@ module.exports = function(options) {
 		].join(" && ")
 		console.log(exec(c));
 		done();
-	});
+	}));
 
-	gulp.task('deploy:site:build',gulp.series('build:site','deploy:site'))
+	// gulp.task('deploy:site:build',gulp.series('build:site','deploy:site'))
 };
