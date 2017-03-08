@@ -10,31 +10,63 @@ module.exports = function $craft(game){
 
 	scope.game = game;
 
-	self.$sprite =
-	self.$s =require('./methods/sprite');
+	return _.reduce([
+		{
+			name:'$sprite',
+			method:require('./methods/sprite'),
+			aliases:['$s'],
+		},
+		{
+			name:'$tileSprite',
+			method:require('./methods/tileSprite'),
+		},
+		{
+			name:'$text',
+			method:require('./methods/text'),
+			aliases:['$t'],
+		},
+		{
+			name:'$circle',
+			method:require('./methods/circle'),
+			aliases:['$t'],
+		},
+		{
+			name:'$graphic',
+			method:require('./methods/graphic'),
+			aliases:['$t'],
+		},
+		{
+			name:'$dot',
+			method:require('./methods/dot'),
+			aliases:['$d'],
+		},
+		{
+			name:'$rect',
+			method:require('./methods/rect'),
+			aliases:['$box'],
+		},
+		{
+			name:'$group',
+			method:require('./methods/group'),
+			aliases:['$g'],
+		},
+		{
+			name:'$shape',
+			method:require('./methods/shape'),
+		},
+		{
+			name:'$stroke',
+			method:require('./methods/stroke'),
+		},
+	],function(self,val,i){
+		var method = self[val.name] = val.method;
 
-	self.$tileSprite = require('./methods/tileSprite');
+		if(val.aliases){
+			_.each(val.aliases,function(alias){
+				self[alias] = method;
+			});
+		}
 
-	self.$text =
-	self.$t = require('./methods/text');
-
-	self.$circle =
-	self.$c = require('./methods/circle');
-
-	self.$graphic = require('./methods/graphic');
-
-	self.$dot =
-	self.$d = require('./methods/dot');
-
-	self.$rect =
-	self.$box = require('./methods/rect');
-
-	self.$group =
-	self.$g = require('./methods/group');
-
-	self.$shape = require('./methods/shape');
-
-	self.$stroke = require('./methods/stroke');
-
-	return self;
+		return self;
+	},self)
 }
