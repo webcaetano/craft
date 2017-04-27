@@ -30,7 +30,7 @@ module.exports = function $text(text,options){
 				options.size+"px",
 				options.font,
 			].join(" "),
-			align:'center',
+			align:options.align,
 			fill:options.color,
 			stroke:options.stroke.color,
 			strokeThickness:options.stroke.size,

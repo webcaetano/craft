@@ -68,27 +68,54 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		scope.game = game;
 
-		self.$sprite = self.$s = __webpack_require__(5);
+		return _.reduce([{
+			name: '$sprite',
+			method: __webpack_require__(5),
+			aliases: ['$s']
+		}, {
+			name: '$tileSprite',
+			method: __webpack_require__(19)
+		}, {
+			name: '$text',
+			method: __webpack_require__(20),
+			aliases: ['$t']
+		}, {
+			name: '$circle',
+			method: __webpack_require__(21),
+			aliases: ['$t']
+		}, {
+			name: '$graphic',
+			method: __webpack_require__(22),
+			aliases: ['$t']
+		}, {
+			name: '$dot',
+			method: __webpack_require__(23),
+			aliases: ['$d']
+		}, {
+			name: '$rect',
+			method: __webpack_require__(24),
+			aliases: ['$box']
+		}, {
+			name: '$group',
+			method: __webpack_require__(25),
+			aliases: ['$g']
+		}, {
+			name: '$shape',
+			method: __webpack_require__(26)
+		}, {
+			name: '$stroke',
+			method: __webpack_require__(27)
+		}], function (self, val, i) {
+			var method = self[val.name] = val.method;
 
-		self.$tileSprite = __webpack_require__(19);
+			if (val.aliases) {
+				_.each(val.aliases, function (alias) {
+					self[alias] = method;
+				});
+			}
 
-		self.$text = self.$t = __webpack_require__(20);
-
-		self.$circle = self.$c = __webpack_require__(21);
-
-		self.$graphic = __webpack_require__(22);
-
-		self.$dot = self.$d = __webpack_require__(23);
-
-		self.$rect = self.$box = __webpack_require__(24);
-
-		self.$group = self.$g = __webpack_require__(25);
-
-		self.$shape = __webpack_require__(26);
-
-		self.$stroke = __webpack_require__(27);
-
-		return self;
+			return self;
+		}, self);
 	};
 
 /***/ },
@@ -160,7 +187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	module.exports = "1.5.1";
+	module.exports = "1.5.2";
 
 /***/ },
 /* 5 */
@@ -505,7 +532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		var tmpObj = game.add.text(0, 0, text, {
 			font: [options.bold ? 'bold' : '', options.size + "px", options.font].join(" "),
-			align: 'center',
+			align: options.align,
 			fill: options.color,
 			stroke: options.stroke.color,
 			strokeThickness: options.stroke.size
@@ -778,7 +805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		return bmd;
 	};
 
-	module.exports = function $shape(source, frame, options) {
+	module.exports = function $stoke(source, frame, options) {
 		if (frame === undefined) frame = undefined;
 
 		if (typeof frame === 'object') {
