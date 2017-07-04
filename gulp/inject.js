@@ -4,8 +4,6 @@ var gulp = require('gulp');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')();
 
-var wiredep = require('wiredep').stream;
-
 module.exports = function(options) {
 	gulp.task('inject', gulp.series('scripts','scripts:test', function inject() {
 		var wiredepOptions = {
@@ -42,7 +40,6 @@ module.exports = function(options) {
 					addRootSlash: false
 				}
 			))
-			.pipe(wiredep(wiredepOptions))
 			.pipe(gulp.dest(options.tmp + '/serve'));
 	}));
 };
