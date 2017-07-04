@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("Phaser"), require("_"));
+		module.exports = factory(require("Phaser"));
 	else if(typeof define === 'function' && define.amd)
-		define(["Phaser", "_"], factory);
+		define(["Phaser"], factory);
 	else if(typeof exports === 'object')
-		exports["$craft"] = factory(require("Phaser"), require("_"));
+		exports["craft"] = factory(require("Phaser"));
 	else
-		root["$craft"] = factory(root["Phaser"], root["_"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_9__) {
+		root["craft"] = factory(root["Phaser"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -74,37 +74,37 @@ return /******/ (function(modules) { // webpackBootstrap
 			aliases: ['$s']
 		}, {
 			name: '$tileSprite',
-			method: __webpack_require__(19)
+			method: __webpack_require__(17)
 		}, {
 			name: '$text',
-			method: __webpack_require__(20),
+			method: __webpack_require__(18),
 			aliases: ['$t']
 		}, {
 			name: '$circle',
-			method: __webpack_require__(21),
+			method: __webpack_require__(19),
 			aliases: ['$t']
 		}, {
 			name: '$graphic',
-			method: __webpack_require__(22),
+			method: __webpack_require__(20),
 			aliases: ['$t']
 		}, {
 			name: '$dot',
-			method: __webpack_require__(23),
+			method: __webpack_require__(21),
 			aliases: ['$d']
 		}, {
 			name: '$rect',
-			method: __webpack_require__(24),
+			method: __webpack_require__(22),
 			aliases: ['$box']
 		}, {
 			name: '$group',
-			method: __webpack_require__(25),
+			method: __webpack_require__(23),
 			aliases: ['$g']
 		}, {
 			name: '$shape',
-			method: __webpack_require__(26)
+			method: __webpack_require__(24)
 		}, {
 			name: '$stroke',
-			method: __webpack_require__(27)
+			method: __webpack_require__(25)
 		}], function (self, val, i) {
 			var method = self[val.name] = val.method;
 
@@ -197,7 +197,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -266,51 +265,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var utils = __webpack_require__(6);
-	var _ = __webpack_require__(8);
 	var protoOptions = __webpack_require__(1);
 	var protos = {
-		$set: __webpack_require__(10),
-		$scale: __webpack_require__(11),
-		$tint: __webpack_require__(12),
-		$into: __webpack_require__(13),
-		$mid: __webpack_require__(14),
-		$copyPos: __webpack_require__(15),
-		$fixPos: __webpack_require__(16),
-		$add: __webpack_require__(17),
-		$align: __webpack_require__(18)
+		$set: __webpack_require__(8),
+		$scale: __webpack_require__(9),
+		$tint: __webpack_require__(10),
+		$into: __webpack_require__(11),
+		$mid: __webpack_require__(12),
+		$copyPos: __webpack_require__(13),
+		$fixPos: __webpack_require__(14),
+		$add: __webpack_require__(15),
+		$align: __webpack_require__(16)
 	};
 
 	module.exports = function bindProto(obj) {
 		var type = arguments.length <= 1 || arguments[1] === undefined ? 'sprite' : arguments[1];
 
-		_.each(protoOptions[type], function (val, funcName) {
-			if (!val || !protos[funcName]) return;
+		for (var funcName in protoOptions[type]) {
+			if (!protoOptions[type][funcName] || !protos[funcName]) continue;
+
 			obj[funcName] = protos[funcName];
-		});
+		}
 	};
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	if (false) {
-		var _ = require('./customLodash');
-	} else {
-		var _ = __webpack_require__(9);
-	}
-
-	module.exports = _;
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
-
-/***/ },
-/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -334,7 +313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -356,7 +335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 12 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -371,7 +350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -382,7 +361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -393,7 +372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -405,7 +384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -417,29 +396,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/* 15 */
+/***/ function(module, exports) {
 
-	'use strict';
-
-	var _ = __webpack_require__(8);
+	"use strict";
 
 	module.exports = function $add(objs) {
 		var self = this;
-		if (!_.isArray(objs)) objs = [objs];
-		_.each(objs, function (obj) {
+		if (!Array.isArray(objs)) objs = [objs];
+		objs.forEach(function (obj) {
 			self.add(obj);
 		});
 		return this;
 	};
 
 /***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/* 16 */
+/***/ function(module, exports) {
 
 	'use strict';
-
-	var utils = __webpack_require__(6);
 
 	module.exports = function () {
 		var a = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
@@ -467,7 +442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 19 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -500,14 +475,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 20 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -544,14 +518,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 21 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -584,14 +557,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 22 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -611,20 +583,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 23 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
-
-	var _require = __webpack_require__(2);
-
-	var game = _require.game;
-
-	var $circle = __webpack_require__(21);
+	var $circle = __webpack_require__(19);
 
 	module.exports = function $dot(size, fill, options) {
 		if (size === undefined) size = 5;
@@ -640,14 +605,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 24 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -690,14 +654,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 25 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -720,15 +683,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 26 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
-	var _ = __webpack_require__(8);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -755,29 +716,32 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		options = utils.extend({}, defaults, options);
 
-		var key = _.compact(['$fill', source, options.frame]).join('_');
+		var key = ['$fill', source, options.frame].filter(Boolean).join('_');
 
 		if (options.cache && !game.cache.checkImageKey(key)) {
 			var bmd = utils.colorShapeBmd(source, options.color, options.frame);
 			bmd.generateTexture(key);
+			key = bmd;
 			bmd.pendingDestroy = true;
 		} else if (!options.cache) {
-			key = colorShapeBmd(source, options.color, options.frame);
+			key = utils.colorShapeBmd(source, options.color, options.frame);
 		}
 
-		return $sprite(key, _.omit(options, ['cache', 'frame']));
+		var newAttr = Object.assign({}, options);
+		delete newAttr['cache'];
+		delete newAttr['frame'];
+
+		return $sprite(key, newAttr);
 	};
 
 /***/ },
-/* 27 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var utils = __webpack_require__(6);
-	var lodash = __webpack_require__(8);
 	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
 
 	var _require = __webpack_require__(2);
 
@@ -793,11 +757,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		var bmd = game.make.bitmapData(source.width + size * 2, source.height + size * 2);
 		var shape = utils.colorShapeBmd(key, options.color, options.frame);
 
-		_.times(size * 2 * (1 / pixel) + 1, function (i) {
-			_.times(size * 2 * (1 / pixel) + 1, function (k) {
+		for (var i = 0; i < size * 2 * (1 / pixel) + 1; i++) {
+			for (var k = 0; k < size * 2 * (1 / pixel) + 1; k++) {
 				bmd.draw(shape, i * pixel, k * pixel);
-			});
-		});
+			}
+		}
 
 		if (options.inside) bmd.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
 		source.pendingDestroy = true;
@@ -827,17 +791,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		options = utils.extend({}, defaults, options);
 
-		var key = _.compact(['$stoke', source, options.frame]).join('_');
+		var key = ['$stoke', source, options.frame].filter(Boolean).join('_');
 
 		if (options.cache && !game.cache.checkImageKey(key)) {
 			var bmd = strokeBmd(source, options);
 			bmd.generateTexture(key);
 			bmd.pendingDestroy = true;
+			key = bmd;
 		} else if (!options.cache) {
 			key = strokeBmd(options);
 		}
 
-		return $sprite(key, _.omit(options, ['cache', 'color', 'pixel', 'inside', 'frame', 'size']));
+		var newAttr = Object.assign({}, options);
+
+		['cache', 'color', 'pixel', 'inside', 'frame', 'size'].forEach(function (val) {
+			delete newAttr[val];
+		});
+
+		return $sprite(key, newAttr);
 	};
 
 /***/ }
