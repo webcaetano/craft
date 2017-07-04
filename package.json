@@ -9,9 +9,11 @@
     "build": "gulp build",
     "start": "gulp"
   },
+  "main": "build/craft.js",
   "devDependencies": {
     "babel-loader": "^5.3.2",
     "browser-sync": "^2.12.8",
+    "dat.gui": "git://github.com/webcaetano/dat.gui.git#3377e25f113e119d061e5fa738e142f93cd414b1",
     "del": "^2.2.0",
     "glob": "^7.1.1",
     "gulp": "github:gulpjs/gulp#4.0",

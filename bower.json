@@ -1,23 +1,7 @@
 {
 	"name": "phaser-craft",
 	"version": "1.5.1",
-	"dependencies": {},
-	"devDependencies": {
-		"phaser": "~2.4.3",
-    	"highlight": "~9.0.0",
-		"stats.js": "*",
-		"lodash": "~3.10.1",
-		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c",
-		"phaser-utils": "^1.1.2"
-	},
 	"main": "build/craft.js",
-	"externals": {
-		"phaser": "Phaser",
-		"lodash": "_",
-		"craft": "$craft",
-		"utils": "$utils",
-		"stats": "Stats"
-	},
 	"ignore": [
 		"**/.*",
 		"node_modules",
