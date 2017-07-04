@@ -25,6 +25,7 @@ module.exports = function $shape(source, frame=undefined, options){
 	if(options.cache && !game.cache.checkImageKey(key)){
 		var bmd = utils.colorShapeBmd(source, options.color, options.frame);
 		bmd.generateTexture(key);
+		key = bmd;
 		bmd.pendingDestroy = true;
 	} else if(!options.cache){
 		key = utils.colorShapeBmd(source, options.color, options.frame);

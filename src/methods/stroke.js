@@ -53,6 +53,7 @@ module.exports = function $stoke(source, frame=undefined, options){
 		var bmd = strokeBmd(source, options);
 		bmd.generateTexture(key);
 		bmd.pendingDestroy = true;
+		key = bmd;
 	} else if(!options.cache){
 		key = strokeBmd(options);
 	}
