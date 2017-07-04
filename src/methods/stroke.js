@@ -1,7 +1,5 @@
 var utils = require('../utils');
-var lodash = require('../lodash');
 var bindProto = require('../protos');
-var Phaser = require('phaser');
 var {game} = require('../scope');
 var $sprite = require('./sprite');
 
@@ -12,15 +10,15 @@ var strokeBmd = function(key, options){
 	var bmd = game.make.bitmapData(source.width+(size*2), source.height+(size*2));
 	var shape = utils.colorShapeBmd(key,options.color,options.frame);
 
-	_.times((size*2*(1/pixel))+1,function(i){
-		_.times((size*2*(1/pixel))+1,function(k){
+	for(var i=0;i<(size*2*(1/pixel))+1;i++){
+		for(var k=0;k<(size*2*(1/pixel))+1;k++){
 			bmd.draw(
 				shape,
 				(i*pixel),
 				(k*pixel)
 			)
-		});
-	});
+		}
+	}
 
 	if(options.inside) bmd.draw(source, size, size, source.texture.crop.width, source.texture.crop.height);
 	source.pendingDestroy = true;
@@ -49,7 +47,7 @@ module.exports = function $stoke(source, frame=undefined, options){
 	options = utils.extend({},defaults,options);
 
 
-	var key = _.compact(['$stoke',source,options.frame]).join('_');
+	var key = ['$stoke',source,options.frame].filter(Boolean).join('_');
 
 	if(options.cache && !game.cache.checkImageKey(key)){
 		var bmd = strokeBmd(source, options);
@@ -59,12 +57,18 @@ module.exports = function $stoke(source, frame=undefined, options){
 		key = strokeBmd(options);
 	}
 
-	return $sprite(key,_.omit(options,[
+	var newAttr = Object.assign({},options);
+
+	[
 		'cache',
 		'color',
 		'pixel',
 		'inside',
 		'frame',
 		'size',
-	]));
+	].forEach(function(val){
+		delete(newAttr[val]);
+	})
+
+	return $sprite(key,newAttr);
 }

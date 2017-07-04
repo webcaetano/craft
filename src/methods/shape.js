@@ -1,7 +1,5 @@
 var utils = require('../utils');
-var _ = require('../lodash');
 var bindProto = require('../protos');
-var Phaser = require('phaser');
 var {game} = require('../scope');
 var $sprite = require('./sprite');
 
@@ -22,19 +20,20 @@ module.exports = function $shape(source, frame=undefined, options){
 	};
 	options = utils.extend({},defaults,options);
 
-	var key = _.compact(['$fill',source,options.frame]).join('_')
+	var key = ['$fill',source,options.frame].filter(Boolean).join('_')
 
 	if(options.cache && !game.cache.checkImageKey(key)){
 		var bmd = utils.colorShapeBmd(source, options.color, options.frame);
 		bmd.generateTexture(key);
 		bmd.pendingDestroy = true;
 	} else if(!options.cache){
-		key = colorShapeBmd(source, options.color, options.frame);
+		key = utils.colorShapeBmd(source, options.color, options.frame);
 	}
 
 
-	return $sprite(key,_.omit(options,[
-		'cache',
-		'frame'
-	]));
+	var newAttr = Object.assign({},options);
+	delete(newAttr['cache']);
+	delete(newAttr['frame']);
+
+	return $sprite(key,newAttr);
 }

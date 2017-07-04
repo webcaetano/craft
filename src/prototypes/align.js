@@ -1,5 +1,3 @@
-var utils = require('../utils');
-
 module.exports = function(a=null,b=null){
 	if(a){
 		if(a=='left'){
