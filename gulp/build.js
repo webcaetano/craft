@@ -10,17 +10,7 @@ var $ = require('gulp-load-plugins')({
 });
 
 module.exports = function(options) {
-	gulp.task('build:js', gulp.series('scripts', function buildJS () {
-		return gulp.src(options.tmp + '/serve/app/index.js')
-			.pipe($.rename(function (path) {
-				path.basename = "craft-independent"
-			}))
-			.pipe(gulp.dest(options.dist + '/'))
-			.pipe($.size({ title: options.dist + '/', showFiles: true }));
-	}));
-
-
-	gulp.task('build-dependent:js', gulp.series('scripts:dependent', function buildDependent() {
+	gulp.task('build:js', gulp.series('scripts', function buildDependent() {
 		return gulp.src(options.tmp + '/serve/app/index.js')
 			.pipe($.rename(function (path) {
 				path.basename = "craft"
@@ -77,7 +67,7 @@ module.exports = function(options) {
 		return $.del(['examples/', options.tmp + '/']);
 	});
 
-	gulp.task('build',gulp.series('clean','clean:dist','build:js','build-dependent:js','mincopy:js'));
+	gulp.task('build',gulp.series('clean','clean:dist','build:js','mincopy:js'));
 	gulp.task('build:examples', gulp.series('clean','clean:examples','html:examples','copy:scripts:examples','copy:others:examples'));
 
 
