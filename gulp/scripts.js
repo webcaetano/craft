@@ -7,7 +7,20 @@ var fs = require('fs');
 var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
-	function wp(dependent, umd, src, dist, watch=null, callback=null, reload=null) {
+	function wp(craft, dependent, umd, src, dist, watch=null, callback=null, reload=null) {
+		var externals = {};
+
+		if(craft){
+			externals = JSON.parse(fs.readFileSync('./package.json','utf8')).externals;
+		} else {
+			externals = {
+				"phaser": "Phaser",
+				"craft": "$craft",
+				"utils": "$utils",
+				"stats": "Stats"
+			}
+		}
+
 		var webpackOptions = {
 			watch: watch,
 			cache: watch,
@@ -28,7 +41,7 @@ module.exports = function(options) {
 					__DEPENDENT__:dependent
 				})
 			],
-			externals: JSON.parse(fs.readFileSync('./bower.json','utf8')).externals,
+			externals,
 			output: { filename: 'index.js' }
 		};
 
@@ -65,23 +78,23 @@ module.exports = function(options) {
 	}
 
 	gulp.task('scripts', function () {
-		return wp(false, true, options.src + '/index.js',options.tmp + '/serve/app', false);
+		return wp(true, false, true, options.src + '/index.js',options.tmp + '/serve/app', false);
 	});
 
 	gulp.task('scripts:dependent', function () {
-		return wp(true, true, options.src + '/index.js',options.tmp + '/serve/app', false);
+		return wp(true, true, true, options.src + '/index.js',options.tmp + '/serve/app', false);
 	});
 
 	gulp.task('scripts:watch', function (callback) {
-		return wp(false, true, options.src + '/index.js',options.tmp + '/serve/app', true, callback, true);
+		return wp(true, false, true, options.src + '/index.js',options.tmp + '/serve/app', true, callback, true);
 	});
 
 	gulp.task('scripts:test', function () {
-		return wp(false, false, 'test/app/index.js',options.tmp + '/serve/test', false);
+		return wp(false, false, false, 'test/app/index.js',options.tmp + '/serve/test', false);
 	});
 
 	gulp.task('scripts:test:watch', function (callback) {
-		return wp(false, false, 'test/app/index.js',options.tmp + '/serve/test', true, callback, true);
+		return wp(false, false, false, 'test/app/index.js',options.tmp + '/serve/test', true, callback, true);
 	});
 };
 
