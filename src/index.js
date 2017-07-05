@@ -10,7 +10,7 @@ module.exports = function $craft(game){
 
 	scope.game = game;
 
-	return _.reduce([
+	return [
 		{
 			name:'$sprite',
 			method:require('./methods/sprite'),
@@ -58,11 +58,11 @@ module.exports = function $craft(game){
 			name:'$stroke',
 			method:require('./methods/stroke'),
 		},
-	],function(self,val,i){
+	].reduce(function(self,val,i){
 		var method = self[val.name] = val.method;
 
 		if(val.aliases){
-			_.each(val.aliases,function(alias){
+			val.aliases.forEach(function(alias){
 				self[alias] = method;
 			});
 		}
