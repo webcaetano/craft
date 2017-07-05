@@ -1,5 +1,5 @@
 module.exports = function(game,scope,rootScope){
-	var craft = require('craft')(game);
+	var craft = require('phaser-craft')(game);
 
 
 	craft.$text('teemo',{

@@ -1,5 +1,5 @@
 module.exports = function(game,scope,rootScope){
-	var craft = require('craft')(game);
+	var craft = require('phaser-craft')(game);
 
 	var group = craft.$g();
 	var t = craft.$tileSprite('main','pattern.png',300*2,300*2)

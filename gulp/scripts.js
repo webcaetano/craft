@@ -14,8 +14,10 @@ module.exports = function(options) {
 			externals = JSON.parse(fs.readFileSync('./package.json','utf8')).externals;
 		} else {
 			externals = {
+				"Phaser": "Phaser",
 				"phaser": "Phaser",
-				"craft": "$craft",
+				"craft": "craft",
+				"phaser-craft": "craft",
 				"utils": "$utils",
 				"stats": "Stats"
 			}
