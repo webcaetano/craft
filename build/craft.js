@@ -68,7 +68,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		scope.game = game;
 
-		return _.reduce([{
+		return [{
 			name: '$sprite',
 			method: __webpack_require__(5),
 			aliases: ['$s']
@@ -105,11 +105,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			name: '$stroke',
 			method: __webpack_require__(25)
-		}], function (self, val, i) {
+		}].reduce(function (self, val, i) {
 			var method = self[val.name] = val.method;
 
 			if (val.aliases) {
-				_.each(val.aliases, function (alias) {
+				val.aliases.forEach(function (alias) {
 					self[alias] = method;
 				});
 			}
@@ -187,7 +187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	module.exports = "2.0.0";
+	module.exports = "2.0.1";
 
 /***/ },
 /* 5 */
@@ -298,16 +298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (typeof prop === 'string' && !!val) {
 			this[prop] = val;
 		} else {
-			for (var i in prop) {
-				if (i.indexOf('.') == -1) {
-					this[i] = prop[i];
-				} else {
-					var pathObj = i.split(".");
-					var c = this;
-					for (var k = 0; k < pathObj.length - 1; k++) c = c[pathObj[k]];
-					c[pathObj[pathObj.length - 1]] = prop[i];
-				}
-			}
+			Object.assign(this, prop);
 		}
 		return this;
 	};
