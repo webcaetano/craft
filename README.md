@@ -21,6 +21,7 @@
 ## Installation
 
 ```
+npm install phaser-craft
 bower install phaser-craft --save
 ```
 
