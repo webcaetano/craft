@@ -106,7 +106,5 @@ To create a production version `npm run build`
 
 [npm-url]: https://npmjs.org/package/phaser-craft
 [npm-img]: https://img.shields.io/npm/v/phaser-craft.svg?style=flat-square
-[filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
+[filesize-url]: https://img.shields.io/github/size/webcaetano/craft/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
-
-
