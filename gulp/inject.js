@@ -6,11 +6,6 @@ var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
 	gulp.task('inject', gulp.series('scripts','scripts:test', function inject() {
-		var wiredepOptions = {
-			// ignorePath: /^(\.\.\/)*\.\./,
-			directory: 'bower_components',
-			devDependencies: true
-		};
 
 		return gulp.src('test/*.html')
 			.pipe($.inject(

@@ -1,9 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var exec = require('sync-exec');
-var surge = require('gulp-surge');
-
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -70,23 +67,4 @@ module.exports = function(options) {
 	gulp.task('build',gulp.series('clean','clean:dist','build:js','mincopy:js'));
 	gulp.task('build:examples', gulp.series('clean','clean:examples','html:examples','copy:scripts:examples','copy:others:examples'));
 
-
-	gulp.task('deploy:examples', gulp.series('build:examples',function(done){
-		var c = [
-			'cd examples',
-			'git init',
-			'git add .',
-			'git commit -m "Deploy to Github Pages"',
-			'git push --force git@github.com:webcaetano/craft.git master:gh-pages' // remove pagezz to pages
-		].join(" && ")
-		console.log(exec(c));
-		done();
-	}));
-
-	// gulp.task('surge', function () {
-	// 	return surge({
-	// 		project: './dist',         // Path to your static build directory
-	// 		domain: 'phaser-boilerplate.surge.sh'  // Your domain or Surge subdomain
-	// 	})
-	// });
 };

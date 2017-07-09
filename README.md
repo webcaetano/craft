@@ -28,9 +28,6 @@ bower install phaser-craft --save
 
 #### Example1 
 
-[Link](http://webcaetano.github.io/craft/index.html?exa
-mple=1)
-
 ```javascript
 var craft = require('$craft')(game); // you also can call craft via global var
 
@@ -55,8 +52,6 @@ sprite.$set({
 ```
 
 #### Example2
-
-[Link](http://webcaetano.github.io/craft/index.html?example=2)
 
 ```javascript
 // var craft = $craft(game); // global
@@ -94,6 +89,7 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 - [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
 - [**phaser-electron**](https://github.com/webcaetano/phaser-electron)
+- [**craft-website**](https://github.com/webcaetano/craft-website)
 
 [filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
