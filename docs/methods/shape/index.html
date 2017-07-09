@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+	<base href="../../../">
+	<meta charset="utf-8">
+	<title>Craft</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+	<div class="all">
+		<div class="menu">
+	<div class="menu-logo" align="center">
+		<a href=""><div class="logo-container">
+			<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
+		</div>
+		<dir class="menu-logo-name">Craft 2.0.1</dir></a>
+	</div>
+
+	<div class="menu-header">Methods</div>
+	<a href="docs/methods/circle"><div class="menu-tab">circle</div></a>
+			<a href="docs/methods/dot"><div class="menu-tab">dot</div></a>
+			<a href="docs/methods/graphic"><div class="menu-tab">graphic</div></a>
+			<a href="docs/methods/group"><div class="menu-tab">group</div></a>
+			<a href="docs/methods/rect"><div class="menu-tab">rect</div></a>
+			<div class="menu-tab selected">shape</div>
+			<a href="docs/methods/sprite"><div class="menu-tab">sprite</div></a>
+			<a href="docs/methods/stroke"><div class="menu-tab">stroke</div></a>
+			<a href="docs/methods/text"><div class="menu-tab">text</div></a>
+			<a href="docs/methods/tileSprite"><div class="menu-tab">tileSprite</div></a>
+			
+
+	<div class="menu-header">Prototypes</div>
+	<a href="docs/prototypes/add">
+			<div class="menu-tab">.$add</div>
+			</a>
+			<a href="docs/prototypes/align">
+			<div class="menu-tab">.$align</div>
+			</a>
+			<a href="docs/prototypes/copyPos">
+			<div class="menu-tab">.$copyPos</div>
+			</a>
+			<a href="docs/prototypes/fixPos">
+			<div class="menu-tab">.$fixPos</div>
+			</a>
+			<a href="docs/prototypes/into">
+			<div class="menu-tab">.$into</div>
+			</a>
+			<a href="docs/prototypes/mid">
+			<div class="menu-tab">.$mid</div>
+			</a>
+			<a href="docs/prototypes/scale">
+			<div class="menu-tab">.$scale</div>
+			</a>
+			<a href="docs/prototypes/set">
+			<div class="menu-tab">.$set</div>
+			</a>
+			<a href="docs/prototypes/tint">
+			<div class="menu-tab">.$tint</div>
+			</a>
+			
+</div>
+
+		<div class="mid">
+			<div class="container posts">
+				<h1 id="shape">Shape</h1>
+<p>Create Phaser Sprite flat colored</p>
+<h4 id="-craft-shape-key-frame-options-"><code>craft.$shape(key, frame, options)</code></h4>
+<ul>
+<li><code>key</code> Phaser sprite key</li>
+<li><code>frame</code> <span class="paramter-type">&lt;Object&gt;</span> | <span class="paramter-type">&lt;String&gt;</span> Phaser sprite frame Can be used as object to pass options</li>
+<li><code>options</code> <span class="paramter-type">&lt;Object&gt;</span> | <span class="paramter-type">&lt;String&gt;</span> Can be used as string to pass a frame<ul>
+<li><code>cache</code> <span class="paramter-type">&lt;Boolean&gt;</span> Cache shape</li>
+<li><code>color</code> <span class="paramter-type">&lt;String&gt;</span> Fill color in &apos;#FFFFFF&apos; or &apos;0xFFFFFF&apos; format.</li>
+<li><code>x</code> <span class="paramter-type">&lt;Number&gt;</span> Position x</li>
+<li><code>y</code> <span class="paramter-type">&lt;Number&gt;</span> Position y</li>
+<li><code>frame</code> <span class="paramter-type">&lt;Number&gt;</span> Phaser sprite frame</li>
+<li><code>group</code> <span class="paramter-type">&lt;Number&gt;</span> Phaser group</li>
+</ul>
+</li>
+</ul>
+<div class="protoList">
+	<div>Prototypes:</div>
+	<div>
+		<a href="docs/prototypes/set"><div class="proto-tag">.$set</div></a>
+			<a href="docs/prototypes/tint"><div class="proto-tag">.$tint</div></a>
+			<a href="docs/prototypes/into"><div class="proto-tag">.$into</div></a>
+			<a href="docs/prototypes/mid"><div class="proto-tag">.$mid</div></a>
+			<a href="docs/prototypes/scale"><div class="proto-tag">.$scale</div></a>
+			<a href="docs/prototypes/atlasImg"><div class="proto-tag">.$atlasImg</div></a>
+			<a href="docs/prototypes/atlasAnims"><div class="proto-tag">.$atlasAnims</div></a>
+			<a href="docs/prototypes/fixPos"><div class="proto-tag">.$fixPos</div></a>
+			<a href="docs/prototypes/copyPos"><div class="proto-tag">.$copyPos</div></a>
+			<a href="docs/prototypes/align"><div class="proto-tag">.$align</div></a>
+			
+	</div>
+</div>
+
+<h4 id="example-">Example:</h4>
+<pre><code class="lang-javascript"><span class="hljs-comment">//simple</span>
+craft.$shape(<span class="hljs-string">&apos;phaserDude&apos;</span>,{
+    <span class="hljs-keyword">color</span>:<span class="hljs-string">&apos;#FF00FF&apos;</span>,
+});
+
+<span class="hljs-comment">//full default values</span>
+craft.$shape(<span class="hljs-string">&apos;main&apos;</span>,{
+    frame:<span class="hljs-string">&apos;banana&apos;</span>,
+    x:<span class="hljs-number">0</span>,
+    y:<span class="hljs-number">0</span>,
+    <span class="hljs-keyword">group</span>:undefined,
+    cache:true,
+    <span class="hljs-keyword">color</span>:<span class="hljs-string">&apos;#FF0000&apos;</span>
+)
+
+<span class="hljs-comment">// second parameter can be used as string to call a frame</span>
+craft.$shape(<span class="hljs-string">&apos;atlas&apos;</span>,<span class="hljs-string">&apos;banana&apos;</span>,{
+    <span class="hljs-keyword">color</span>:<span class="hljs-string">&apos;#FF00FF&apos;</span>,
+});
+</code></pre>
+
+
+			</div>
+			<div class="footer">
+	Craft version 2.0.1<br>
+	<a target="_blank" href="https://github.com/webcaetano/craft"><i class="fa fa-github"></i></a>
+</div>
+
+		</div>
+	</div>
+
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-48138722-11', 'auto');
+	ga('send', 'pageview');
+
+	</script>
+
+	<script src="scripts/scripts.js"></script>
+</body>
+</html>

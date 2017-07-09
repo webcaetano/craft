@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+	<base href="../../../">
+	<meta charset="utf-8">
+	<title>Craft</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+	<div class="all">
+		<div class="menu">
+	<div class="menu-logo" align="center">
+		<a href=""><div class="logo-container">
+			<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
+		</div>
+		<dir class="menu-logo-name">Craft 2.0.1</dir></a>
+	</div>
+
+	<div class="menu-header">Methods</div>
+	<a href="docs/methods/circle"><div class="menu-tab">circle</div></a>
+			<a href="docs/methods/dot"><div class="menu-tab">dot</div></a>
+			<a href="docs/methods/graphic"><div class="menu-tab">graphic</div></a>
+			<a href="docs/methods/group"><div class="menu-tab">group</div></a>
+			<a href="docs/methods/rect"><div class="menu-tab">rect</div></a>
+			<a href="docs/methods/shape"><div class="menu-tab">shape</div></a>
+			<a href="docs/methods/sprite"><div class="menu-tab">sprite</div></a>
+			<a href="docs/methods/stroke"><div class="menu-tab">stroke</div></a>
+			<div class="menu-tab selected">text</div>
+			<a href="docs/methods/tileSprite"><div class="menu-tab">tileSprite</div></a>
+			
+
+	<div class="menu-header">Prototypes</div>
+	<a href="docs/prototypes/add">
+			<div class="menu-tab">.$add</div>
+			</a>
+			<a href="docs/prototypes/align">
+			<div class="menu-tab">.$align</div>
+			</a>
+			<a href="docs/prototypes/copyPos">
+			<div class="menu-tab">.$copyPos</div>
+			</a>
+			<a href="docs/prototypes/fixPos">
+			<div class="menu-tab">.$fixPos</div>
+			</a>
+			<a href="docs/prototypes/into">
+			<div class="menu-tab">.$into</div>
+			</a>
+			<a href="docs/prototypes/mid">
+			<div class="menu-tab">.$mid</div>
+			</a>
+			<a href="docs/prototypes/scale">
+			<div class="menu-tab">.$scale</div>
+			</a>
+			<a href="docs/prototypes/set">
+			<div class="menu-tab">.$set</div>
+			</a>
+			<a href="docs/prototypes/tint">
+			<div class="menu-tab">.$tint</div>
+			</a>
+			
+</div>
+
+		<div class="mid">
+			<div class="container posts">
+				<h1 id="text">Text</h1>
+<p>Create Phaser Text</p>
+<h4 id="-craft-text-text-options-"><code>craft.$text(text,options)</code></h4>
+<ul>
+<li><code>text</code> <span class="paramter-type">&lt;String&gt;</span> String to be used on the text</li>
+<li><code>options</code> <span class="paramter-type">&lt;Object&gt;</span><ul>
+<li><code>x</code> <span class="paramter-type">&lt;Number&gt;</span> Position x</li>
+<li><code>y</code> <span class="paramter-type">&lt;Number&gt;</span> Position y</li>
+<li><code>align</code> <span class="paramter-type">&lt;String&gt;</span> Text align</li>
+<li><code>bold</code> <span class="paramter-type">&lt;Boolean&gt;</span> Text bold</li>
+<li><code>Size</code> <span class="paramter-type">&lt;Number&gt;</span> Text Size</li>
+<li><code>font</code> <span class="paramter-type">&lt;String&gt;</span> Text font</li>
+<li><code>color</code> <span class="paramter-type">&lt;String&gt;</span> Text color in &apos;#FFFFFF&apos; format.</li>
+<li><code>stroke</code> <span class="paramter-type">&lt;Object&gt;</span><ul>
+<li><code>size</code> <span class="paramter-type">&lt;Number&gt;</span> Stoke size. Leave 0 to disable stroke. Default <code>0</code></li>
+<li><code>color</code> <span class="paramter-type">&lt;String&gt;</span> Stroke color in &apos;#FFFFFF&apos; or &apos;0xFFFFFF&apos; format</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="protoList">
+	<div>Prototypes:</div>
+	<div>
+		<a href="docs/prototypes/set"><div class="proto-tag">.$set</div></a>
+			<a href="docs/prototypes/tint"><div class="proto-tag">.$tint</div></a>
+			<a href="docs/prototypes/into"><div class="proto-tag">.$into</div></a>
+			<a href="docs/prototypes/scale"><div class="proto-tag">.$scale</div></a>
+			<a href="docs/prototypes/fixPos"><div class="proto-tag">.$fixPos</div></a>
+			<a href="docs/prototypes/copyPos"><div class="proto-tag">.$copyPos</div></a>
+			<a href="docs/prototypes/align"><div class="proto-tag">.$align</div></a>
+			
+	</div>
+</div>
+
+<h4 id="example-">Example:</h4>
+<pre><code class="lang-javascript"><span class="hljs-comment">//simple</span>
+craft.$text(<span class="hljs-string">&apos;teemo&apos;</span>);
+
+<span class="hljs-comment">//full default values</span>
+craft.$text(<span class="hljs-string">&apos;teemo&apos;</span>,{
+    x:<span class="hljs-number">0</span>,
+    y:<span class="hljs-number">0</span>,
+    bold:false,
+    <span class="hljs-keyword">size</span>:<span class="hljs-number">15</span>,
+    font:<span class="hljs-string">&quot;&apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif&quot;</span>,
+    <span class="hljs-keyword">stroke</span>:{
+        <span class="hljs-keyword">size</span>:<span class="hljs-number">0</span>,
+        <span class="hljs-keyword">color</span>:<span class="hljs-string">&apos;#000000&apos;</span>
+    },
+    <span class="hljs-keyword">align</span>:<span class="hljs-string">&apos;center&apos;</span>,
+    <span class="hljs-keyword">color</span>:<span class="hljs-string">&apos;#000000&apos;</span>
+})
+</code></pre>
+
+
+			</div>
+			<div class="footer">
+	Craft version 2.0.1<br>
+	<a target="_blank" href="https://github.com/webcaetano/craft"><i class="fa fa-github"></i></a>
+</div>
+
+		</div>
+	</div>
+
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-48138722-11', 'auto');
+	ga('send', 'pageview');
+
+	</script>
+
+	<script src="scripts/scripts.js"></script>
+</body>
+</html>
