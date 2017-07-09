@@ -12,10 +12,8 @@
   "devDependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-load-plugins": "^1.2.4",
-    "browser-sync": "^2.12.8",
     "babel-loader": "^5.3.2",
     "gulp-webpack": "^1.5.0",
-    "gulp-inject": "^4.1.0",
     "gulp-bump": "^2.1.0",
     "lodash": "^4.17.4",
     "gulp-git": "^1.7.2",
@@ -26,11 +24,7 @@
     "gulp-rename": "^1.2.2",
     "yargs": "^4.7.1",
     "tojson-loader": "^1.0.4",
-    "gulp-size": "^2.1.0",
-    "phaser-ce": "^2.8.1",
-    "phaser-utils": "git@github.com:webcaetano/phaser-utils.git",
-    "stats.js": "git@github.com:mrdoob/stats.js.git#c93fcbfe64062b05bce137fdf3465a195af25e14",
-    "dat.gui": "git://github.com/webcaetano/dat.gui.git#3377e25f113e119d061e5fa738e142f93cd414b1"
+    "gulp-size": "^2.1.0"
   },
   "externals": {
     "phaser": "Phaser"

@@ -85,11 +85,21 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 
 [http://webcaetano.github.io/craft](http://webcaetano.github.io/craft)
 
+## Development 
+
+Clone the repo `https://github.com/webcaetano/craft-examples`
+On craft-examples `npm instal` and `gulp`
+On craft `npm install` and `gulp serve` 
+
+> Important: Ensure that both repos live at the same depth in your directory structure. For example: /usr/home/web/craft-examples and /usr/home/web/craft. This is so the dev build scripts in the Craft repo can safely copy files to ../craft-examples, and they end up in the correct place.
+
+
 #### See Also
 - [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
 - [**phaser-electron**](https://github.com/webcaetano/phaser-electron)
 - [**craft-website**](https://github.com/webcaetano/craft-website)
+- [**craft-examples**](https://github.com/webcaetano/craft-examples)
 
 [filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square

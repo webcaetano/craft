@@ -8,10 +8,10 @@ var $ = require('gulp-load-plugins')({
 
 module.exports = function(options) {
 	gulp.task('build:js', gulp.series('scripts', function buildDependent() {
-		return gulp.src(options.tmp + '/serve/app/index.js')
-			.pipe($.rename(function (path) {
-				path.basename = "craft"
-			}))
+		return gulp.src(options.tmp + '/index.js')
+			// .pipe($.rename(function (path) {
+			// 	path.basename = "craft"
+			// }))
 			.pipe(gulp.dest(options.dist + '/'))
 			.pipe($.size({ title: options.dist + '/', showFiles: true }));
 	}));

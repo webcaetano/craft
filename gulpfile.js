@@ -18,13 +18,11 @@ var options = {
 
 _.each([
 	'scripts.js',
-	'inject.js',
 	'build.js',
 	'github.js',
-	'watch.js',
-	'server.js',
 ],function(file){
 	require('./gulp/' + file)(options);
 })
 
-gulp.task('default', gulp.series('clean','serve'));
+gulp.task('default', gulp.series('build'));
+gulp.task('serve', gulp.series('scripts:watch'));
