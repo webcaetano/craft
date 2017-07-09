@@ -26,13 +26,13 @@ module.exports = {
 	output: {
 		library:'craft',
 		filename: 'build/[name].js',
-		sourceMapFilename: 'build/[file].map',
+		sourceMapFilename: '[file].map',
 		umdNamedDefine: true,
 		devtoolModuleFilenameTemplate: "webpack:///[resource-path]", // string
 		devtoolFallbackModuleFilenameTemplate: "webpack:///[resource-path]?[hash]", // string
 		libraryTarget:'umd'
 	},
-	devtool: 'inline-source-map',
+	devtool: 'source-map',
 	module: {
 		loaders: [
 			{
