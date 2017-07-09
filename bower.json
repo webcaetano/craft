@@ -1,6 +1,6 @@
 {
 	"name": "phaser-craft",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"main": "build/craft.js",
 	"ignore": [
 		"**/.*",
