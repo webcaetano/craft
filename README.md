@@ -89,7 +89,9 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 
 Clone the repo `https://github.com/webcaetano/craft-examples`<br>
 On craft-examples `npm instal` and `gulp`<br>
-On craft `npm install` and `gulp serve` <br>
+On craft `npm install` and `npm run start` <br>
+
+To create a production version `npm run build`
 
 > Important: Ensure that both repos live at the same depth in your directory structure. For example: /usr/home/web/craft-examples and /usr/home/web/craft. This is so the dev build scripts in the Craft repo can safely copy files to ../craft-examples, and they end up in the correct place.
 
