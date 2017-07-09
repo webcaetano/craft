@@ -89,7 +89,7 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 ## Development 
 
 Clone the repo `https://github.com/webcaetano/craft-examples`<br>
-On craft-examples `npm instal` and `gulp`<br>
+On craft-examples `npm install` and `gulp`<br>
 On craft `npm install` and `npm run start` <br>
 
 To create a production version `npm run build`
