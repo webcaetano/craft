@@ -1,6 +1,6 @@
 ![File Size][filesize-url]
+[![npm][npm-img]][npm-url]
 ![Bower version][bower-url]
-
 
 <p align="center">
 	<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
@@ -104,6 +104,8 @@ To create a production version `npm run build`
 - [**craft-website**](https://github.com/webcaetano/craft-website)
 - [**craft-examples**](https://github.com/webcaetano/craft-examples)
 
+[npm-url]: https://npmjs.org/package/phaser-craft
+[npm-img]: https://img.shields.io/npm/v/phaser-craft.svg?style=flat-square
 [filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
 
