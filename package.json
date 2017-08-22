@@ -7,7 +7,7 @@
     "dev": "node_modules/.bin/webpack",
     "build": "PROD_ENV=1 node_modules/.bin/webpack"
   },
-  "main": "build/craft.js",
+  "main": "build/phaser-craft.js",
   "devDependencies": {
     "babel-loader": "^5.3.2",
     "lodash": "^4.17.4",
