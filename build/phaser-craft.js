@@ -356,7 +356,7 @@ module.exports = function $craft(game) {
 "use strict";
 
 
-module.exports = "2.0.2";
+module.exports = "2.1.0";
 
 /***/ }),
 /* 9 */
