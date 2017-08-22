@@ -25,7 +25,7 @@ module.exports = {
 	plugins,
 	output: {
 		library:'craft',
-		filename: 'build/[name].js',
+		filename: 'build/phaser-[name].js',
 		sourceMapFilename: '[file].map',
 		umdNamedDefine: true,
 		devtoolModuleFilenameTemplate: "webpack:///[resource-path]", // string

@@ -30,7 +30,7 @@ bower install phaser-craft --save
 #### Example1 
 
 ```javascript
-var craft = require('$craft')(game); // you also can call craft via global var
+var craft = require('phaser-craft')(game); // you also can call craft via global var
 
 var group = craft.$g(); //create group
 
@@ -55,9 +55,9 @@ sprite.$set({
 #### Example2
 
 ```javascript
-// var craft = $craft(game); // global
-// import $craft from '$craft'; var craft = $craft(game); // ES6
-var craft = require('$craft')(game); // browserify , webpack
+// var craft = craft(game); // global
+// import $craft from 'phaser-craft'; var craft = $craft(game); // ES6
+var craft = require('phaser-craft')(game); // requireJS
 
 var group = craft.$g(); //create group
 

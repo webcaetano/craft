@@ -853,4 +853,4 @@ module.exports = function $stoke(source, frame, options) {
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=craft.js.map
+//# sourceMappingURL=phaser-craft.js.map
