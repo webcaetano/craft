@@ -1,6 +1,6 @@
 {
   "name": "phaser-craft",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "dependencies": {},
   "scripts": {
     "start": "node_modules/nodemon/bin/nodemon.js --ignore './build' -e js --exec 'npm run dev'",
