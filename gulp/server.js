@@ -38,18 +38,6 @@ module.exports = function(options) {
 		'test'
 	],null)));
 
-	gulp.task('serve:site', gulp.series('watch:site', browserSyncInit.bind(null,[
-		options.tmp + '/site',
-	],null)));
-
-	gulp.task('serve:site:dist', gulp.series(browserSyncInit.bind(null,[
-		'siteDist',
-	],null)));
-
-	gulp.task('serve:site:build:dist', gulp.series('build', browserSyncInit.bind(null,[
-		'siteDist',
-	],null)));
-
 	gulp.task('serve:dist', gulp.series('build', browserSyncInit.bind(null,[
 		'build:examples'
 	],null)));

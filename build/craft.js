@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -118,9 +118,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, self);
 	};
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -167,31 +167,31 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	};
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
 	module.exports = {};
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
-	module.exports = "2.0.1";
+	module.exports = "2.2.1";
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -218,9 +218,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpObj;
 	};
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -258,9 +258,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = self;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -288,9 +288,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	};
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -298,14 +298,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (typeof prop === 'string' && !!val) {
 			this[prop] = val;
 		} else {
-			Object.assign(this, prop);
+			for (var i in prop) this[i] = prop[i];
 		}
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -325,9 +325,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -340,9 +340,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -351,9 +351,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -362,9 +362,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -374,9 +374,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -386,9 +386,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -401,9 +401,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -432,9 +432,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return this;
 	};
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -465,9 +465,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpObj;
 	};
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -508,9 +508,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpObj;
 	};
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -547,9 +547,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpG.drawCircle(0, 0, options.size);
 	};
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -573,9 +573,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpG;
 	};
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -595,9 +595,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return $circle(options);
 	};
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -644,9 +644,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	};
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -673,9 +673,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return tmpG;
 	};
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -725,9 +725,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		return $sprite(key, newAttr);
 	};
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -802,7 +802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		return $sprite(key, newAttr);
 	};
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;

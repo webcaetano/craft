@@ -5,7 +5,7 @@ var _ = require('lodash');
 var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
-	gulp.task('inject', gulp.series('scripts','scripts:test', function inject() {
+	gulp.task('inject', gulp.series('scripts', function inject() {
 		var wiredepOptions = {
 			// ignorePath: /^(\.\.\/)*\.\./,
 			directory: 'bower_components',
