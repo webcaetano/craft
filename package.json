@@ -1,6 +1,6 @@
 {
   "name": "phaser-craft",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "dependencies": {},
   "scripts": {
     "test": "gulp test",
