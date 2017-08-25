@@ -356,7 +356,7 @@ module.exports = function $craft(game) {
 "use strict";
 
 
-module.exports = "2.1.2";
+module.exports = "3.0.0";
 
 /***/ }),
 /* 9 */
@@ -369,7 +369,7 @@ module.exports = function $set(prop, val) {
 	if (typeof prop === 'string' && !!val) {
 		this[prop] = val;
 	} else {
-		Object.assign(this, prop);
+		for (var i in prop) this[i] = prop[i];
 	}
 	return this;
 };
