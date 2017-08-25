@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "pattern.png",
+	"frame": {"x":1,"y":1,"w":160,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":160},
+	"sourceSize": {"w":160,"h":160}
+},
+{
+	"filename": "wizz/wizz0032.png",
+	"frame": {"x":163,"y":68,"w":80,"h":65},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":27,"w":80,"h":65},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0033.png",
+	"frame": {"x":163,"y":1,"w":81,"h":65},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":27,"w":81,"h":65},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0034.png",
+	"frame": {"x":163,"y":135,"w":78,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":27,"w":78,"h":64},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0035.png",
+	"frame": {"x":148,"y":201,"w":77,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":27,"w":77,"h":66},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0036.png",
+	"frame": {"x":74,"y":237,"w":72,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":24,"w":72,"h":70},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0037.png",
+	"frame": {"x":74,"y":163,"w":72,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":22,"w":72,"h":72},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0038.png",
+	"frame": {"x":148,"y":269,"w":72,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":25,"w":72,"h":69},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0039.png",
+	"frame": {"x":1,"y":315,"w":71,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":24,"w":71,"h":71},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0040.png",
+	"frame": {"x":1,"y":163,"w":71,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":19,"w":71,"h":76},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0041.png",
+	"frame": {"x":1,"y":241,"w":71,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":19,"w":71,"h":72},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0042.png",
+	"frame": {"x":148,"y":340,"w":72,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":24,"w":72,"h":69},
+	"sourceSize": {"w":135,"h":99}
+},
+{
+	"filename": "wizz/wizz0043.png",
+	"frame": {"x":74,"y":309,"w":72,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":24,"w":72,"h":70},
+	"sourceSize": {"w":135,"h":99}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlas.png",
+	"format": "RGBA8888",
+	"size": {"w":245,"h":410},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5a5e4e604aa0a2afb57bb1f314b32867:de34f942e80b248205f4f15ab8ae2477:cbce6b53f0f49e0bf15173c25c41f876$"
+}
+}

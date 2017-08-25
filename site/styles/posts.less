@@ -1,0 +1,156 @@
+.posts{
+	background-color: #fff;
+	h1, h2, h3 {
+		.font-mont;
+		position: relative;
+		font-size: 3em;
+		padding-top: 5px;
+		margin-top:0;
+		margin-bottom:10px;
+		color: @color2;
+		.transation(200ms);
+		cursor: pointer;
+		&:hover {
+			color: @color3;
+		}
+	}
+
+	a:link, a:visited {
+		color: #4078c0;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #4078c0;
+		text-decoration: underline;
+	}
+
+	.post-cover {
+		img {
+			.round(8px);
+		}
+	}
+
+	iframe {
+		overflow: hidden;
+		border: 1px solid #f2f2f2;
+	}
+
+	h1 {
+		&:before  {
+			content: '';
+			position: absolute;
+			width: 90%;
+			height: 1px;
+			bottom: 0;
+			left: 0;
+			// padding-top: 5px;
+			background-color: lighten(@color3, 10%);
+		}
+	}
+
+	pre code {
+		display: block;
+		overflow-x: auto;
+		padding: 10px;
+		background-color: #272822;
+		color: #ddd;
+		.round(4px);
+	}
+
+	code {
+		// display: block;
+		@c:#E2E2E2;
+		padding: 2px 1px;
+		font-size:1em;
+		background-color: #f7f7f9;
+		color: #cc2255;
+		border:1px solid #ddd;
+		.round(3px);
+	}
+
+	pre {
+		background-color:transparent;
+		padding: initial;
+		border: initial;
+		border-radius: initial;
+	}
+
+	.font-open;
+	font-size: 1em;
+	color: #5D5D5D;
+	padding-bottom: 50px;
+	// line-height: 25px;
+	:not(h1):not(h2):not(h3):not(h4):not(h5){
+		line-height:28px;
+	}
+
+	.contact-icon  {
+		color: @color3;
+		// font-size: 1em;
+		&.fa-github {
+			font-size: 1.4em;
+		}
+	}
+
+	.paramter-type {
+		color:#B30015;
+	}
+
+	.proto-tag {
+		display: inline-block;
+		margin: 0 2px;
+		// background-color: #E7E7E7;
+		// border:1px solid #898989;
+		height: 20px;
+		// color: @color3;
+		line-height: 14px;
+		font-size: 0.8em;
+		padding: 3px 10px;
+		.round(4px);
+		.transation(200ms);
+		cursor: pointer;
+		background-color: @color3;
+		color: #fff;
+		&:hover {
+			background-color: darken(@color3, 5%);
+		}
+	}
+
+	.post-header {
+		color: #777777;
+		font-size: 0.9em;
+		.date, .author, .tags {
+			display: inline-block;
+		}
+		// .author, .tags {
+		// 	margin-left:20px;
+		// }
+		i {
+			color: @color3;
+		}
+		// .tags .tags-head{
+		// 	margin-right: 5px;
+		// }
+		// .tag {
+		// 	display: inline-block;
+		// 	margin: 0 2px;
+		// 	// background-color: #E7E7E7;
+		// 	// border:1px solid #898989;
+		// 	height: 20px;
+		// 	// color: @color3;
+		// 	line-height: 14px;
+		// 	font-size: 0.8em;
+		// 	padding: 3px 10px;
+		// 	.round(4px);
+		// 	.transation(200ms);
+		// 	cursor: pointer;
+		// 	background-color: @color3;
+		// 	color: #fff;
+		// 	&:hover {
+		// 		background-color: darken(@color3, 5%);
+		// 	}
+		// }
+		margin-bottom: 20px;
+	}
+}

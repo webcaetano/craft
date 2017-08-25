@@ -1,6 +1,6 @@
 ![File Size][filesize-url]
-[![npm][npm-img]][npm-url]
 ![Bower version][bower-url]
+
 
 <p align="center">
 	<img alt="phaser craft logo" src="http://i.imgur.com/qQTPPu7.png">
@@ -21,7 +21,6 @@
 ## Installation
 
 ```
-npm install phaser-craft
 bower install phaser-craft --save
 ```
 
@@ -29,8 +28,11 @@ bower install phaser-craft --save
 
 #### Example1 
 
+[Link](http://webcaetano.github.io/craft/index.html?exa
+mple=1)
+
 ```javascript
-var craft = require('phaser-craft')(game); // you also can call craft via global var
+var craft = require('$craft')(game); // you also can call craft via global var
 
 var group = craft.$g(); //create group
 
@@ -54,10 +56,12 @@ sprite.$set({
 
 #### Example2
 
+[Link](http://webcaetano.github.io/craft/index.html?example=2)
+
 ```javascript
-// var craft = craft(game); // global
-// import $craft from 'phaser-craft'; var craft = $craft(game); // ES6
-var craft = require('phaser-craft')(game); // requireJS
+// var craft = $craft(game); // global
+// import $craft from '$craft'; var craft = $craft(game); // ES6
+var craft = require('$craft')(game); // browserify , webpack
 
 var group = craft.$g(); //create group
 
@@ -86,25 +90,12 @@ var d = craft.$d().$copyPos(ball); // create a dot and copy position of ball
 
 [http://webcaetano.github.io/craft](http://webcaetano.github.io/craft)
 
-## Development 
-
-Clone the repo `https://github.com/webcaetano/craft-examples`<br>
-On craft-examples `npm install` and `gulp`<br>
-On craft `npm install` and `npm run start` <br>
-
-To create a production version `npm run build`
-
-> Important: Ensure that both repos live at the same depth in your directory structure. For example: /usr/home/web/craft-examples and /usr/home/web/craft. This is so the dev build scripts in the Craft repo can safely copy files to ../craft-examples, and they end up in the correct place.
-
-
 #### See Also
 - [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
 - [**phaser-electron**](https://github.com/webcaetano/phaser-electron)
-- [**craft-website**](https://github.com/webcaetano/craft-website)
-- [**craft-examples**](https://github.com/webcaetano/craft-examples)
 
-[npm-url]: https://npmjs.org/package/phaser-craft
-[npm-img]: https://img.shields.io/npm/v/phaser-craft.svg?style=flat-square
-[filesize-url]: https://img.shields.io/github/size/webcaetano/craft/build/craft.min.js.svg?style=flat-square&color=green
+[filesize-url]: https://badge-size.herokuapp.com/webcaetano/craft/master/build/craft.min.js.svg?style=flat-square&color=green
 [bower-url]: https://img.shields.io/bower/v/phaser-craft.svg?style=flat-square
+
+
