@@ -187,7 +187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
-	module.exports = "2.2.1";
+	module.exports = "2.3.0";
 
 /***/ }),
 /* 5 */
