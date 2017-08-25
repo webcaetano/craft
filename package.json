@@ -1,8 +1,7 @@
 {
   "name": "phaser-craft",
-  "version": "2.2.1",
-  "dependencies": {
-  },
+  "version": "2.2.2",
+  "dependencies": {},
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
@@ -10,7 +9,7 @@
   },
   "main": "build/craft.js",
   "devDependencies": {
-    "lodash": "^4.0.0",
+    "lodash": "^4.17.4",
     "phaser-ce": "^2.8.1",
     "babel-loader": "^5.3.2",
     "browser-sync": "^2.12.8",
@@ -46,7 +45,6 @@
     "gulp-util": "~3.0.2",
     "gulp-webpack": "^1.5.0",
     "highlight.js": "^9.0.0",
-    "lodash": "^4.17.4",
     "phaser-utils": "git@github.com:webcaetano/phaser-utils.git",
     "stats.js": "git@github.com:mrdoob/stats.js.git#c93fcbfe64062b05bce137fdf3465a195af25e14",
     "sync-exec": "^0.6.2",

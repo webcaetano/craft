@@ -1,20 +1,20 @@
 {
-	"name": "phaser-craft",
-	"version": "2.0.1",
-	"main": "build/craft.js",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"examples",
-		"src",
-		"gulp",
-		"bower_components",
-		"test",
-		"tests"
-	],
-	"overrides": {
-		"phaser": {
-			"main": "build/custom/phaser-no-physics.js"
-		}
-	}
+  "name": "phaser-craft",
+  "version": "2.0.2",
+  "main": "build/craft.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "examples",
+    "src",
+    "gulp",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "phaser": {
+      "main": "build/custom/phaser-no-physics.js"
+    }
+  }
 }
