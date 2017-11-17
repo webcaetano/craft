@@ -1,6 +1,6 @@
 var utils = require('../utils');
 var bindProto = require('../protos');
-var Phaser = require('phaser');
+// var Phaser = require('phaser');
 var {game} = require('../scope');
 
 module.exports = function $tileSprite(key,options,width,height){

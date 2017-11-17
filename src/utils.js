@@ -1,5 +1,5 @@
 var self = {};
-var Phaser = require('phaser');
+// var Phaser = require('phaser');
 var {game} = require('./scope');
 
 self.colorCase = function(color){

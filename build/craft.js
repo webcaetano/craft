@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("Phaser"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["Phaser"], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["craft"] = factory(require("Phaser"));
+		exports["craft"] = factory();
 	else
-		root["craft"] = factory(root["Phaser"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
+		root["craft"] = factory();
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -58,8 +58,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var protoOptions = __webpack_require__(1);
 	var scope = __webpack_require__(2);
-	var Phaser = __webpack_require__(3);
-	var version = __webpack_require__(4);
+	// var Phaser = require('phaser');
+	var version = __webpack_require__(3);
 
 	console.log('%c Craft v' + version + ' ', 'background: #002874; color: #ffffff');
 
@@ -70,41 +70,41 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		return [{
 			name: '$sprite',
-			method: __webpack_require__(5),
+			method: __webpack_require__(4),
 			aliases: ['$s']
 		}, {
 			name: '$tileSprite',
-			method: __webpack_require__(17)
+			method: __webpack_require__(16)
 		}, {
 			name: '$text',
-			method: __webpack_require__(18),
+			method: __webpack_require__(17),
 			aliases: ['$t']
 		}, {
 			name: '$circle',
-			method: __webpack_require__(19),
+			method: __webpack_require__(18),
 			aliases: ['$t']
 		}, {
 			name: '$graphic',
-			method: __webpack_require__(20),
+			method: __webpack_require__(19),
 			aliases: ['$t']
 		}, {
 			name: '$dot',
-			method: __webpack_require__(21),
+			method: __webpack_require__(20),
 			aliases: ['$d']
 		}, {
 			name: '$rect',
-			method: __webpack_require__(22),
+			method: __webpack_require__(21),
 			aliases: ['$box']
 		}, {
 			name: '$group',
-			method: __webpack_require__(23),
+			method: __webpack_require__(22),
 			aliases: ['$g']
 		}, {
 			name: '$shape',
-			method: __webpack_require__(24)
+			method: __webpack_require__(23)
 		}, {
 			name: '$stroke',
-			method: __webpack_require__(25)
+			method: __webpack_require__(24)
 		}].reduce(function (self, val, i) {
 			var method = self[val.name] = val.method;
 
@@ -179,24 +179,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ (function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
 	"use strict";
 
 	module.exports = "2.3.0";
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -219,13 +213,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var self = {};
-	var Phaser = __webpack_require__(3);
+	// var Phaser = require('phaser');
 
 	var _require = __webpack_require__(2);
 
@@ -259,23 +253,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = self;
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
+	var utils = __webpack_require__(5);
 	var protoOptions = __webpack_require__(1);
 	var protos = {
-		$set: __webpack_require__(8),
-		$scale: __webpack_require__(9),
-		$tint: __webpack_require__(10),
-		$into: __webpack_require__(11),
-		$mid: __webpack_require__(12),
-		$copyPos: __webpack_require__(13),
-		$fixPos: __webpack_require__(14),
-		$add: __webpack_require__(15),
-		$align: __webpack_require__(16)
+		$set: __webpack_require__(7),
+		$scale: __webpack_require__(8),
+		$tint: __webpack_require__(9),
+		$into: __webpack_require__(10),
+		$mid: __webpack_require__(11),
+		$copyPos: __webpack_require__(12),
+		$fixPos: __webpack_require__(13),
+		$add: __webpack_require__(14),
+		$align: __webpack_require__(15)
 	};
 
 	module.exports = function bindProto(obj) {
@@ -289,7 +283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -304,7 +298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -326,12 +320,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
+	var utils = __webpack_require__(5);
 
 	module.exports = function $tint() {
 		var color = arguments.length <= 0 || arguments[0] === undefined ? 'ffffff' : arguments[0];
@@ -341,7 +335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -352,7 +346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -363,7 +357,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -375,7 +369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -387,7 +381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -402,7 +396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -433,14 +427,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
-	var Phaser = __webpack_require__(3);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
+	// var Phaser = require('phaser');
 
 	var _require = __webpack_require__(2);
 
@@ -466,13 +460,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -509,13 +503,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -548,13 +542,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -574,13 +568,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var $circle = __webpack_require__(19);
+	var utils = __webpack_require__(5);
+	var $circle = __webpack_require__(18);
 
 	module.exports = function $dot(size, fill, options) {
 		if (size === undefined) size = 5;
@@ -596,13 +590,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -645,13 +639,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
@@ -674,19 +668,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
 	var game = _require.game;
 
-	var $sprite = __webpack_require__(5);
+	var $sprite = __webpack_require__(4);
 
 	module.exports = function $shape(source, frame, options) {
 		if (frame === undefined) frame = undefined;
@@ -726,19 +720,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(6);
-	var bindProto = __webpack_require__(7);
+	var utils = __webpack_require__(5);
+	var bindProto = __webpack_require__(6);
 
 	var _require = __webpack_require__(2);
 
 	var game = _require.game;
 
-	var $sprite = __webpack_require__(5);
+	var $sprite = __webpack_require__(4);
 
 	var strokeBmd = function strokeBmd(key, options) {
 		var source = game.make.sprite(0, 0, key, options.frame);
